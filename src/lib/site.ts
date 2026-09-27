@@ -38,9 +38,7 @@ export const formEndpoint = `https://formsubmit.co/ajax/${site.contact.email}`;
 export const navLinks = [
   { label: "Work", href: "#work" },
   { label: "Services", href: "#services" },
-  { label: "AI", href: "#ai" },
-  { label: "Industries", href: "#industries" },
-  { label: "Process", href: "#process" },
+  { label: "Process", href: "#how-we-work" },
   { label: "Pricing", href: "#pricing" },
   { label: "Contact", href: "#contact" },
 ] as const;
@@ -48,10 +46,8 @@ export const navLinks = [
 export const footerLinks = [
   { label: "Home", href: "#top" },
   { label: "Services", href: "#services" },
-  { label: "AI", href: "#ai" },
   { label: "Portfolio", href: "#work" },
-  { label: "Industries", href: "#industries" },
-  { label: "Process", href: "#process" },
+  { label: "Process", href: "#how-we-work" },
   { label: "Pricing", href: "#pricing" },
   { label: "Contact", href: "#contact" },
 ] as const;

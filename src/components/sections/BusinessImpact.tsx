@@ -18,13 +18,6 @@ const AI_POWERED = [
   "Automated repetitive workflows",
 ];
 
-const CHAIN = [
-  { q: "Customer asks a question", a: "AI responds" },
-  { q: "Customer wants an appointment", a: "AI books it" },
-  { q: "Customer wants information", a: "AI provides it" },
-  { q: "Customer becomes a lead", a: "Business receives the lead" },
-];
-
 export default function BusinessImpact() {
   return (
     <section id="impact" aria-labelledby="impact-title" className="relative bg-void px-5 py-28 md:px-10 md:py-40">
@@ -72,31 +65,6 @@ export default function BusinessImpact() {
 
         <p className="mx-auto mt-6 max-w-2xl text-center text-xs text-dim">
           Illustrative comparison. Actual results depend on your business, traffic and how automation is configured — we never guarantee specific outcomes.
-        </p>
-      </div>
-
-      {/* ROI chain */}
-      <div className="mx-auto mt-28 max-w-7xl md:mt-36">
-        <SectionHeading
-          eyebrow="Your website should work for you"
-          align="center"
-          title={["Every visitor,", <Accent key="e">a possible outcome.</Accent>]}
-        />
-        <div className="mt-14 grid gap-4 md:grid-cols-4">
-          {CHAIN.map((c, i) => (
-            <Reveal key={c.q} delay={i * 0.08}>
-              <div className="relative h-full rounded-2xl border border-line bg-white/[0.02] p-6">
-                <p className="mb-4 text-[13px] leading-6 text-muted">{c.q}</p>
-                <div className="flex items-center gap-2 text-ice">
-                  <span aria-hidden className="text-lg">↓</span>
-                  <p className="font-serif text-lg italic">{c.a}</p>
-                </div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-        <p className="mx-auto mt-6 max-w-2xl text-center text-xs text-dim">
-          Real results depend on your business and how the system is implemented — this illustrates the mechanism, not a guarantee.
         </p>
       </div>
     </section>
