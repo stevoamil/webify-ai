@@ -158,12 +158,6 @@ export default function HowWeWork() {
                 <div className="mt-10 h-px w-16 bg-gradient-to-r from-ice/60 to-transparent" />
               </div>
             ))}
-
-            {/* CURSOR / ORB EFFECT */}
-            <div className="pointer-events-none absolute right-[15%] top-[45%] hidden h-10 w-10 items-center justify-center rounded-full border border-ice/30 md:flex">
-              <div className="absolute inset-0 animate-ping rounded-full border border-ice/20 [animation-duration:2.6s]" />
-              <div className="h-1 w-1 rounded-full bg-ice" />
-            </div>
           </div>
         </div>
 
