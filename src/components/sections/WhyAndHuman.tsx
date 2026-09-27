@@ -35,30 +35,6 @@ export default function WhyAndHuman() {
           ))}
         </div>
       </div>
-
-      {/* AI + Human support flow */}
-      <div className="mx-auto mt-28 max-w-5xl md:mt-36">
-        <SectionHeading
-          eyebrow="AI + Human Support"
-          align="center"
-          title={["AI handles the repeat work.", <span key="e">We handle what matters.</span>]}
-          lead="AI can automate the repetitive parts of running a website — you still get a real team for anything that needs a human."
-        />
-        <Reveal delay={0.15}>
-          <div className="mt-14 flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-0">
-            {["AI", "Automation", "Webify.ai Team", "Client"].map((n, i, a) => (
-              <div key={n} className="flex items-center gap-3 sm:gap-0">
-                <div className="glass flex h-24 w-32 flex-col items-center justify-center gap-2 rounded-2xl px-3 text-center">
-                  <span className="font-serif text-lg italic text-ice">{n}</span>
-                </div>
-                {i < a.length - 1 && (
-                  <span aria-hidden className="mx-2 hidden text-2xl text-dim sm:inline sm:mx-4">→</span>
-                )}
-              </div>
-            ))}
-          </div>
-        </Reveal>
-      </div>
     </section>
   );
 }
