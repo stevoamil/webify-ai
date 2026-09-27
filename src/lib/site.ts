@@ -12,8 +12,7 @@ export const site = {
   contact: {
     // TODO: replace with the real business WhatsApp number (international format, digits only).
     whatsapp: process.env.NEXT_PUBLIC_WHATSAPP ?? "",
-    // TODO: replace with the real business email.
-    email: process.env.NEXT_PUBLIC_EMAIL ?? "",
+    email: process.env.NEXT_PUBLIC_EMAIL ?? "team.webify@outlook.com",
   },
   social: {
     // TODO: replace with real profile URLs. Empty links are hidden.
@@ -26,6 +25,15 @@ export function whatsappLink(message = "Hi Webify.ai, I'd like to talk about a p
   if (!site.contact.whatsapp) return "#contact";
   return `https://wa.me/${site.contact.whatsapp}?text=${encodeURIComponent(message)}`;
 }
+
+/**
+ * Contact-form delivery via FormSubmit (https://formsubmit.co) — a free form-to-email
+ * relay that needs no server, API key, or SMTP credentials, just the destination inbox.
+ * The FIRST submission triggers a one-time confirmation email to that inbox; click the
+ * link in it once to activate delivery, then every future submission is sent straight
+ * through. Swap this for a dedicated provider (e.g. Resend) later if you outgrow it.
+ */
+export const formEndpoint = `https://formsubmit.co/ajax/${site.contact.email}`;
 
 export const navLinks = [
   { label: "Work", href: "#work" },

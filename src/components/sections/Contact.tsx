@@ -3,19 +3,41 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { Accent, Arrow, MagneticLink, SectionHeading } from "@/components/ui/primitives";
-import { whatsappLink } from "@/lib/site";
+import { formEndpoint, site, whatsappLink } from "@/lib/site";
 
 const NEEDS = ["A new website", "AI integration", "A booking system", "An online store", "A redesign", "Not sure yet"];
 const BUDGETS = ["< $2,000", "$2,000 – $5,000", "$5,000 – $10,000", "$10,000+", "Not sure yet"];
 
 export default function Contact() {
-  const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Wire this up to your form endpoint / email service before launch.
     setStatus("sending");
-    window.setTimeout(() => setStatus("sent"), 900);
+
+    const form = e.currentTarget;
+    const data = Object.fromEntries(new FormData(form).entries());
+
+    try {
+      const res = await fetch(formEndpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          ...data,
+          _subject: `New project brief — ${data.business || data.name}`,
+          _template: "table",
+          _captcha: "false",
+        }),
+      });
+      const body = await res.json().catch(() => null);
+      // FormSubmit returns HTTP 200 even before the destination inbox has clicked its
+      // one-time activation link — the payload's own `success` field is the real signal.
+      if (!res.ok || body?.success !== "true") throw new Error(body?.message || `Request failed: ${res.status}`);
+      setStatus("sent");
+      form.reset();
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -34,7 +56,7 @@ export default function Contact() {
           <MagneticLink href={whatsappLink()} target="_blank" rel="noopener noreferrer" variant="ghost">
             Chat on WhatsApp
           </MagneticLink>
-          <MagneticLink href="mailto:hello@webify.ai" variant="ghost">
+          <MagneticLink href={`mailto:${site.contact.email}`} variant="ghost">
             Email us
           </MagneticLink>
         </div>
@@ -84,6 +106,15 @@ export default function Contact() {
                   <Label>Additional requirements</Label>
                   <textarea name="requirements" rows={4} className={inputClass} placeholder="Anything else we should know?" />
                 </div>
+                {status === "error" && (
+                  <p className="text-sm text-amber-300 sm:col-span-2">
+                    Something went wrong sending that. Please try again, or email us directly at{" "}
+                    <a href={`mailto:${site.contact.email}`} className="underline">
+                      {site.contact.email}
+                    </a>
+                    .
+                  </p>
+                )}
                 <div className="sm:col-span-2">
                   <button
                     type="submit"
