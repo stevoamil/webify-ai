@@ -122,7 +122,7 @@ export function MagneticLink({
   const styles =
     variant === "primary"
       ? "bg-gradient-to-b from-white to-[#cfd8e2] text-[#05070a] shadow-[0_0_0_1px_rgba(255,255,255,.4),0_18px_50px_-12px_rgba(169,220,255,.45)] hover:shadow-[0_0_0_1px_rgba(255,255,255,.6),0_22px_60px_-10px_rgba(169,220,255,.65)]"
-      : "border border-line-strong bg-white/[0.03] text-text hover:border-white/35 hover:bg-white/[0.06]";
+      : "border border-line-strong bg-soft/[0.03] text-text hover:border-soft/35 hover:bg-soft/[0.06]";
 
   return (
     <motion.a

@@ -15,7 +15,7 @@ const WHY = [
 
 export default function WhyAndHuman() {
   return (
-    <section id="why" aria-labelledby="why-title" className="relative bg-void px-5 py-28 md:px-10 md:py-40">
+    <section id="why" aria-labelledby="why-title" className="light relative bg-void px-5 py-28 md:px-10 md:py-40">
       <div className="mx-auto max-w-7xl">
         <SectionHeading
           id="why-title"

@@ -31,21 +31,20 @@ export default function Footer() {
 
           <div>
             <p className="eyebrow mb-4 text-[10px]">Connect</p>
-            {SOCIALS.length > 0 ? (
-              <ul className="space-y-2.5">
-                {SOCIALS.map((s) => (
-                  <li key={s.label}>
-                    <a href={s.href} target="_blank" rel="noopener noreferrer" className="text-sm text-muted transition-colors hover:text-text">
-                      {s.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <a href="#contact" className="text-sm text-muted transition-colors hover:text-text">
-                hello@webify.ai
-              </a>
-            )}
+            <ul className="space-y-2.5">
+              <li>
+                <a href={`mailto:${site.contact.email}`} className="text-sm text-muted transition-colors hover:text-text">
+                  {site.contact.email}
+                </a>
+              </li>
+              {SOCIALS.map((s) => (
+                <li key={s.label}>
+                  <a href={s.href} target="_blank" rel="noopener noreferrer" className="text-sm text-muted transition-colors hover:text-text">
+                    {s.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 

@@ -7,7 +7,7 @@ import { Accent, Arrow, MagneticLink, SectionHeading, SpotlightCard, Tag } from 
 
 export default function Portfolio() {
   return (
-    <section id="work" aria-labelledby="work-title" className="relative bg-void px-5 py-28 md:px-10 md:py-40">
+    <section id="work" aria-labelledby="work-title" className="light relative bg-void px-5 py-28 md:px-10 md:py-40">
       <div className="mx-auto max-w-7xl">
         <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-end">
           <SectionHeading

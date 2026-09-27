@@ -3,6 +3,10 @@
 /* ------------------------------------------------------------------
    Webify.ai design tokens
    Palette is pulled from the hero film: graphite, silver and ice light.
+   Sections alternate dark/light down the page (see the `.light` class
+   below); "glass" surfaces (cards, panels) stay intentionally dark —
+   like device chrome — on either background, which is why they lock
+   their own text/border tokens rather than inheriting the ambient theme.
    ------------------------------------------------------------------ */
 @theme {
   --color-void: #030406;
@@ -14,10 +18,19 @@
   --color-text: #e9eef4;
   --color-muted: #8b95a3;
   --color-dim: #5b6472;
+  --color-soft: #ffffff;
   --color-ice: #a9dcff;
   --color-ice-2: #6fb6ff;
   --color-halo: #c7b8ff;
   --color-signal: #7cf2c8;
+
+  --grad-chrome-1: #ffffff;
+  --grad-chrome-2: #dfe7ef;
+  --grad-chrome-3: #8e9aa9;
+  --grad-ice-1: #e9f6ff;
+  --grad-ice-2: #a9dcff;
+  --grad-ice-3: #c7b8ff;
+  --grid-line: rgb(255 255 255 / 0.035);
 
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
@@ -47,6 +60,32 @@
   @keyframes marquee {
     to { transform: translateX(-50%); }
   }
+}
+
+/* ---------- Light section theme ----------
+   Apply `.light` to a section's root element to flip it (and everything
+   inside it) to the light palette. `glass` / `glass-strong` cards inside
+   re-lock their own dark tokens (see below), so they read the same way
+   in either a light or dark section. */
+.light {
+  --color-void: #f6f3ee;
+  --color-ink: #eeeae2;
+  --color-panel: #e9e4da;
+  --color-panel-2: #e2ddd1;
+  --color-line: rgb(10 12 16 / 0.09);
+  --color-line-strong: rgb(10 12 16 / 0.16);
+  --color-text: #17181a;
+  --color-muted: #5b5f66;
+  --color-dim: #8a8d93;
+  --color-soft: #0a0c10;
+  --grad-chrome-1: #17181a;
+  --grad-chrome-2: #33363b;
+  --grad-chrome-3: #6c7178;
+  --grad-ice-1: #14508a;
+  --grad-ice-2: #1a6fbf;
+  --grad-ice-3: #5b4fa8;
+  --grid-line: rgb(10 12 16 / 0.045);
+  color-scheme: light;
 }
 
 :root {
@@ -90,19 +129,40 @@ dialog::backdrop {
   background: transparent;
 }
 
-/* ---------- Reusable surfaces ---------- */
+/* ---------- Reusable surfaces ----------
+   glass / glass-strong are deliberately dark on any background — they
+   read as physical "device chrome" objects, so they pin their own
+   text/border tokens instead of inheriting the ambient light/dark theme. */
 @utility glass {
-  background: linear-gradient(180deg, rgb(255 255 255 / 0.055), rgb(255 255 255 / 0.015));
+  --color-text: #e9eef4;
+  --color-muted: #8b95a3;
+  --color-dim: #5b6472;
+  --color-soft: #ffffff;
+  --color-line: rgb(255 255 255 / 0.08);
+  --color-line-strong: rgb(255 255 255 / 0.16);
+  --color-panel: #0c0f14;
+  --color-panel-2: #11151c;
+  color: var(--color-text);
+  background: linear-gradient(180deg, rgb(20 24 31 / 0.72), rgb(9 11 15 / 0.6));
   border: 1px solid var(--color-line);
   backdrop-filter: blur(18px) saturate(140%);
   -webkit-backdrop-filter: blur(18px) saturate(140%);
   box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 0.06),
-    0 30px 80px -40px rgb(0 0 0 / 0.9);
+    inset 0 1px 0 rgb(255 255 255 / 0.07),
+    0 30px 80px -40px rgb(0 0 0 / 0.7);
 }
 
 @utility glass-strong {
-  background: linear-gradient(180deg, rgb(20 25 33 / 0.86), rgb(10 12 16 / 0.92));
+  --color-text: #e9eef4;
+  --color-muted: #8b95a3;
+  --color-dim: #5b6472;
+  --color-soft: #ffffff;
+  --color-line: rgb(255 255 255 / 0.08);
+  --color-line-strong: rgb(255 255 255 / 0.16);
+  --color-panel: #0c0f14;
+  --color-panel-2: #11151c;
+  color: var(--color-text);
+  background: linear-gradient(180deg, rgb(20 25 33 / 0.9), rgb(8 10 14 / 0.96));
   border: 1px solid var(--color-line-strong);
   backdrop-filter: blur(24px) saturate(150%);
   -webkit-backdrop-filter: blur(24px) saturate(150%);
@@ -112,14 +172,14 @@ dialog::backdrop {
 }
 
 @utility text-chrome {
-  background: linear-gradient(180deg, #ffffff 0%, #dfe7ef 45%, #8e9aa9 100%);
+  background: linear-gradient(180deg, var(--grad-chrome-1) 0%, var(--grad-chrome-2) 45%, var(--grad-chrome-3) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 @utility text-ice {
-  background: linear-gradient(100deg, #e9f6ff 0%, #a9dcff 40%, #c7b8ff 100%);
+  background: linear-gradient(100deg, var(--grad-ice-1) 0%, var(--grad-ice-2) 40%, var(--grad-ice-3) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -134,14 +194,14 @@ dialog::backdrop {
 }
 
 @utility hairline {
-  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.18), transparent);
+  background: linear-gradient(90deg, transparent, var(--color-line-strong), transparent);
   height: 1px;
 }
 
 @utility grid-bg {
   background-image:
-    linear-gradient(rgb(255 255 255 / 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(255 255 255 / 0.035) 1px, transparent 1px);
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
   background-size: 64px 64px;
   mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
 }

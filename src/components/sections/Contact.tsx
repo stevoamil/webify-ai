@@ -41,7 +41,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" aria-labelledby="contact-title" className="relative overflow-hidden bg-ink px-5 py-28 md:px-10 md:py-40">
+    <section id="contact" aria-labelledby="contact-title" className="light relative overflow-hidden bg-ink px-5 py-28 md:px-10 md:py-40">
       <div className="pointer-events-none absolute left-1/2 top-0 h-[600px] w-[900px] -translate-x-1/2 rounded-full bg-ice/[0.06] blur-[160px]" />
       <div className="relative mx-auto max-w-5xl">
         <SectionHeading

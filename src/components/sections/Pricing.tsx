@@ -40,7 +40,7 @@ const PLANS: Plan[] = [
 
 export default function Pricing() {
   return (
-    <section id="pricing" aria-labelledby="pricing-title" className="relative bg-ink px-5 py-28 md:px-10 md:py-40">
+    <section id="pricing" aria-labelledby="pricing-title" className="light relative bg-ink px-5 py-28 md:px-10 md:py-40">
       <div className="mx-auto max-w-7xl">
         <SectionHeading
           id="pricing-title"

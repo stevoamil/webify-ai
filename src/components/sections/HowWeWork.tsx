@@ -81,7 +81,7 @@ export default function HowWeWork() {
       id="how-we-work"
       ref={sectionRef}
       aria-label="How we work"
-      className="relative h-[500vh] bg-ink text-text"
+      className="light relative h-[500vh] bg-ink text-text"
     >
       <div className="sticky top-0 h-[100svh] overflow-hidden">
         {/* ambient light */}
@@ -91,8 +91,8 @@ export default function HowWeWork() {
         {/* CONTENT */}
         <div className="relative mx-auto flex h-full max-w-[1600px] flex-col px-6 md:flex-row md:px-12 lg:px-16">
           {/* LEFT COLUMN */}
-          <div className="flex flex-col justify-end pb-6 pt-24 md:w-[32%] md:min-w-[280px] md:justify-center md:border-r md:border-white/10 md:py-0 md:pr-10">
-            <div className="mb-5 font-mono text-[10px] uppercase tracking-[0.35em] text-white/45">
+          <div className="flex flex-col justify-end pb-6 pt-24 md:w-[32%] md:min-w-[280px] md:justify-center md:border-r md:border-line md:py-0 md:pr-10">
+            <div className="mb-5 font-mono text-[10px] uppercase tracking-[0.35em] text-muted">
               How We Work
             </div>
 
@@ -112,12 +112,12 @@ export default function HowWeWork() {
                   onClick={() => goToStep(index)}
                   aria-current={activeStep === index ? "step" : undefined}
                   className={`group flex items-center gap-3 text-left font-mono text-[10px] uppercase tracking-[0.18em] transition-all duration-500 ${
-                    activeStep === index ? "text-white" : "text-white/30 hover:text-white/60"
+                    activeStep === index ? "text-text" : "text-dim hover:text-muted"
                   }`}
                 >
                   <span
                     className={`h-[1px] transition-all duration-500 ${
-                      activeStep === index ? "w-5 bg-ice" : "w-2 bg-white/30"
+                      activeStep === index ? "w-5 bg-ice" : "w-2 bg-dim"
                     }`}
                   />
 
@@ -142,7 +142,7 @@ export default function HowWeWork() {
                 }`}
               >
                 {/* NUMBER */}
-                <div className="font-serif text-[96px] leading-none text-white/[0.07] md:text-[150px] lg:text-[190px]">
+                <div className="font-serif text-[96px] leading-none text-line md:text-[150px] lg:text-[190px]">
                   {step.number}
                 </div>
 
@@ -150,7 +150,7 @@ export default function HowWeWork() {
                 <h3 className="-mt-4 font-serif text-4xl italic md:text-5xl lg:text-6xl">{step.title}</h3>
 
                 {/* DESCRIPTION */}
-                <p className="mt-5 max-w-xl text-sm leading-7 text-white/50 md:text-base">
+                <p className="mt-5 max-w-xl text-sm leading-7 text-muted md:text-base">
                   {step.description}
                 </p>
 
@@ -162,7 +162,7 @@ export default function HowWeWork() {
         </div>
 
         {/* PROGRESS LINE */}
-        <div className="absolute bottom-8 left-6 right-6 h-px bg-white/10 md:left-12 md:right-12">
+        <div className="absolute bottom-8 left-6 right-6 h-px bg-line md:left-12 md:right-12">
           <div
             className="h-full bg-gradient-to-r from-ice/40 to-ice transition-all duration-700"
             style={{
