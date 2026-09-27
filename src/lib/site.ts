@@ -10,8 +10,7 @@ export const site = {
     "Webify.ai creates premium websites powered by AI, automation, intelligent booking systems, and modern digital experiences.",
   tagline: "AI-powered websites for modern businesses.",
   contact: {
-    // TODO: replace with the real business WhatsApp number (international format, digits only).
-    whatsapp: process.env.NEXT_PUBLIC_WHATSAPP ?? "",
+    whatsapp: process.env.NEXT_PUBLIC_WHATSAPP ?? "13028882883",
     email: process.env.NEXT_PUBLIC_EMAIL ?? "team.webify@outlook.com",
   },
   social: {
