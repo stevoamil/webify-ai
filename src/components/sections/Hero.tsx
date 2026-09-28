@@ -67,6 +67,20 @@ export default function Hero() {
 
   const [progress, setProgress] = useState(0);
 
+  // Re-checked on resize/rotation, not just at mount, so crossing the
+  // breakpoint swaps to the correct frame set instead of sticking with
+  // whichever one was current on first load.
+  const [isMobile, setIsMobile] = useState(
+    () => typeof window !== "undefined" && window.matchMedia("(max-width: 767px)").matches,
+  );
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    const onChange = () => setIsMobile(mq.matches);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
+
   useMotionValueEvent(scrollYProgress, "change", (p) => {
     setProgress(p);
     target.current = p;
@@ -90,7 +104,7 @@ export default function Hero() {
   useEffect(() => {
     const canvas = canvasRef.current!;
     const ctx = canvas.getContext("2d", { alpha: false })!;
-    const set = window.matchMedia("(max-width: 767px)").matches ? SETS.mobile : SETS.desktop;
+    const set = isMobile ? SETS.mobile : SETS.desktop;
     frames.current = new Array(set.count).fill(null);
     let cancelled = false;
     let current = 0;
@@ -167,7 +181,7 @@ export default function Hero() {
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", resize);
     };
-  }, []);
+  }, [isMobile]);
 
   return (
     <section

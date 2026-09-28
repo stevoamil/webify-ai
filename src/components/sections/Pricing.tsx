@@ -52,7 +52,7 @@ export default function Pricing() {
 
         <div className="mt-16 grid gap-6 lg:grid-cols-3 xl:grid-cols-5">
           {PLANS.map((p, i) => (
-            <Reveal key={p.name} delay={i * 0.06} className={p.featured ? "xl:col-span-1 lg:row-span-1" : ""}>
+            <Reveal key={p.name} delay={i * 0.06}>
               <div
                 className={`group relative flex h-full flex-col overflow-hidden rounded-3xl p-7 transition-transform duration-500 hover:-translate-y-1.5 ${
                   p.featured ? "glass-strong ring-1 ring-ice/30" : "glass"

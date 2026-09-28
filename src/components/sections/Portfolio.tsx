@@ -44,7 +44,7 @@ function ProjectCard({ project, priority }: { project: (typeof projects)[number]
             src={project.url}
             title={`Live preview of ${project.name}`}
             loading="lazy"
-            sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+            sandbox="allow-scripts allow-forms allow-popups"
             className="h-[220%] w-[220%] origin-top-left scale-[0.4545] border-0"
           />
         ) : (

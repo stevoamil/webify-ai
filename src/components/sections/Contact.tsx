@@ -97,14 +97,14 @@ export default function Contact() {
                 <Field label="Email address" name="email" type="email" required />
                 <Field label="Phone number" name="phone" type="tel" />
                 <div className="sm:col-span-2">
-                  <Label>What does your business do?</Label>
-                  <textarea name="business_desc" rows={2} className={inputClass} />
+                  <Label htmlFor="business_desc">What does your business do?</Label>
+                  <textarea id="business_desc" name="business_desc" rows={2} className={inputClass} />
                 </div>
                 <Select label="What do you need?" name="need" options={NEEDS} />
                 <Select label="Budget range" name="budget" options={BUDGETS} />
                 <div className="sm:col-span-2">
-                  <Label>Additional requirements</Label>
-                  <textarea name="requirements" rows={4} className={inputClass} placeholder="Anything else we should know?" />
+                  <Label htmlFor="requirements">Additional requirements</Label>
+                  <textarea id="requirements" name="requirements" rows={4} className={inputClass} placeholder="Anything else we should know?" />
                 </div>
                 {status === "error" && (
                   <p className="text-sm text-amber-300 sm:col-span-2">
@@ -137,15 +137,19 @@ export default function Contact() {
 const inputClass =
   "w-full rounded-xl border border-line bg-white/[0.03] px-4 py-3 text-sm text-text placeholder:text-dim outline-none transition-colors focus:border-ice/50 focus:bg-white/[0.05]";
 
-function Label({ children }: { children: React.ReactNode }) {
-  return <label className="mb-2 block text-xs font-medium tracking-[0.02em] text-muted">{children}</label>;
+function Label({ htmlFor, children }: { htmlFor?: string; children: React.ReactNode }) {
+  return (
+    <label htmlFor={htmlFor} className="mb-2 block text-xs font-medium tracking-[0.02em] text-muted">
+      {children}
+    </label>
+  );
 }
 
 function Field({ label, name, type = "text", required }: { label: string; name: string; type?: string; required?: boolean }) {
   return (
     <div>
-      <Label>{label}</Label>
-      <input name={name} type={type} required={required} className={inputClass} />
+      <Label htmlFor={name}>{label}</Label>
+      <input id={name} name={name} type={type} required={required} className={inputClass} />
     </div>
   );
 }
@@ -153,8 +157,8 @@ function Field({ label, name, type = "text", required }: { label: string; name: 
 function Select({ label, name, options }: { label: string; name: string; options: string[] }) {
   return (
     <div>
-      <Label>{label}</Label>
-      <select name={name} defaultValue="" className={inputClass}>
+      <Label htmlFor={name}>{label}</Label>
+      <select id={name} name={name} defaultValue="" className={inputClass}>
         <option value="" disabled>
           Select…
         </option>

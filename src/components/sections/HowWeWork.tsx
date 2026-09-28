@@ -40,7 +40,9 @@ export default function HowWeWork() {
   const [activeStep, setActiveStep] = useState(0);
 
   useEffect(() => {
-    const handleScroll = () => {
+    let raf = 0;
+
+    const update = () => {
       if (!sectionRef.current) return;
 
       const rect = sectionRef.current.getBoundingClientRect();
@@ -57,12 +59,23 @@ export default function HowWeWork() {
       setActiveStep(index);
     };
 
+    // rAF-throttled: avoids a synchronous layout read (getBoundingClientRect)
+    // on every native scroll event, which can fire far faster than a frame.
+    const handleScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        update();
+      });
+    };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
 
-    handleScroll();
+    update();
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      cancelAnimationFrame(raf);
     };
   }, []);
 

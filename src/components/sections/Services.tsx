@@ -114,8 +114,6 @@ function CardArt({ image, hue, priority, full }: { image: string; hue: string; p
     </div>
   );
 }
-void 0; // keep `title` in the type for future alt-text use without unused-var noise
-
 
 export default function Services() {
   const [current, setCurrent] = useState(0);
@@ -177,6 +175,7 @@ export default function Services() {
   /* ---- Drag / swipe ---- */
   const onPointerDown = (e: React.PointerEvent) => {
     drag.current = { startX: e.clientX, active: true, moved: false };
+    stopAutoplay(); // mouseenter doesn't fire for touch, so pause explicitly on drag start
   };
   const onPointerMove = (e: React.PointerEvent) => {
     if (!drag.current.active) return;
@@ -193,10 +192,9 @@ export default function Services() {
     drag.current.active = false;
     setDragging(false);
     const steps = -Math.round(dragOffset);
-    if (steps) {
-      go(steps);
-      restartAutoplay();
-    } else setDragOffset(0);
+    if (steps) go(steps);
+    else setDragOffset(0);
+    restartAutoplay(); // resume regardless of whether the drag actually changed the step
     window.setTimeout(() => (drag.current.moved = false), 0);
   };
 

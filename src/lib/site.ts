@@ -4,7 +4,8 @@
  */
 export const site = {
   name: "Webify.ai",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://webify.ai",
+  // TODO: swap for the real custom domain once one is bought/pointed at this project.
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://webify-ai-delta.vercel.app",
   title: "Webify.ai — AI-Powered Websites for Modern Businesses",
   description:
     "Webify.ai creates premium websites powered by AI, automation, intelligent booking systems, and modern digital experiences.",
