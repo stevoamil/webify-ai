@@ -80,16 +80,6 @@ function ProjectCard({ project, priority }: { project: (typeof projects)[number]
           <Tag>{project.industry}</Tag>
           {live && <Tag tone="signal">Live · scrolling preview</Tag>}
         </div>
-        <button
-          type="button"
-          onClick={(e) => {
-            e.stopPropagation();
-            setLive((v) => !v);
-          }}
-          className="absolute bottom-4 right-4 inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-black/50 px-3.5 py-2 font-mono text-[10px] uppercase tracking-[0.18em] text-white backdrop-blur-md transition hover:border-white/50"
-        >
-          {live ? "Show screenshot" : "Watch scrolling preview"}
-        </button>
       </div>
 
       <div className="p-6 md:p-8">
