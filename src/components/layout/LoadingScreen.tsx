@@ -5,13 +5,14 @@ import { useEffect, useState } from "react";
 
 /** Brief branded loader. Resolves as soon as the hero's first frames are ready (or quickly, regardless). */
 export default function LoadingScreen() {
-  const [done, setDone] = useState(false);
+  // Lazily resolved from the media query so reduced-motion visitors never see
+  // a setState-in-effect render pass — the state starts correct on mount.
+  const [done, setDone] = useState(
+    () => typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+  );
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setDone(true);
-      return;
-    }
+    if (done) return;
     let resolved = false;
     const finish = () => {
       if (resolved) return;
@@ -24,7 +25,7 @@ export default function LoadingScreen() {
       window.removeEventListener("hero:ready", finish);
       window.clearTimeout(cap);
     };
-  }, []);
+  }, [done]);
 
   return (
     <AnimatePresence>

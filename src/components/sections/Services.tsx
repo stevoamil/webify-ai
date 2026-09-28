@@ -235,8 +235,14 @@ export default function Services() {
         onMouseEnter={stopAutoplay}
         onMouseLeave={restartAutoplay}
         onKeyDown={(e) => {
-          if (e.key === "ArrowLeft") (go(-1), restartAutoplay());
-          if (e.key === "ArrowRight") (go(1), restartAutoplay());
+          if (e.key === "ArrowLeft") {
+            go(-1);
+            restartAutoplay();
+          }
+          if (e.key === "ArrowRight") {
+            go(1);
+            restartAutoplay();
+          }
           if (e.key === "Enter" && e.target === carouselRef.current) openDetails(current);
         }}
         className={`relative mt-12 h-[440px] select-none overflow-hidden outline-none [perspective:1400px] [touch-action:pan-y] sm:h-[504px] ${
@@ -259,8 +265,10 @@ export default function Services() {
                 aria-hidden={!active}
                 onClick={(e) => {
                   if (drag.current.moved) return;
-                  if (i !== current) (go(wrap(i - current)), restartAutoplay());
-                  else if ((e.target as HTMLElement).closest("[data-explore]")) openDetails(i);
+                  if (i !== current) {
+                    go(wrap(i - current));
+                    restartAutoplay();
+                  } else if ((e.target as HTMLElement).closest("[data-explore]")) openDetails(i);
                 }}
                 className={`absolute left-1/2 top-1/2 -ml-[115px] -mt-[160px] h-[320px] w-[230px] overflow-hidden rounded-[22px] border bg-[#0b0e13] will-change-transform sm:-ml-[144px] sm:-mt-[192px] sm:h-[384px] sm:w-[288px] ${
                   dragging ? "" : "transition-[transform,filter,opacity] duration-[750ms] ease-[cubic-bezier(.22,.8,.2,1)]"
