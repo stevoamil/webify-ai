@@ -38,14 +38,23 @@ function ProjectCard({ project, priority }: { project: (typeof projects)[number]
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
-      <div className="relative aspect-[16/10] overflow-hidden border-b border-line">
+      <div
+        onClick={() => setLive((v) => !v)}
+        className="relative aspect-[16/10] cursor-pointer overflow-hidden border-b border-line"
+      >
         {live ? (
           <iframe
             src={project.url}
             title={`Live preview of ${project.name}`}
             loading="lazy"
-            sandbox="allow-scripts allow-forms allow-popups"
-            className="h-[220%] w-[220%] origin-top-left scale-[0.4545] border-0"
+            tabIndex={-1}
+            // allow-same-origin is required for these sites to hydrate at all (without it
+            // their own scripts lose access to their own storage/origin and the page never
+            // paints). Safe here because each src is a fixed, trusted client site we built
+            // ourselves — not arbitrary/user-supplied — and allow-same-origin only unlocks
+            // the iframe's OWN origin, not ours, so it can't reach back into this page.
+            sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+            className="animate-site-scroll pointer-events-none h-[900%] w-[220%] origin-top-left border-0"
           />
         ) : (
           <>
@@ -69,14 +78,17 @@ function ProjectCard({ project, priority }: { project: (typeof projects)[number]
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
         <div className="absolute left-4 top-4 flex flex-wrap gap-2">
           <Tag>{project.industry}</Tag>
-          {live && <Tag tone="signal">Live · interactive</Tag>}
+          {live && <Tag tone="signal">Live · scrolling preview</Tag>}
         </div>
         <button
           type="button"
-          onClick={() => setLive((v) => !v)}
+          onClick={(e) => {
+            e.stopPropagation();
+            setLive((v) => !v);
+          }}
           className="absolute bottom-4 right-4 inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-black/50 px-3.5 py-2 font-mono text-[10px] uppercase tracking-[0.18em] text-white backdrop-blur-md transition hover:border-white/50"
         >
-          {live ? "Show screenshot" : "Explore live"}
+          {live ? "Show screenshot" : "Watch scrolling preview"}
         </button>
       </div>
 
