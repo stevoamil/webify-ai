@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { footerLinks, site } from "@/lib/site";
 
 const SOCIALS = [
@@ -12,7 +13,10 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-10 md:grid-cols-[1.3fr_1fr_1fr]">
           <div>
-            <p className="font-serif text-2xl italic text-text">{site.name}</p>
+            <div className="flex items-center gap-2.5">
+              <Image src="/icon.png" alt="" width={32} height={32} className="rounded-[8px]" />
+              <p className="font-serif text-2xl italic text-text">{site.name}</p>
+            </div>
             <p className="mt-3 max-w-xs text-sm leading-6 text-muted">{site.tagline}</p>
           </div>
 

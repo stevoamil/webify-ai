@@ -2,7 +2,9 @@
 
 /* ------------------------------------------------------------------
    Webify.ai design tokens
-   Palette is pulled from the hero film: graphite, silver and ice light.
+   Accent palette is pulled directly from the logomark's pink → purple →
+   blue "W" (plus its orange mosaic square), so every accent, gradient
+   and glow across the site traces back to the actual brand mark.
    Sections alternate dark/light down the page (see the `.light` class
    below); "glass" surfaces (cards, panels) stay intentionally dark —
    like device chrome — on either background, which is why they lock
@@ -19,24 +21,18 @@
   --color-muted: #8b95a3;
   --color-dim: #5b6472;
   --color-soft: #ffffff;
-  --color-ice: #a9dcff;
-  --color-ice-2: #6fb6ff;
-  --color-halo: #c7b8ff;
-  --color-signal: #7cf2c8;
+  --color-ice: #f0579e;
+  --color-ice-2: #9b4de0;
+  --color-halo: #4c8dff;
+  --color-signal: #ff8a3d;
 
   --grad-chrome-1: #ffffff;
   --grad-chrome-2: #dfe7ef;
   --grad-chrome-3: #8e9aa9;
-  --grad-ice-1: #e9f6ff;
-  --grad-ice-2: #a9dcff;
-  --grad-ice-3: #c7b8ff;
+  --grad-ice-1: #ffcdec;
+  --grad-ice-2: #f0579e;
+  --grad-ice-3: #4c8dff;
   --grid-line: rgb(255 255 255 / 0.035);
-
-  /* Brand gradient pulled from the logomark's pink/purple/blue "W" — used
-     sparingly as a seam between sections so the palette ties back to it. */
-  --grad-brand-1: #ff5f9e;
-  --grad-brand-2: #a855f7;
-  --grad-brand-3: #3b82f6;
 
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
@@ -87,9 +83,9 @@
   --grad-chrome-1: #17181a;
   --grad-chrome-2: #33363b;
   --grad-chrome-3: #6c7178;
-  --grad-ice-1: #14508a;
-  --grad-ice-2: #1a6fbf;
-  --grad-ice-3: #5b4fa8;
+  --grad-ice-1: #a3147e;
+  --grad-ice-2: #7c2fd1;
+  --grad-ice-3: #1d4ed8;
   --grid-line: rgb(10 12 16 / 0.045);
   color-scheme: light;
 }
@@ -211,9 +207,9 @@ dialog::backdrop {
   background: linear-gradient(
     90deg,
     transparent,
-    color-mix(in srgb, var(--grad-brand-1) 55%, transparent),
-    color-mix(in srgb, var(--grad-brand-2) 55%, transparent),
-    color-mix(in srgb, var(--grad-brand-3) 55%, transparent),
+    color-mix(in srgb, var(--color-ice) 55%, transparent),
+    color-mix(in srgb, var(--color-ice-2) 55%, transparent),
+    color-mix(in srgb, var(--color-halo) 55%, transparent),
     transparent
   );
 }

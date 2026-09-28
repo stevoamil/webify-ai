@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
+import Image from "next/image";
 import { useState } from "react";
 import { navLinks, site } from "@/lib/site";
 import { MagneticLink } from "@/components/ui/primitives";
@@ -19,8 +20,9 @@ export default function Header() {
       }`}
     >
       <div className="mx-auto flex h-[68px] max-w-[1600px] items-center justify-between px-5 md:px-10">
-        <a href="#top" className="font-serif text-xl italic tracking-tight text-text">
-          {site.name}
+        <a href="#top" className="flex items-center gap-2.5">
+          <Image src="/icon.png" alt="" width={28} height={28} className="rounded-[7px]" />
+          <span className="font-serif text-xl italic tracking-tight text-text">{site.name}</span>
         </a>
 
         <nav className="hidden items-center gap-8 lg:flex">

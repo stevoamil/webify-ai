@@ -34,42 +34,42 @@ type Card = {
 const CONTACT_URL = "#contact";
 
 const CARDS: Card[] = [
-  { title: "Business Websites", icon: "globe", hue: "#a9dcff", image: "/services/business-websites.webp",
+  { title: "Business Websites", icon: "globe", hue: "#f0579e", image: "/services/business-websites.webp",
     text: "Custom websites designed around the business.",
     lead: "A website built around how your business actually works, so visitors quickly understand what you offer and how to reach you.",
     features: ["Custom design that matches your brand", "Mobile-friendly on every screen size", "Contact forms, maps and WhatsApp buttons", "Easy content editing after launch"],
     ideal: "Service businesses, restaurants, clinics, agencies and anyone who needs a credible online presence." },
-  { title: "E-Commerce", icon: "cart", hue: "#c7b8ff", image: "/services/ecommerce.webp",
+  { title: "E-Commerce", icon: "cart", hue: "#9b4de0", image: "/services/ecommerce.webp",
     text: "Modern online stores and shopping experiences.",
     lead: "An online store that makes browsing, choosing and paying simple for your customers, and managing orders simple for you.",
     features: ["Product catalogue with categories and filters", "Secure checkout and online payments", "Order, stock and customer management", "Discount codes and promotions"],
     ideal: "Shops and brands that want to sell online, or move beyond selling through social media." },
-  { title: "AI Integration", icon: "spark", hue: "#7cf2c8", image: "/services/ai-integration.webp",
+  { title: "AI Integration", icon: "spark", hue: "#ff8a3d", image: "/services/ai-integration.webp",
     text: "AI assistants, intelligent search, automation, and custom AI systems.",
     lead: "Put AI to work inside your website and daily operations, from a smart assistant for visitors to automations that save your team hours.",
     features: ["AI chat assistant trained on your business", "Intelligent search across your content", "Automated replies, summaries and reports", "Custom AI systems built for your workflow"],
     ideal: "Businesses that answer the same questions every day or want to automate repetitive tasks." },
-  { title: "AI Booking Systems", icon: "calendar", hue: "#a9dcff", image: "/services/ai-booking.webp",
+  { title: "AI Booking Systems", icon: "calendar", hue: "#4c8dff", image: "/services/ai-booking.webp",
     text: "24/7 appointment and reservation automation.",
     lead: "Let customers book appointments and reservations any time of day, with confirmations and reminders sent automatically.",
     features: ["Online booking available 24/7", "Automatic confirmations and reminders", "Calendar sync to avoid double bookings", "Booking via website, WhatsApp or chat"],
     ideal: "Salons, clinics, restaurants, consultants and any business that runs on appointments." },
-  { title: "AI Lead Generation", icon: "target", hue: "#ffd48a", image: "/services/ai-lead-generation.webp",
+  { title: "AI Lead Generation", icon: "target", hue: "#f0579e", image: "/services/ai-lead-generation.webp",
     text: "Capture, qualify, and organize potential customers.",
     lead: "Turn visitors into real opportunities. Leads are captured, qualified by AI and organized so you know who to call first.",
     features: ["Smart forms and chat that capture contact details", "AI qualification of each lead", "Organized lead list or CRM integration", "Instant alerts for high-value leads"],
     ideal: "Businesses that want more enquiries and less time wasted on unqualified contacts." },
-  { title: "Website Redesign", icon: "refresh", hue: "#c7b8ff", image: "/services/website-redesign.webp",
+  { title: "Website Redesign", icon: "refresh", hue: "#9b4de0", image: "/services/website-redesign.webp",
     text: "Transform outdated websites into modern digital experiences.",
     lead: "Give an outdated website a modern look, faster loading and a clearer structure, without losing what already works.",
     features: ["Fresh modern design aligned to your brand", "Improved structure and user journey", "Faster speed and mobile experience", "Content and SEO carried over safely"],
     ideal: "Businesses whose current site looks dated, loads slowly or no longer reflects who they are." },
-  { title: "SEO & Performance", icon: "gauge", hue: "#7cf2c8", image: "/services/seo-performance.webp",
+  { title: "SEO & Performance", icon: "gauge", hue: "#ff8a3d", image: "/services/seo-performance.webp",
     text: "Fast, responsive, search-friendly websites.",
     lead: "Make your website fast and easy for search engines to understand, so more of the right people find you.",
     features: ["Speed and Core Web Vitals optimization", "On-page SEO and meta setup", "Local SEO and Google Business profile", "Search Console and analytics setup"],
     ideal: "Any website that isn't showing up in search results or feels slow to load." },
-  { title: "Maintenance & Support", icon: "wrench", hue: "#a9dcff", image: "/services/maintenance-support.webp",
+  { title: "Maintenance & Support", icon: "wrench", hue: "#4c8dff", image: "/services/maintenance-support.webp",
     text: "Ongoing updates, optimization, and technical support.",
     lead: "Keep your website secure, up to date and running smoothly, with someone to call when you need changes.",
     features: ["Regular updates and security checks", "Backups and uptime monitoring", "Content changes and small improvements", "Priority technical support"],
@@ -212,7 +212,7 @@ export default function Services() {
 
   return (
     <section id="services" aria-labelledby="services-title" className="relative overflow-hidden bg-ink py-28 md:py-40">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_55%,rgba(169,220,255,.07),transparent_60%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_55%,rgba(240,87,158,.07),transparent_60%)]" />
       <div className="relative mx-auto max-w-7xl px-5 md:px-10">
         <SectionHeading
           id="services-title"
@@ -274,7 +274,7 @@ export default function Services() {
                   dragging ? "" : "transition-[transform,filter,opacity] duration-[750ms] ease-[cubic-bezier(.22,.8,.2,1)]"
                 } ${
                   active
-                    ? "border-white/25 shadow-[0_40px_80px_-24px_rgba(0,0,0,.9),0_0_60px_-20px_rgba(169,220,255,.35)]"
+                    ? "border-white/25 shadow-[0_40px_80px_-24px_rgba(0,0,0,.9),0_0_60px_-20px_rgba(240,87,158,.35)]"
                     : "border-white/10 shadow-[0_30px_60px_-20px_rgba(0,0,0,.8)]"
                 }`}
                 style={{

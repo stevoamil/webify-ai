@@ -119,7 +119,7 @@ export default function Contact() {
                   <button
                     type="submit"
                     disabled={status === "sending"}
-                    className="group inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-gradient-to-b from-white to-[#cfd8e2] px-6 text-sm font-medium text-[#05070a] shadow-[0_0_0_1px_rgba(255,255,255,.4),0_18px_50px_-12px_rgba(169,220,255,.45)] transition-shadow disabled:opacity-60 sm:w-auto"
+                    className="group inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-gradient-to-b from-white to-[#cfd8e2] px-6 text-sm font-medium text-[#05070a] shadow-[0_0_0_1px_rgba(255,255,255,.4),0_18px_50px_-12px_rgba(240,87,158,.45)] transition-shadow disabled:opacity-60 sm:w-auto"
                   >
                     {status === "sending" ? "Sending…" : "Start My Project"}
                     {status !== "sending" && <Arrow />}

@@ -20,7 +20,7 @@ export default function Image() {
           fontFamily: "sans-serif",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: 12, fontSize: 22, color: "#a9dcff", letterSpacing: 4, textTransform: "uppercase" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 12, fontSize: 22, color: "#f0579e", letterSpacing: 4, textTransform: "uppercase" }}>
           AI-powered web studio
         </div>
         <div style={{ display: "flex", fontSize: 88, fontWeight: 600, marginTop: 24, letterSpacing: -3, lineHeight: 1.02 }}>

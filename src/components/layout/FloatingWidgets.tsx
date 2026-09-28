@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { site, whatsappLink } from "@/lib/site";
 
@@ -63,14 +64,15 @@ export default function FloatingWidgets() {
               className="glass-strong flex h-[440px] w-[min(92vw,360px)] flex-col overflow-hidden rounded-3xl"
             >
               <div className="flex items-center gap-3 border-b border-line px-5 py-4">
+                <Image src="/icon.png" alt="" width={32} height={32} className="rounded-[8px]" />
+                <div className="flex-1">
+                  <p className="text-sm font-medium">Webify.ai Assistant</p>
+                  <p className="text-[11px] text-dim">Usually replies instantly</p>
+                </div>
                 <span className="relative flex h-2.5 w-2.5">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-signal/70" />
                   <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-signal" />
                 </span>
-                <div>
-                  <p className="text-sm font-medium">Webify.ai Assistant</p>
-                  <p className="text-[11px] text-dim">Usually replies instantly</p>
-                </div>
               </div>
 
               <div className="flex-1 space-y-3 overflow-y-auto px-5 py-4">
@@ -104,17 +106,12 @@ export default function FloatingWidgets() {
         <button
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Close AI assistant" : "Open AI assistant"}
-          className="grid h-14 w-14 place-items-center rounded-full bg-gradient-to-b from-white to-[#cfd8e2] text-[#05070a] shadow-[0_0_0_1px_rgba(255,255,255,.4),0_20px_50px_-12px_rgba(169,220,255,.5)] transition-transform hover:scale-105"
+          className="grid h-14 w-14 place-items-center overflow-hidden rounded-full bg-gradient-to-b from-white to-[#cfd8e2] text-[#05070a] shadow-[0_0_0_1px_rgba(255,255,255,.4),0_20px_50px_-12px_rgba(240,87,158,.5)] transition-transform hover:scale-105"
         >
           {open ? (
             <svg viewBox="0 0 24 24" className="h-5 w-5 fill-none stroke-current [stroke-width:2]"><path d="M6 6l12 12M18 6L6 18" /></svg>
           ) : (
-            <svg viewBox="0 0 24 24" className="h-6 w-6 fill-none stroke-current [stroke-width:1.6]">
-              <path d="M12 3a7 7 0 00-7 7c0 2.2.98 4.16 2.53 5.5L6 20l4.86-1.35A7 7 0 1012 3z" />
-              <circle cx="9" cy="10" r="1" fill="currentColor" stroke="none" />
-              <circle cx="12" cy="10" r="1" fill="currentColor" stroke="none" />
-              <circle cx="15" cy="10" r="1" fill="currentColor" stroke="none" />
-            </svg>
+            <Image src="/icon.png" alt="" width={40} height={40} className="h-10 w-10 rounded-[10px]" />
           )}
         </button>
       </div>
