@@ -118,13 +118,13 @@ export default function HowWeWork() {
             </h2>
 
             {/* STEP NAVIGATION */}
-            <div className="mt-8 flex flex-wrap gap-x-5 gap-y-3 md:mt-10 md:block md:space-y-3">
+            <div className="no-scrollbar mt-8 flex gap-x-6 gap-y-3 overflow-x-auto pb-1 md:mt-10 md:block md:space-y-3 md:overflow-visible">
               {steps.map((step, index) => (
                 <button
                   key={step.number}
                   onClick={() => goToStep(index)}
                   aria-current={activeStep === index ? "step" : undefined}
-                  className={`group flex items-center gap-3 text-left font-mono text-[10px] uppercase tracking-[0.18em] transition-all duration-500 ${
+                  className={`group flex flex-none items-center gap-3 text-left font-mono text-[10px] uppercase tracking-[0.18em] transition-all duration-500 ${
                     activeStep === index ? "text-text" : "text-dim hover:text-muted"
                   }`}
                 >

@@ -32,6 +32,12 @@
   --grad-ice-3: #c7b8ff;
   --grid-line: rgb(255 255 255 / 0.035);
 
+  /* Brand gradient pulled from the logomark's pink/purple/blue "W" — used
+     sparingly as a seam between sections so the palette ties back to it. */
+  --grad-brand-1: #ff5f9e;
+  --grad-brand-2: #a855f7;
+  --grad-brand-3: #3b82f6;
+
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
   --font-serif: var(--font-instrument), "Times New Roman", serif;
@@ -198,6 +204,20 @@ dialog::backdrop {
   height: 1px;
 }
 
+/* Subtle brand-colored seam dropped between alternating light/dark sections. */
+@utility brand-seam {
+  position: relative;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--grad-brand-1) 55%, transparent),
+    color-mix(in srgb, var(--grad-brand-2) 55%, transparent),
+    color-mix(in srgb, var(--grad-brand-3) 55%, transparent),
+    transparent
+  );
+}
+
 @utility grid-bg {
   background-image:
     linear-gradient(var(--grid-line) 1px, transparent 1px),
@@ -210,6 +230,14 @@ dialog::backdrop {
 * {
   scrollbar-width: thin;
   scrollbar-color: rgb(255 255 255 / 0.14) transparent;
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 /* Honour reduced motion everywhere */

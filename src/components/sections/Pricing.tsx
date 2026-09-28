@@ -55,7 +55,9 @@ export default function Pricing() {
             <Reveal key={p.name} delay={i * 0.06}>
               <div
                 className={`group relative flex h-full flex-col overflow-hidden rounded-3xl p-7 transition-transform duration-500 hover:-translate-y-1.5 ${
-                  p.featured ? "glass-strong ring-1 ring-ice/30" : "glass"
+                  p.featured
+                    ? "glass-strong ring-1 ring-ice/30 shadow-[0_0_70px_-20px_rgba(169,220,255,0.55)] lg:scale-[1.04]"
+                    : "glass"
                 }`}
               >
                 {p.featured && (

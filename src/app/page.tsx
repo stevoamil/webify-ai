@@ -20,14 +20,23 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        <div className="brand-seam" aria-hidden />
         <HowWeWork />
+        <div className="brand-seam" aria-hidden />
         <Services />
+        <div className="brand-seam" aria-hidden />
         <Portfolio />
+        <div className="brand-seam" aria-hidden />
         <BusinessImpact />
+        <div className="brand-seam" aria-hidden />
         <Pricing />
+        <div className="brand-seam" aria-hidden />
         <PerformanceSecurity />
+        <div className="brand-seam" aria-hidden />
         <WhyAndHuman />
+        <div className="brand-seam" aria-hidden />
         <Trust />
+        <div className="brand-seam" aria-hidden />
         <Contact />
       </main>
       <Footer />
