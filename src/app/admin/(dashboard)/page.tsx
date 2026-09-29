@@ -2,6 +2,7 @@ import PageHeader from "@/components/admin/PageHeader";
 import StatCard from "@/components/admin/StatCard";
 import { BarChart, DonutChart } from "@/components/admin/Charts";
 import { listLeads } from "@/lib/store/leads";
+import { listSubscribers } from "@/lib/store/subscribers";
 import type { Lead, LeadStatus } from "@/lib/types";
 
 const STATUS_LABELS: Record<LeadStatus, string> = {
@@ -42,18 +43,19 @@ function buildDashboardStats(leads: Lead[], now: number) {
 }
 
 export default async function AdminDashboardPage() {
-  const leads = await listLeads();
+  const [leads, subscribers] = await Promise.all([listLeads(), listSubscribers()]);
   const { newThisWeek, contacted, won, statusData, newLeadsByDay, sourceData } = buildDashboardStats(leads, new Date().getTime());
 
   return (
     <div>
       <PageHeader title="Dashboard" description="Overview of leads and pipeline health." />
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
         <StatCard label="Total Leads" value={String(leads.length)} sublabel="All time" />
         <StatCard label="New Leads (7d)" value={String(newThisWeek)} sublabel="Last 7 days" />
         <StatCard label="In Progress" value={String(contacted)} sublabel="Contacted / proposal sent" />
         <StatCard label="Won" value={String(won)} sublabel="Closed-won leads" />
+        <StatCard label="Newsletter" value={String(subscribers.length)} sublabel="Subscribers" />
       </div>
 
       <div className="mt-6 grid gap-6 lg:grid-cols-2">

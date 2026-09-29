@@ -25,6 +25,12 @@ export type AiConversation = {
   updatedAt: string;
 };
 
+export type Subscriber = {
+  id: string;
+  email: string;
+  createdAt: string;
+};
+
 export type Testimonial = {
   id: string;
   quote: string;
