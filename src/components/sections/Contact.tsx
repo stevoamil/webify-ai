@@ -3,13 +3,14 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { Accent, Arrow, MagneticLink, SectionHeading } from "@/components/ui/primitives";
-import { formEndpoint, site, whatsappLink } from "@/lib/site";
+import { formEndpointFor, whatsappLink, type PublicContact } from "@/lib/site";
 
 const NEEDS = ["A new website", "AI integration", "A booking system", "An online store", "A redesign", "Not sure yet"];
 const BUDGETS = ["< $2,000", "$2,000 – $5,000", "$5,000 – $10,000", "$10,000+", "Not sure yet"];
 
-export default function Contact() {
+export default function Contact({ contact }: { contact: PublicContact }) {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const formEndpoint = formEndpointFor(contact.email);
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -17,6 +18,14 @@ export default function Contact() {
 
     const form = e.currentTarget;
     const data = Object.fromEntries(new FormData(form).entries());
+
+    // Save to the admin dashboard alongside the email notification below — fire-and-forget
+    // so a hiccup here never blocks the (working) email delivery the user actually sees.
+    fetch("/api/leads", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    }).catch((err) => console.error("Failed to save lead", err));
 
     try {
       const res = await fetch(formEndpoint, {
@@ -53,10 +62,10 @@ export default function Contact() {
         />
 
         <div className="mt-6 flex flex-wrap justify-center gap-3">
-          <MagneticLink href={whatsappLink()} target="_blank" rel="noopener noreferrer" variant="ghost">
+          <MagneticLink href={whatsappLink(contact.whatsapp)} target="_blank" rel="noopener noreferrer" variant="ghost">
             Chat on WhatsApp
           </MagneticLink>
-          <MagneticLink href={`mailto:${site.contact.email}`} variant="ghost">
+          <MagneticLink href={`mailto:${contact.email}`} variant="ghost">
             Email us
           </MagneticLink>
         </div>
@@ -109,8 +118,8 @@ export default function Contact() {
                 {status === "error" && (
                   <p className="text-sm text-amber-300 sm:col-span-2">
                     Something went wrong sending that. Please try again, or email us directly at{" "}
-                    <a href={`mailto:${site.contact.email}`} className="underline">
-                      {site.contact.email}
+                    <a href={`mailto:${contact.email}`} className="underline">
+                      {contact.email}
                     </a>
                     .
                   </p>

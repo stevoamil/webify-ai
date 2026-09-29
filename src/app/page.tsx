@@ -12,8 +12,22 @@ import PerformanceSecurity from "@/components/sections/PerformanceSecurity";
 import WhyAndHuman from "@/components/sections/WhyAndHuman";
 import Trust from "@/components/sections/Trust";
 import Contact from "@/components/sections/Contact";
+import { getSettings } from "@/lib/store/settings";
 
-export default function Home() {
+// Portfolio/Services/Trust/Settings all read from Blob storage, which isn't
+// available at build time (no token yet) and can change via the admin
+// dashboard — render this per-request instead of prerendering it statically.
+export const dynamic = "force-dynamic";
+
+export default async function Home() {
+  const settings = await getSettings();
+  const contact = {
+    email: settings.email,
+    whatsapp: settings.whatsapp,
+    instagram: settings.instagram,
+    linkedin: settings.linkedin,
+  };
+
   return (
     <>
       <LoadingScreen />
@@ -37,10 +51,10 @@ export default function Home() {
         <div className="brand-seam" aria-hidden />
         <Trust />
         <div className="brand-seam" aria-hidden />
-        <Contact />
+        <Contact contact={contact} />
       </main>
-      <Footer />
-      <FloatingWidgets />
+      <Footer contact={contact} />
+      <FloatingWidgets contact={contact} />
     </>
   );
 }

@@ -21,9 +21,9 @@ export const site = {
   },
 } as const;
 
-export function whatsappLink(message = "Hi Webify.ai, I'd like to talk about a project.") {
-  if (!site.contact.whatsapp) return "#contact";
-  return `https://wa.me/${site.contact.whatsapp}?text=${encodeURIComponent(message)}`;
+export function whatsappLink(whatsapp: string = site.contact.whatsapp, message = "Hi Webify.ai, I'd like to talk about a project.") {
+  if (!whatsapp) return "#contact";
+  return `https://wa.me/${whatsapp}?text=${encodeURIComponent(message)}`;
 }
 
 /**
@@ -33,7 +33,18 @@ export function whatsappLink(message = "Hi Webify.ai, I'd like to talk about a p
  * link in it once to activate delivery, then every future submission is sent straight
  * through. Swap this for a dedicated provider (e.g. Resend) later if you outgrow it.
  */
-export const formEndpoint = `https://formsubmit.co/ajax/${site.contact.email}`;
+export function formEndpointFor(email: string) {
+  return `https://formsubmit.co/ajax/${email}`;
+}
+export const formEndpoint = formEndpointFor(site.contact.email);
+
+/** Live, admin-editable contact details, threaded down from Settings via page.tsx. */
+export type PublicContact = {
+  email: string;
+  whatsapp: string;
+  instagram: string;
+  linkedin: string;
+};
 
 export const navLinks = [
   { label: "Work", href: "#work" },

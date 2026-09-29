@@ -1,13 +1,13 @@
 import Image from "next/image";
-import { footerLinks, site } from "@/lib/site";
+import { footerLinks, site, type PublicContact } from "@/lib/site";
 
-const SOCIALS = [
-  { label: "Instagram", href: site.social.instagram },
-  { label: "LinkedIn", href: site.social.linkedin },
-  { label: "WhatsApp", href: site.contact.whatsapp ? `https://wa.me/${site.contact.whatsapp}` : "" },
-].filter((s) => s.href);
+export default function Footer({ contact }: { contact: PublicContact }) {
+  const SOCIALS = [
+    { label: "Instagram", href: contact.instagram },
+    { label: "LinkedIn", href: contact.linkedin },
+    { label: "WhatsApp", href: contact.whatsapp ? `https://wa.me/${contact.whatsapp}` : "" },
+  ].filter((s) => s.href);
 
-export default function Footer() {
   return (
     <footer className="relative border-t border-line bg-void px-5 pb-8 pt-16 md:px-10">
       <div className="mx-auto max-w-7xl">
@@ -37,8 +37,8 @@ export default function Footer() {
             <p className="eyebrow mb-4 text-[10px]">Connect</p>
             <ul className="space-y-2.5">
               <li>
-                <a href={`mailto:${site.contact.email}`} className="text-sm text-muted transition-colors hover:text-text">
-                  {site.contact.email}
+                <a href={`mailto:${contact.email}`} className="text-sm text-muted transition-colors hover:text-text">
+                  {contact.email}
                 </a>
               </li>
               {SOCIALS.map((s) => (

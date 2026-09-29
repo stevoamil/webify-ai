@@ -1,56 +1,8 @@
-"use client";
+import { listProjects } from "@/lib/store/portfolio";
+import { listTestimonials } from "@/lib/store/testimonials";
+import TrustClient from "@/components/sections/TrustClient";
 
-import { Accent, Reveal, SectionHeading, Tag } from "@/components/ui/primitives";
-import { projects } from "@/lib/projects";
-
-const STATS = [
-  { value: String(projects.length), label: "Live projects shipped" },
-  { value: String(new Set(projects.map((p) => p.industry)).size), label: "Industries served" },
-  { value: "100%", label: "Custom-built, no templates" },
-];
-
-
-export default function Trust() {
-  return (
-    <section id="trust" aria-labelledby="trust-title" className="relative bg-ink px-5 py-28 md:px-10 md:py-40">
-      <div className="mx-auto max-w-7xl">
-        <SectionHeading
-          id="trust-title"
-          eyebrow="Trust"
-          align="center"
-          title={["Grounded in what", <Accent key="e">we’ve actually built.</Accent>]}
-          lead="We’d rather show you real, verifiable work than invent numbers to sound bigger than we are."
-        />
-
-        <div className="mt-14 grid grid-cols-3 gap-3 sm:gap-6">
-          {STATS.map((s) => (
-            <Reveal key={s.label}>
-              <div className="rounded-2xl border border-line bg-white/[0.02] px-2 py-6 text-center sm:py-10">
-                <p className="text-chrome text-3xl font-medium tracking-[-0.03em] sm:text-5xl">{s.value}</p>
-                <p className="mt-2 text-xs text-muted sm:text-sm">{s.label}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-
-        <div className="mt-20">
-          <div className="mb-8 flex items-center justify-between">
-            <h3 className="eyebrow">Kind words</h3>
-            <Tag tone="amber">Testimonials coming soon</Tag>
-          </div>
-          <Reveal>
-            <div className="glass mx-auto flex max-w-lg flex-col items-center gap-4 rounded-2xl p-10 text-center">
-              <svg viewBox="0 0 32 24" className="h-7 w-9 fill-ice/25">
-                <path d="M0 24V14.5C0 6.5 5 1 12 0l1.5 4.5C8 6 5.5 9 5.5 13H12v11H0zm18 0V14.5C18 6.5 23 1 30 0l1.5 4.5c-5.5 1.5-8 4.5-8 8.5h6.5v11H18z" />
-              </svg>
-              <p className="text-sm leading-6 text-muted">
-                We’re currently collecting quotes from recent clients — real testimonials will
-                appear here soon.
-              </p>
-            </div>
-          </Reveal>
-        </div>
-      </div>
-    </section>
-  );
+export default async function Trust() {
+  const [projects, testimonials] = await Promise.all([listProjects(), listTestimonials()]);
+  return <TrustClient projects={projects} testimonials={testimonials} />;
 }

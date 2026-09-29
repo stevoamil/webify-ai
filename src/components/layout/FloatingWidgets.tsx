@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { site, whatsappLink } from "@/lib/site";
+import { whatsappLink, type PublicContact } from "@/lib/site";
 
 const SUGGESTIONS = [
   "What can Webify.ai build?",
@@ -25,12 +25,29 @@ const REPLIES: Record<string, string> = {
 
 type Msg = { from: "bot" | "user"; text: string };
 
-export default function FloatingWidgets() {
+function logConversation(sessionId: string, messages: Msg[]) {
+  const now = new Date().toISOString();
+  fetch("/api/chat-logs", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ sessionId, messages: messages.map((m) => ({ ...m, at: now })) }),
+  }).catch((err) => console.error("Failed to log conversation", err));
+}
+
+export default function FloatingWidgets({ contact }: { contact: PublicContact }) {
   const [open, setOpen] = useState(false);
   const [showTop, setShowTop] = useState(false);
   const [messages, setMessages] = useState<Msg[]>([
     { from: "bot", text: "Hi, I’m the Webify.ai assistant. Ask me anything, or pick a question below." },
   ]);
+  const [sessionId] = useState(() => {
+    if (typeof window === "undefined") return "";
+    const existing = window.sessionStorage.getItem("webify_chat_session");
+    if (existing) return existing;
+    const id = crypto.randomUUID();
+    window.sessionStorage.setItem("webify_chat_session", id);
+    return id;
+  });
 
   useEffect(() => {
     const onScroll = () => setShowTop(window.scrollY > 800);
@@ -40,12 +57,20 @@ export default function FloatingWidgets() {
   }, []);
 
   const ask = (q: string) => {
-    setMessages((m) => [...m, { from: "user", text: q }]);
+    setMessages((m) => {
+      const next = [...m, { from: "user" as const, text: q }];
+      logConversation(sessionId, next);
+      return next;
+    });
     window.setTimeout(() => {
-      setMessages((m) => [
-        ...m,
-        { from: "bot", text: REPLIES[q] ?? "Thanks — for anything specific to your project, the fastest way is our project form below." },
-      ]);
+      setMessages((m) => {
+        const next = [
+          ...m,
+          { from: "bot" as const, text: REPLIES[q] ?? "Thanks — for anything specific to your project, the fastest way is our project form below." },
+        ];
+        logConversation(sessionId, next);
+        return next;
+      });
     }, 500);
   };
 
@@ -117,8 +142,8 @@ export default function FloatingWidgets() {
       </div>
 
       <a
-        href={whatsappLink()}
-        target={site.contact.whatsapp ? "_blank" : undefined}
+        href={whatsappLink(contact.whatsapp)}
+        target={contact.whatsapp ? "_blank" : undefined}
         rel="noopener noreferrer"
         aria-label="Chat with us on WhatsApp"
         className="fixed bottom-5 left-5 z-[60] grid h-[52px] w-[52px] place-items-center rounded-full bg-[#25D366] text-white shadow-[0_16px_40px_-10px_rgba(37,211,102,.6)] transition-transform hover:scale-105 md:bottom-8 md:left-8"
