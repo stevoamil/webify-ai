@@ -11,7 +11,7 @@ export default function Footer({ contact }: { contact: PublicContact }) {
   return (
     <footer className="relative border-t border-line bg-void px-5 pb-8 pt-16 md:px-10">
       <div className="mx-auto max-w-7xl">
-        <div className="grid gap-10 md:grid-cols-[1.3fr_1fr_1fr]">
+        <div className="grid gap-10 md:grid-cols-[1.3fr_1fr_1fr_1fr]">
           <div>
             <div className="flex items-center gap-2.5">
               <Image src="/icon.png" alt="" width={32} height={32} className="rounded-[8px]" />
@@ -49,6 +49,13 @@ export default function Footer({ contact }: { contact: PublicContact }) {
                 </li>
               ))}
             </ul>
+          </div>
+
+          <div>
+            <p className="eyebrow mb-4 text-[10px]">Studio Access</p>
+            <a href="/admin" className="text-sm text-muted transition-colors hover:text-text">
+              Dashboard Login →
+            </a>
           </div>
         </div>
 
