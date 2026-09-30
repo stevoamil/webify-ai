@@ -1,6 +1,8 @@
-import { NextResponse } from "next/server";
+import { NextResponse, after } from "next/server";
 import { z } from "zod";
 import { createLead } from "@/lib/store/leads";
+import { getSettings } from "@/lib/store/settings";
+import { autoReplyToLead, notifyNewLead } from "@/lib/email";
 
 const schema = z.object({
   name: z.string().min(1).max(200),
@@ -21,6 +23,12 @@ export async function POST(req: Request) {
 
   try {
     const lead = await createLead({ ...parsed.data, source: "Website form" });
+
+    after(async () => {
+      const settings = await getSettings();
+      await Promise.all([notifyNewLead(lead, settings.email), autoReplyToLead(lead)]);
+    });
+
     return NextResponse.json({ ok: true, id: lead.id });
   } catch (err) {
     console.error("Failed to save lead", err);

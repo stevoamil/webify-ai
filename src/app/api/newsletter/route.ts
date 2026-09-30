@@ -1,6 +1,7 @@
-import { NextResponse } from "next/server";
+import { NextResponse, after } from "next/server";
 import { z } from "zod";
 import { addSubscriber } from "@/lib/store/subscribers";
+import { syncNewsletterContact } from "@/lib/email";
 
 const schema = z.object({ email: z.string().email() });
 
@@ -10,6 +11,7 @@ export async function POST(req: Request) {
 
   try {
     await addSubscriber(parsed.data.email);
+    after(() => syncNewsletterContact(parsed.data.email));
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error("Failed to save subscriber", err);
