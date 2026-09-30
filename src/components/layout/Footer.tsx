@@ -26,7 +26,11 @@ export default function Footer({ contact }: { contact: PublicContact }) {
 
   return (
     <footer className="relative bg-void px-5 pb-8 pt-16 md:px-10">
-      <div className="absolute inset-x-0 top-0 h-1 bg-halo" aria-hidden />
+      <div
+        className="absolute inset-x-0 top-0 h-1"
+        style={{ background: "linear-gradient(90deg, transparent, var(--color-halo), transparent)" }}
+        aria-hidden
+      />
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-10 md:grid-cols-[1.2fr_0.8fr_1fr_1fr]">
           <div>
