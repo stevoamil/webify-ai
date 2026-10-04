@@ -209,10 +209,10 @@ dialog::backdrop {
   height: 1px;
 }
 
-/* Wordmark with a band of light that sweeps through it from right to left. */
+/* Wordmark with a band of light that sweeps through it from left to right. */
 @keyframes logo-shine {
-  0% { background-position: 0% 0; }
-  60%, 100% { background-position: 100% 0; }
+  0% { background-position: 100% 0; }
+  60%, 100% { background-position: 0% 0; }
 }
 
 @utility logo-shine {
