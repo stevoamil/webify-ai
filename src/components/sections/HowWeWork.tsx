@@ -38,6 +38,8 @@ const steps = [
 export default function HowWeWork() {
   const sectionRef = useRef<HTMLElement>(null);
   const [activeStep, setActiveStep] = useState(0);
+  const autoplayTriggered = useRef(false);
+  const autoplayRaf = useRef(0);
 
   useEffect(() => {
     let raf = 0;
@@ -57,6 +59,48 @@ export default function HowWeWork() {
       const index = Math.min(steps.length - 1, Math.floor(progress * steps.length));
 
       setActiveStep(index);
+      maybeStartAutoplay(rect.top, scrollable);
+    };
+
+    // Once the section first pins to the top of the viewport, auto-scroll
+    // through its full 500vh scroll range so visitors see all 5 steps
+    // without needing to scroll manually. Any manual input cancels it
+    // immediately and hands control back.
+    const maybeStartAutoplay = (top: number, scrollable: number) => {
+      if (autoplayTriggered.current) return;
+      if (top > 0 || top < -4) return;
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+      autoplayTriggered.current = true;
+      const targetY = window.scrollY + scrollable;
+      const duration = 6000;
+      const speed = scrollable / duration; // px per ms
+      let current = window.scrollY;
+      let lastTime = performance.now();
+
+      const cancel = () => {
+        cancelAnimationFrame(autoplayRaf.current);
+        autoplayRaf.current = 0;
+        cancelEvents.forEach((evt) => window.removeEventListener(evt, cancel));
+      };
+      const cancelEvents = ["wheel", "touchstart", "pointerdown", "keydown"] as const;
+      cancelEvents.forEach((evt) => window.addEventListener(evt, cancel, { passive: true, once: true }));
+
+      // Advance by a clamped per-frame delta rather than total elapsed time,
+      // so a delayed/throttled frame (e.g. a backgrounded tab) just slows
+      // the scroll down instead of snapping straight to the end.
+      const step = (now: number) => {
+        const delta = Math.min(now - lastTime, 50);
+        lastTime = now;
+        current = Math.min(targetY, current + speed * delta);
+        window.scrollTo(0, current);
+        if (current < targetY) {
+          autoplayRaf.current = requestAnimationFrame(step);
+        } else {
+          cancel();
+        }
+      };
+      autoplayRaf.current = requestAnimationFrame(step);
     };
 
     // rAF-throttled: avoids a synchronous layout read (getBoundingClientRect)
@@ -76,6 +120,7 @@ export default function HowWeWork() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
       cancelAnimationFrame(raf);
+      cancelAnimationFrame(autoplayRaf.current);
     };
   }, []);
 
