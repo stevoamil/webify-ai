@@ -74,7 +74,7 @@ export default function HowWeWork() {
       autoplayTriggered.current = true;
       const pinStartY = window.scrollY + top; // top <= 0: scrollY where the section's pin point begins
       const targetY = pinStartY + scrollable;
-      const duration = 6000;
+      const duration = 4000;
       const speed = scrollable / duration; // px per ms
       let current = window.scrollY;
       let lastTime = performance.now();
