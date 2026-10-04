@@ -41,31 +41,54 @@ export default function HowWeWork() {
   const sectionRef = useRef<HTMLElement>(null);
   const [activeStep, setActiveStep] = useState(0);
 
-  // Auto-advance through the steps on a timer while the section is in view,
-  // like a slideshow. Page scroll is untouched - this only drives which step
-  // is shown. Any manual step click restarts the timer from that step.
+  // The first time the section comes into view, freeze page scrolling and
+  // auto-advance through the steps like a slideshow; scrolling unfreezes
+  // once the last step (Launch Day) has had its full time on screen.
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    let interval = 0;
     const el = sectionRef.current;
     if (!el) return;
 
-    const start = () => {
-      if (interval) return;
-      interval = window.setInterval(() => {
-        setActiveStep((prev) => (prev + 1) % steps.length);
-      }, STEP_DURATION);
+    const triggered = { current: false };
+    let interval = 0;
+    let scrollbarGap = "";
+
+    const lockScroll = () => {
+      scrollbarGap = `${window.innerWidth - document.documentElement.clientWidth}px`;
+      document.documentElement.style.overflow = "hidden";
+      document.body.style.overflow = "hidden";
+      document.body.style.paddingRight = scrollbarGap;
     };
-    const stop = () => {
-      window.clearInterval(interval);
-      interval = 0;
+    const unlockScroll = () => {
+      document.documentElement.style.overflow = "";
+      document.body.style.overflow = "";
+      document.body.style.paddingRight = "";
+    };
+
+    const play = () => {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      lockScroll();
+      setActiveStep(0);
+
+      let step = 0;
+      interval = window.setInterval(() => {
+        step += 1;
+        if (step >= steps.length) {
+          window.clearInterval(interval);
+          unlockScroll();
+          return;
+        }
+        setActiveStep(step);
+      }, STEP_DURATION);
     };
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) start();
-        else stop();
+        if (entry.isIntersecting && !triggered.current) {
+          triggered.current = true;
+          play();
+        }
       },
       { threshold: 0.3 },
     );
@@ -73,7 +96,8 @@ export default function HowWeWork() {
 
     return () => {
       observer.disconnect();
-      stop();
+      window.clearInterval(interval);
+      unlockScroll();
     };
   }, []);
 
