@@ -35,73 +35,57 @@ const steps = [
   },
 ];
 
-const STEP_DURATION = 4000;
-
 export default function HowWeWork() {
   const sectionRef = useRef<HTMLElement>(null);
   const [activeStep, setActiveStep] = useState(0);
 
-  // The first time the section comes into view, freeze page scrolling and
-  // auto-advance through the steps like a slideshow; scrolling unfreezes
-  // once the last step (Launch Day) has had its full time on screen.
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let raf = 0;
 
-    const el = sectionRef.current;
-    if (!el) return;
+    const update = () => {
+      if (!sectionRef.current) return;
 
-    const triggered = { current: false };
-    let interval = 0;
-    let scrollbarGap = "";
+      const rect = sectionRef.current.getBoundingClientRect();
+      const sectionHeight = sectionRef.current.offsetHeight;
+      const viewportHeight = window.innerHeight;
 
-    const lockScroll = () => {
-      scrollbarGap = `${window.innerWidth - document.documentElement.clientWidth}px`;
-      document.documentElement.style.overflow = "hidden";
-      document.body.style.overflow = "hidden";
-      document.body.style.paddingRight = scrollbarGap;
-    };
-    const unlockScroll = () => {
-      document.documentElement.style.overflow = "";
-      document.body.style.overflow = "";
-      document.body.style.paddingRight = "";
+      const scrolled = Math.max(0, -rect.top);
+      const scrollable = sectionHeight - viewportHeight;
+
+      const progress = Math.min(0.999, Math.max(0, scrolled / scrollable));
+
+      const index = Math.min(steps.length - 1, Math.floor(progress * steps.length));
+
+      setActiveStep(index);
     };
 
-    const play = () => {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-      lockScroll();
-      setActiveStep(0);
-
-      let step = 0;
-      interval = window.setInterval(() => {
-        step += 1;
-        if (step >= steps.length) {
-          window.clearInterval(interval);
-          unlockScroll();
-          return;
-        }
-        setActiveStep(step);
-      }, STEP_DURATION);
+    // rAF-throttled: avoids a synchronous layout read (getBoundingClientRect)
+    // on every native scroll event, which can fire far faster than a frame.
+    const handleScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        update();
+      });
     };
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !triggered.current) {
-          triggered.current = true;
-          play();
-        }
-      },
-      { threshold: 0.3 },
-    );
-    observer.observe(el);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    update();
 
     return () => {
-      observer.disconnect();
-      window.clearInterval(interval);
-      unlockScroll();
+      window.removeEventListener("scroll", handleScroll);
+      cancelAnimationFrame(raf);
     };
   }, []);
 
+  // Clicking a step scrolls to its slice of the section so scroll and state stay in sync.
   const goToStep = (index: number) => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const top = el.getBoundingClientRect().top + window.scrollY;
+    const scrollable = el.offsetHeight - window.innerHeight;
+    window.scrollTo({ top: top + ((index + 0.5) / steps.length) * scrollable, behavior: "smooth" });
     setActiveStep(index);
   };
 
@@ -110,15 +94,15 @@ export default function HowWeWork() {
       id="how-we-work"
       ref={sectionRef}
       aria-label="How we work"
-      className="light relative bg-ink text-text"
+      className="light relative h-[500vh] bg-ink text-text"
     >
-      <div className="relative min-h-[100svh] overflow-hidden">
+      <div className="sticky top-0 h-[100svh] overflow-hidden">
         {/* ambient light */}
         <div className="pointer-events-none absolute -left-40 top-1/3 h-[520px] w-[520px] rounded-full bg-ice/[0.05] blur-[120px]" />
         <div className="grid-bg pointer-events-none absolute inset-0 opacity-50" />
 
         {/* CONTENT */}
-        <div className="relative mx-auto flex h-full min-h-[100svh] max-w-[1600px] flex-col px-6 py-24 md:flex-row md:px-12 md:py-0 lg:px-16">
+        <div className="relative mx-auto flex h-full max-w-[1600px] flex-col px-6 md:flex-row md:px-12 lg:px-16">
           {/* LEFT COLUMN */}
           <div className="flex flex-col justify-end pb-6 pt-24 md:w-[32%] md:min-w-[280px] md:justify-center md:border-r md:border-line md:py-0 md:pr-10">
             <div className="mb-5 font-mono text-[10px] uppercase tracking-[0.35em] text-muted">
@@ -157,38 +141,36 @@ export default function HowWeWork() {
           </div>
 
           {/* RIGHT COLUMN */}
-          <div className="relative mt-16 flex flex-1 items-start md:mt-0 md:items-center md:pl-16 lg:pl-24">
-            <div className="relative h-[280px] w-full md:h-[260px]">
-              {steps.map((step, index) => (
-                <div
-                  key={step.number}
-                  aria-hidden={activeStep !== index}
-                  className={`absolute left-0 right-0 top-0 transition-all duration-1000 ease-[cubic-bezier(.22,1,.36,1)] md:right-6 lg:right-0 ${
-                    activeStep === index
-                      ? "translate-y-0 opacity-100"
-                      : index < activeStep
-                        ? "-translate-y-8 opacity-0"
-                        : "translate-y-8 opacity-0"
-                  }`}
-                >
-                  {/* NUMBER */}
-                  <div className="font-serif text-[96px] leading-none text-line md:text-[150px] lg:text-[190px]">
-                    {step.number}
-                  </div>
-
-                  {/* TITLE */}
-                  <h3 className="-mt-4 font-serif text-4xl italic md:text-5xl lg:text-6xl">{step.title}</h3>
-
-                  {/* DESCRIPTION */}
-                  <p className="mt-5 max-w-xl text-sm leading-7 text-muted md:text-base">
-                    {step.description}
-                  </p>
-
-                  {/* DECORATIVE LINE */}
-                  <div className="mt-10 h-px w-16 bg-gradient-to-r from-ice/60 to-transparent" />
+          <div className="relative flex flex-1 items-start md:items-center md:pl-16 lg:pl-24">
+            {steps.map((step, index) => (
+              <div
+                key={step.number}
+                aria-hidden={activeStep !== index}
+                className={`absolute left-0 right-0 top-4 transition-all duration-1000 ease-[cubic-bezier(.22,1,.36,1)] md:top-auto md:left-16 md:right-6 lg:left-24 ${
+                  activeStep === index
+                    ? "translate-y-0 opacity-100"
+                    : index < activeStep
+                      ? "-translate-y-8 opacity-0"
+                      : "translate-y-8 opacity-0"
+                }`}
+              >
+                {/* NUMBER */}
+                <div className="font-serif text-[96px] leading-none text-line md:text-[150px] lg:text-[190px]">
+                  {step.number}
                 </div>
-              ))}
-            </div>
+
+                {/* TITLE */}
+                <h3 className="-mt-4 font-serif text-4xl italic md:text-5xl lg:text-6xl">{step.title}</h3>
+
+                {/* DESCRIPTION */}
+                <p className="mt-5 max-w-xl text-sm leading-7 text-muted md:text-base">
+                  {step.description}
+                </p>
+
+                {/* DECORATIVE LINE */}
+                <div className="mt-10 h-px w-16 bg-gradient-to-r from-ice/60 to-transparent" />
+              </div>
+            ))}
           </div>
         </div>
 
