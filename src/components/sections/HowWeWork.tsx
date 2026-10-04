@@ -68,11 +68,12 @@ export default function HowWeWork() {
     // immediately and hands control back.
     const maybeStartAutoplay = (top: number, scrollable: number) => {
       if (autoplayTriggered.current) return;
-      if (top > 0 || top < -4) return;
+      if (top > 0) return;
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
       autoplayTriggered.current = true;
-      const targetY = window.scrollY + scrollable;
+      const pinStartY = window.scrollY + top; // top <= 0: scrollY where the section's pin point begins
+      const targetY = pinStartY + scrollable;
       const duration = 6000;
       const speed = scrollable / duration; // px per ms
       let current = window.scrollY;
