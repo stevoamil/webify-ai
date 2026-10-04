@@ -20,7 +20,7 @@ export default function Header() {
     >
       <div className="mx-auto flex h-[68px] max-w-[1600px] items-center justify-between px-5 md:px-10">
         <a href="#top" className="flex items-center gap-2.5">
-          <span className="font-serif text-xl italic tracking-tight text-text">{site.name}</span>
+          <span className="logo-shine font-serif text-[28px] italic leading-none tracking-tight md:text-[34px]">{site.name}</span>
         </a>
 
         <nav className="hidden items-center gap-8 lg:flex">
