@@ -18,7 +18,7 @@ export default function PortfolioClient({ projects }: { projects: Project[] }) {
           />
         </div>
 
-        <div className="mt-14 grid gap-8 lg:grid-cols-2">
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((p, i) => (
             <ProjectCard key={p.slug} project={p} priority={i === 0} />
           ))}
@@ -40,7 +40,7 @@ function ProjectCard({ project, priority }: { project: Project; priority: boolea
     >
       <div
         onClick={() => setLive((v) => !v)}
-        className="relative aspect-[16/10] cursor-pointer overflow-hidden border-b border-line"
+        className="relative aspect-[16/9] cursor-pointer overflow-hidden border-b border-line"
       >
         {live ? (
           <iframe
@@ -62,7 +62,7 @@ function ProjectCard({ project, priority }: { project: Project; priority: boolea
               src={project.image}
               alt={project.imageAlt}
               fill
-              sizes="(min-width: 1024px) 560px, 100vw"
+              sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw"
               priority={priority}
               className={`object-cover object-top transition-all duration-700 ${hover ? "scale-105 opacity-0" : "opacity-100"}`}
             />
@@ -70,7 +70,7 @@ function ProjectCard({ project, priority }: { project: Project; priority: boolea
               src={project.altImage}
               alt={project.altImageAlt}
               fill
-              sizes="(min-width: 1024px) 560px, 100vw"
+              sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw"
               className={`object-cover object-top transition-all duration-700 ${hover ? "scale-105 opacity-100" : "opacity-0"}`}
             />
           </>
@@ -82,17 +82,17 @@ function ProjectCard({ project, priority }: { project: Project; priority: boolea
         </div>
       </div>
 
-      <div className="p-6 md:p-8">
+      <div className="p-5">
         <div className="mb-1 flex items-center justify-between gap-3">
-          <h3 className="font-serif text-2xl italic">{project.name}</h3>
-          <span className="font-mono text-[11px] text-dim">{project.domain}</span>
+          <h3 className="font-serif text-xl italic">{project.name}</h3>
+          <span className="font-mono text-[10px] text-dim">{project.domain}</span>
         </div>
-        <p className="mb-4 text-sm text-muted">{project.client}</p>
-        <p className="mb-5 text-[15px] leading-7 text-text/80">{project.description}</p>
+        <p className="mb-3 text-[13px] text-muted">{project.client}</p>
+        <p className="mb-4 text-[13px] leading-6 text-text/80">{project.description}</p>
 
-        <div className="mb-5 grid gap-2 sm:grid-cols-2">
-          {project.features.slice(0, 6).map((f) => (
-            <div key={f} className="flex items-start gap-2 text-[13px] leading-5 text-text/70">
+        <div className="mb-4 grid gap-1.5">
+          {project.features.slice(0, 4).map((f) => (
+            <div key={f} className="flex items-start gap-2 text-[12px] leading-5 text-text/70">
               <span className="mt-1.5 h-1 w-1 flex-none rounded-full bg-ice/70" />
               {f}
             </div>
@@ -100,9 +100,9 @@ function ProjectCard({ project, priority }: { project: Project; priority: boolea
         </div>
 
         {project.ai.length > 0 && (
-          <div className="mb-6 flex flex-wrap gap-2">
+          <div className="mb-5 flex flex-wrap gap-1.5">
             {project.ai.map((a) => (
-              <span key={a} className="rounded-full border border-signal/25 bg-signal/[0.06] px-3 py-1.5 text-[11px] text-signal">
+              <span key={a} className="rounded-full border border-signal/25 bg-signal/[0.06] px-2.5 py-1 text-[10px] text-signal">
                 {a}
               </span>
             ))}
