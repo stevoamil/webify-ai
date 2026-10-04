@@ -123,4 +123,32 @@ export const projects: Project[] = [
     ai: ["AI Shopping Assistant for gift ideas and craft recommendations"],
     accent: "#c8956d",
   },
+  {
+    slug: "bmw-elite-garage",
+    name: "BMW Elite Garage",
+    client: "BMW Elite Garage",
+    industry: "Automotive Service",
+    url: "https://3000-ij38nmar4hld2f2q09fxl.e2b.app/",
+    domain: "e2b.app",
+    image: "/work/bmw-elite.webp",
+    imageAlt: "BMW Elite Garage homepage hero: “BMW specialists. Intelligence, engineered.”",
+    altImage: "/work/bmw-elite-alt.webp",
+    altImageAlt: "BMW Elite Garage AI diagnosis form where owners describe what their BMW is doing",
+    summary: "An AI-powered website for an independent BMW specialist workshop.",
+    description:
+      "A premium site for a BMW specialist workshop that pairs a service catalogue with AI: owners describe a symptom and get a preliminary diagnosis, follow their repair live with technician updates and photos, and track vehicle health from one place.",
+    features: [
+      "AI vehicle diagnosis from model, mileage, warning and symptoms",
+      "Engine, transmission, brakes, coding and M performance services",
+      "Live repair tracking with technician updates and photos",
+      "Vehicle health score with predicted next service",
+      "Silver, Gold and Platinum membership club",
+      "English, Arabic, French and German",
+    ],
+    ai: [
+      "Elite AI Advisor chat with voice input and language switch",
+      "Sound, dashboard-photo and visual inspection screening",
+    ],
+    accent: "#1f7bff",
+  },
 ];
