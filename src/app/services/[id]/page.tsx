@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import ServicePageView from "@/components/sections/ServicePageView";
+import { arServices } from "@/lib/arabic";
 import { site } from "@/lib/site";
 import { getSettings } from "@/lib/store/settings";
 import { listServices } from "@/lib/store/services";
@@ -24,7 +25,18 @@ export async function generateMetadata({ params }: PageProps<"/services/[id]">):
   return {
     title: service.title,
     description,
-    alternates: { canonical: `/services/${service.id}` },
+    alternates: {
+      canonical: `/services/${service.id}`,
+      ...(arServices[service.id]
+        ? {
+            languages: {
+              en: `/services/${service.id}`,
+              ar: `/ar/services/${service.id}`,
+              "x-default": `/services/${service.id}`,
+            },
+          }
+        : {}),
+    },
     openGraph: {
       type: "website",
       url: `${site.url}/services/${service.id}`,
