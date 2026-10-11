@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, m, useMotionValueEvent, useScroll } from "framer-motion";
+import Link from "next/link";
 import { useState } from "react";
 import { navLinks, site } from "@/lib/site";
 import { MagneticLink } from "@/components/ui/primitives";
@@ -19,9 +20,9 @@ export default function Header() {
       }`}
     >
       <div className="mx-auto flex h-[68px] max-w-[1600px] items-center justify-between px-5 md:px-10">
-        <a href="#top" className="flex items-center gap-2.5">
+        <Link href="/#top" className="flex items-center gap-2.5">
           <span className="logo-shine font-serif text-[28px] italic leading-none tracking-tight md:text-[34px]">{site.name}</span>
-        </a>
+        </Link>
 
         <nav className="hidden items-center gap-8 lg:flex">
           {navLinks.map((l) => (
@@ -36,7 +37,7 @@ export default function Header() {
         </nav>
 
         <div className="hidden lg:block">
-          <MagneticLink href="#contact" className="!min-h-10 !px-5 !text-[13px]">
+          <MagneticLink href="/#contact" className="!min-h-10 !px-5 !text-[13px]">
             Start a Project →
           </MagneticLink>
         </div>
@@ -75,7 +76,7 @@ export default function Header() {
                   {l.label}
                 </a>
               ))}
-              <MagneticLink href="#contact" onClick={() => setOpen(false)} className="mt-2">
+              <MagneticLink href="/#contact" onClick={() => setOpen(false)} className="mt-2">
                 Start a Project →
               </MagneticLink>
             </div>

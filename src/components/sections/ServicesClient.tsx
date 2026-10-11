@@ -351,6 +351,12 @@ export default function ServicesClient({ services: CARDS }: { services: ServiceC
                 >
                   Request a quote
                 </a>
+                <a
+                  href={`/services/${detail.id}`}
+                  className="inline-flex min-h-[46px] items-center justify-center rounded-full border border-white/25 px-[22px] text-sm hover:border-white/50"
+                >
+                  Full details
+                </a>
                 <button
                   onClick={closeDetails}
                   className="inline-flex min-h-[46px] items-center justify-center rounded-full border border-white/25 px-[22px] text-sm hover:border-white/50"

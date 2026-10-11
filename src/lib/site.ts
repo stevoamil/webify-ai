@@ -22,7 +22,7 @@ export const site = {
 } as const;
 
 export function whatsappLink(whatsapp: string = site.contact.whatsapp, message = "Hi Webify.ai, I'd like to talk about a project.") {
-  if (!whatsapp) return "#contact";
+  if (!whatsapp) return "/#contact";
   return `https://wa.me/${whatsapp}?text=${encodeURIComponent(message)}`;
 }
 
@@ -47,18 +47,18 @@ export type PublicContact = {
 };
 
 export const navLinks = [
-  { label: "Work", href: "#work" },
-  { label: "Services", href: "#services" },
-  { label: "Process", href: "#how-we-work" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "Contact", href: "#contact" },
+  { label: "Work", href: "/#work" },
+  { label: "Services", href: "/#services" },
+  { label: "Process", href: "/#how-we-work" },
+  { label: "Pricing", href: "/#pricing" },
+  { label: "Contact", href: "/#contact" },
 ] as const;
 
 export const footerLinks = [
-  { label: "Home", href: "#top" },
-  { label: "Services", href: "#services" },
-  { label: "Portfolio", href: "#work" },
-  { label: "Process", href: "#how-we-work" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/#top" },
+  { label: "Services", href: "/#services" },
+  { label: "Portfolio", href: "/#work" },
+  { label: "Process", href: "/#how-we-work" },
+  { label: "Pricing", href: "/#pricing" },
+  { label: "Contact", href: "/#contact" },
 ] as const;

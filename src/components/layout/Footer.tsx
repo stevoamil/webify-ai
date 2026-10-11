@@ -17,7 +17,13 @@ function SocialIcon({ icon }: { icon: keyof typeof SOCIAL_ICONS }) {
   );
 }
 
-export default function Footer({ contact }: { contact: PublicContact }) {
+export default function Footer({
+  contact,
+  services = [],
+}: {
+  contact: PublicContact;
+  services?: { id: string; title: string }[];
+}) {
   const SOCIALS = [
     { label: "Instagram", href: contact.instagram, icon: "instagram" as const },
     { label: "LinkedIn", href: contact.linkedin, icon: "linkedin" as const },
@@ -105,6 +111,17 @@ export default function Footer({ contact }: { contact: PublicContact }) {
             </a>
           </div>
         </div>
+
+        {services.length > 0 && (
+          <nav aria-label="Services" className="mt-12 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-dim">
+            <span className="eyebrow text-[10px]">Services</span>
+            {services.map((s) => (
+              <a key={s.id} href={`/services/${s.id}`} className="transition-colors hover:text-text">
+                {s.title}
+              </a>
+            ))}
+          </nav>
+        )}
 
         <div className="hairline my-10" />
 

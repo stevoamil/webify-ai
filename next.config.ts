@@ -14,11 +14,12 @@ const nextConfig: NextConfig = {
         headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
       },
       {
-        source: "/work/:path*",
+        source: "/work/:file.webp",
         headers: [{ key: "Cache-Control", value: "public, max-age=604800, stale-while-revalidate=86400" }],
       },
       {
-        source: "/services/:path*",
+        // Images only - /services/<id> is a real page and must not be cached this long.
+        source: "/services/:file.webp",
         headers: [{ key: "Cache-Control", value: "public, max-age=604800, stale-while-revalidate=86400" }],
       },
     ];

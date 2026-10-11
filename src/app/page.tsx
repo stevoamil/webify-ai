@@ -13,6 +13,7 @@ import WhyAndHuman from "@/components/sections/WhyAndHuman";
 import Trust from "@/components/sections/Trust";
 import Contact from "@/components/sections/Contact";
 import { getSettings } from "@/lib/store/settings";
+import { listServices } from "@/lib/store/services";
 
 // Portfolio/Services/Trust/Settings all read from Blob storage, which isn't
 // available at build time (no token yet) and can change via the admin
@@ -20,7 +21,7 @@ import { getSettings } from "@/lib/store/settings";
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
-  const settings = await getSettings();
+  const [settings, services] = await Promise.all([getSettings(), listServices()]);
   const contact = {
     email: settings.email,
     whatsapp: settings.whatsapp,
@@ -53,7 +54,7 @@ export default async function Home() {
         <div className="brand-seam" aria-hidden />
         <Contact contact={contact} />
       </main>
-      <Footer contact={contact} />
+      <Footer contact={contact} services={services.map(({ id, title }) => ({ id, title }))} />
       <FloatingWidgets contact={contact} />
     </>
   );
