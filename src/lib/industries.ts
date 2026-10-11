@@ -336,6 +336,31 @@ export const industries: Industry[] = [
     projects: [],
     services: ["business-websites", "website-redesign", "seo-performance"],
   },
+  {
+    slug: "recruitment-and-staffing",
+    name: "Recruitment & Staffing",
+    title: "Website for Recruitment Agencies and Staffing Companies",
+    description:
+      "A website for recruitment agencies and staffing companies: job listings, candidate applications, employer enquiries, and fast pages built to be found in search.",
+    intro:
+      "A recruitment website serves two audiences at once: candidates looking for a role and employers looking for talent. Each needs a clear path, and both need to trust you before they get in touch.",
+    needs: [
+      "Job listings that are easy to browse and filter.",
+      "A simple application flow that works well on a phone.",
+      "A separate, clear route for employers to request candidates.",
+      "Proof you place people: sectors covered, case examples, real testimonials.",
+      "Fast replies to candidates and employers.",
+    ],
+    build: [
+      "A job listing section with categories and search.",
+      "Application forms with confirmation messages and instant alerts to your team.",
+      "Employer enquiry pages with lead capture.",
+      "An assistant that answers common candidate questions and collects details.",
+      "SEO setup so roles and sector pages can be found.",
+    ],
+    projects: [],
+    services: ["business-websites", "ai-lead-generation", "seo-performance"],
+  },
 ];
 
 export function getIndustry(slug: string) {

@@ -551,6 +551,73 @@ export const guides: Guide[] = [
     ],
     services: ["seo-performance", "business-websites", "website-redesign"],
   },
+  {
+    slug: "website-features-for-wedding-planners",
+    title: "Essential Website Features for Wedding Planners and Event Businesses",
+    description:
+      "The website features wedding planners and event businesses need: a portfolio that sells, clear packages, an easy enquiry form and automatic replies.",
+    published: "2026-10-12",
+    readMinutes: 5,
+    intro: [
+      "Couples and clients often decide who to contact based on one thing: how your website makes them feel. It has to show your style, answer their first questions and make it easy to ask about their date.",
+      "These are the features that matter most for wedding planners, designers, venues and event businesses.",
+    ],
+    sections: [
+      {
+        heading: "1. A portfolio that shows your style",
+        paragraphs: [
+          "Lead with your best, most recent events. Use large, fast-loading photos and short captions about the event. A few excellent galleries do more than dozens of average ones.",
+        ],
+      },
+      {
+        heading: "2. Clear services and packages",
+        paragraphs: [
+          "Explain what you do, from full planning to day-of coordination. You do not have to publish prices, but describing how each package works helps the right clients self-select and saves both sides time.",
+        ],
+      },
+      {
+        heading: "3. An enquiry form that asks the right questions",
+        bullets: [
+          "Name and a way to reach them.",
+          "Event type and date, or a date range.",
+          "Location and approximate guest count.",
+          "Budget range, if you want to qualify enquiries.",
+          "A short message about what they have in mind.",
+        ],
+      },
+      {
+        heading: "4. Fast replies, even out of hours",
+        paragraphs: [
+          "Couples often contact several planners at once and reply to the first one who answers well. An automatic confirmation, or an AI assistant that answers common questions and collects the details, keeps the conversation going until you can respond personally.",
+        ],
+      },
+      {
+        heading: "5. Testimonials and real events",
+        paragraphs: [
+          "Genuine words from past clients build trust quickly. Only show testimonials you have permission to publish.",
+        ],
+      },
+      {
+        heading: "6. Works well on phones",
+        paragraphs: [
+          "Most couples browse on their phones, often while sharing ideas with a partner. Galleries, forms and contact buttons all need to work comfortably on a small screen.",
+        ],
+      },
+      {
+        heading: "7. Easy to find",
+        paragraphs: [
+          "Give each service and location its own page with a clear title, so people searching for what you offer can find it. Add your real business details and keep them consistent everywhere online.",
+        ],
+      },
+      {
+        heading: "Planning a website for your event business?",
+        paragraphs: [
+          "We design websites for event businesses with portfolios, enquiry flows and automatic replies. Tell us about your business through the project form and we will suggest what to include.",
+        ],
+      },
+    ],
+    services: ["business-websites", "ai-lead-generation", "ai-integration"],
+  },
 ];
 
 export function getGuide(slug: string) {
