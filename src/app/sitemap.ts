@@ -30,5 +30,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...industries.map((i) => entry(`/industries/${i.slug}`, 0.7)),
     entry("/guides", 0.7),
     ...guides.map((g) => entry(`/guides/${g.slug}`, 0.7, new Date(g.published))),
+    entry("/privacy", 0.3),
   ];
 }

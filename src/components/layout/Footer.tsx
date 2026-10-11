@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { footerLinks, site, type PublicContact } from "@/lib/site";
 import NewsletterForm from "@/components/layout/NewsletterForm";
 import { guides } from "@/lib/guides";
@@ -144,7 +145,7 @@ export default function Footer({
 
         <div className="flex flex-col items-center justify-between gap-4 text-xs text-dim sm:flex-row">
           <p>© {new Date().getFullYear()} {site.name}. All rights reserved.</p>
-          <p className="font-mono uppercase tracking-[0.18em]">Designed &amp; built by Webify.ai</p>
+          <p className="flex items-center gap-4"><Link href="/privacy" className="transition-colors hover:text-text">Privacy Policy</Link><span className="font-mono uppercase tracking-[0.18em]">Designed &amp; built by Webify.ai</span></p>
         </div>
       </div>
     </footer>
