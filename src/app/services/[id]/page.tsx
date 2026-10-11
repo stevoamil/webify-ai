@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import ServicePageView from "@/components/sections/ServicePageView";
-import { serviceSeoTitles } from "@/lib/seo";
+import { serviceSeoTitles, shorten } from "@/lib/seo";
 import { site } from "@/lib/site";
+import { getSeo } from "@/lib/store/seo";
 import { getSettings } from "@/lib/store/settings";
 import { listServices } from "@/lib/store/services";
 
@@ -10,32 +11,28 @@ import { listServices } from "@/lib/store/services";
 // available at build time, so these pages render per request like the home page.
 export const dynamic = "force-dynamic";
 
-function shorten(text: string, max = 158) {
-  if (text.length <= max) return text;
-  const cut = text.slice(0, max);
-  return `${cut.slice(0, cut.lastIndexOf(" "))}…`;
-}
-
 export async function generateMetadata({ params }: PageProps<"/services/[id]">): Promise<Metadata> {
   const { id } = await params;
   const service = (await listServices()).find((s) => s.id === id);
   if (!service) return { title: "Service not found", robots: { index: false, follow: false } };
 
-  const description = shorten(service.lead);
-  const seoTitle = serviceSeoTitles[service.id] ?? service.title;
+  const o = await getSeo(`service:${service.id}`);
+  const description = o.description ?? shorten(service.lead);
+  const title = o.title ?? `${serviceSeoTitles[service.id] ?? service.title} — ${site.name}`;
   return {
-    title: seoTitle,
+    title: { absolute: title },
     description,
+    ...(o.keywords?.length ? { keywords: o.keywords } : {}),
     alternates: { canonical: `/services/${service.id}` },
     openGraph: {
       type: "website",
       url: `${site.url}/services/${service.id}`,
       siteName: site.name,
-      title: `${seoTitle} — ${site.name}`,
+      title,
       description,
       images: [{ url: "/opengraph-image", width: 1200, height: 630 }],
     },
-    twitter: { card: "summary_large_image", title: `${seoTitle} — ${site.name}`, description },
+    twitter: { card: "summary_large_image", title, description },
   };
 }
 

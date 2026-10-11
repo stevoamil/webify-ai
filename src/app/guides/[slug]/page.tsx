@@ -5,6 +5,7 @@ import PageShell from "@/components/layout/PageShell";
 import { CtaBand, JsonLd, PageHero, RelatedServices, breadcrumbJsonLd } from "@/components/sections/PageParts";
 import { getGuide, guides } from "@/lib/guides";
 import { site } from "@/lib/site";
+import { getSeo } from "@/lib/store/seo";
 import { listServices } from "@/lib/store/services";
 
 export const dynamic = "force-dynamic";
@@ -13,20 +14,24 @@ export async function generateMetadata({ params }: PageProps<"/guides/[slug]">):
   const { slug } = await params;
   const guide = getGuide(slug);
   if (!guide) return { title: "Guide not found", robots: { index: false, follow: false } };
+  const o = await getSeo(`guide:${guide.slug}`);
+  const title = o.title ?? `${guide.title} — ${site.name}`;
+  const description = o.description ?? guide.description;
   return {
-    title: guide.title,
-    description: guide.description,
+    title: { absolute: title },
+    description,
+    ...(o.keywords?.length ? { keywords: o.keywords } : {}),
     alternates: { canonical: `/guides/${guide.slug}` },
     openGraph: {
       type: "article",
       url: `${site.url}/guides/${guide.slug}`,
       siteName: site.name,
-      title: guide.title,
-      description: guide.description,
+      title,
+      description,
       publishedTime: guide.published,
       images: [{ url: "/opengraph-image", width: 1200, height: 630 }],
     },
-    twitter: { card: "summary_large_image", title: guide.title, description: guide.description },
+    twitter: { card: "summary_large_image", title, description },
   };
 }
 
