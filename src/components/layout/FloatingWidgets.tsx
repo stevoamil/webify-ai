@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, m } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { whatsappLink, type PublicContact } from "@/lib/site";
@@ -79,7 +79,7 @@ export default function FloatingWidgets({ contact }: { contact: PublicContact })
       <div className="fixed bottom-5 right-5 z-[60] flex flex-col items-end gap-3 md:bottom-8 md:right-8">
         <AnimatePresence>
           {open && (
-            <m.div
+            <motion.div
               role="dialog"
               aria-label="Webify.ai assistant"
               initial={{ opacity: 0, y: 16, scale: 0.96 }}
@@ -124,7 +124,7 @@ export default function FloatingWidgets({ contact }: { contact: PublicContact })
                   </button>
                 ))}
               </div>
-            </m.div>
+            </motion.div>
           )}
         </AnimatePresence>
 
@@ -155,7 +155,7 @@ export default function FloatingWidgets({ contact }: { contact: PublicContact })
 
       <AnimatePresence>
         {showTop && (
-          <m.button
+          <motion.button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             aria-label="Scroll to top"
             initial={{ opacity: 0, y: 12 }}
@@ -167,7 +167,7 @@ export default function FloatingWidgets({ contact }: { contact: PublicContact })
             <svg viewBox="0 0 24 24" className="h-4 w-4 fill-none stroke-current [stroke-width:2]">
               <path d="M12 19V5M5 12l7-7 7 7" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-          </m.button>
+          </motion.button>
         )}
       </AnimatePresence>
     </>

@@ -1,6 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Put each page's title/description/canonical tags in the <head> for every
+  // visitor (Next streams them into the body for browsers by default), so
+  // search crawlers, link previews and audits all see them in the same place.
+  htmlLimitedBots: /.*/,
   images: {
     // Portfolio/service images uploaded from the admin dashboard are stored
     // in Vercel Blob and served from this domain.

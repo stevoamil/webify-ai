@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, m } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 /** Brief branded loader. Resolves as soon as the hero's first frames are ready (or quickly, regardless). */
@@ -30,7 +30,7 @@ export default function LoadingScreen() {
   return (
     <AnimatePresence>
       {!done && (
-        <m.div
+        <motion.div
           exit={{ opacity: 0, filter: "blur(8px)" }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="fixed inset-0 z-[100] grid place-items-center bg-void"
@@ -38,7 +38,7 @@ export default function LoadingScreen() {
         >
           <div className="flex flex-col items-center gap-6">
             <div className="relative h-px w-40 overflow-hidden bg-white/10">
-              <m.div
+              <motion.div
                 className="absolute inset-y-0 left-0 bg-gradient-to-r from-ice/40 via-ice to-halo"
                 initial={{ width: "0%" }}
                 animate={{ width: "100%" }}
@@ -46,7 +46,7 @@ export default function LoadingScreen() {
               />
             </div>
           </div>
-        </m.div>
+        </motion.div>
       )}
     </AnimatePresence>
   );

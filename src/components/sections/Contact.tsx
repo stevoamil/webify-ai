@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, m } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { Accent, Arrow, MagneticLink, SectionHeading } from "@/components/ui/primitives";
 import { formEndpointFor, whatsappLink, type PublicContact } from "@/lib/site";
@@ -73,34 +73,34 @@ export default function Contact({ contact }: { contact: PublicContact }) {
         <div className="relative mt-12 rounded-3xl glass-strong p-6 md:p-12">
           <AnimatePresence mode="wait">
             {status === "sent" ? (
-              <m.div
+              <motion.div
                 key="sent"
                 initial={{ opacity: 0, scale: 0.96 }}
                 animate={{ opacity: 1, scale: 1 }}
                 className="flex flex-col items-center py-16 text-center"
               >
-                <m.div
+                <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ type: "spring", stiffness: 220, damping: 14, delay: 0.1 }}
                   className="mb-6 grid h-20 w-20 place-items-center rounded-full border border-signal/40 bg-signal/10"
                 >
                   <svg viewBox="0 0 24 24" className="h-9 w-9 fill-none stroke-signal [stroke-width:1.8]">
-                    <m.path
+                    <motion.path
                       d="M5 13l4 4L19 7"
                       initial={{ pathLength: 0 }}
                       animate={{ pathLength: 1 }}
                       transition={{ duration: 0.6, delay: 0.3 }}
                     />
                   </svg>
-                </m.div>
+                </motion.div>
                 <h3 className="mb-2 font-serif text-2xl italic">Your brief is in.</h3>
                 <p className="max-w-sm text-sm text-muted">
                   We’ll reply within one business day with a plan tailored to your project.
                 </p>
-              </m.div>
+              </motion.div>
             ) : (
-              <m.form key="form" exit={{ opacity: 0 }} onSubmit={onSubmit} className="grid gap-5 sm:grid-cols-2">
+              <motion.form key="form" exit={{ opacity: 0 }} onSubmit={onSubmit} className="grid gap-5 sm:grid-cols-2">
                 <Field label="Full name" name="name" required />
                 <Field label="Business" name="business" required />
                 <Field label="Email address" name="email" type="email" required />
@@ -134,7 +134,7 @@ export default function Contact({ contact }: { contact: PublicContact }) {
                     {status !== "sending" && <Arrow />}
                   </button>
                 </div>
-              </m.form>
+              </motion.form>
             )}
           </AnimatePresence>
         </div>

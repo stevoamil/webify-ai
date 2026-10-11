@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, m, useMotionValueEvent, useScroll } from "framer-motion";
+import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
 import { navLinks, site } from "@/lib/site";
@@ -58,7 +58,7 @@ export default function Header() {
 
       <AnimatePresence>
         {open && (
-          <m.nav
+          <motion.nav
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -80,7 +80,7 @@ export default function Header() {
                 Start a Project →
               </MagneticLink>
             </div>
-          </m.nav>
+          </motion.nav>
         )}
       </AnimatePresence>
     </header>
