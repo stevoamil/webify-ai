@@ -241,56 +241,40 @@ export default function Hero() {
           style={{ opacity: introOpacity, y: introY, pointerEvents: introEvents }}
           className="absolute inset-0 flex flex-col items-center justify-center px-5 text-center"
         >
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.4 }}
-            className="eyebrow mb-6 flex items-center gap-3"
+          <p
+            style={{ "--delay": "0.3s", "--rise": "12px" } as React.CSSProperties}
+            className="hero-rise eyebrow mb-6 flex items-center gap-3"
           >
             <span className="relative flex h-1.5 w-1.5">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-ice/70" />
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-ice" />
             </span>
             AI-powered web studio
-          </motion.p>
+          </p>
           <h1 className="max-w-5xl text-[clamp(2.6rem,7.6vw,6.8rem)] font-medium leading-[0.98] tracking-[-0.045em]">
             <span className="sr-only">Webify.ai — AI-powered websites for modern businesses. </span>
             <span aria-hidden className="block overflow-hidden">
-              <motion.span
-                className="text-chrome block"
-                initial={{ y: "105%" }}
-                animate={{ y: 0 }}
-                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
-              >
+              <span style={{ "--delay": "0.3s" } as React.CSSProperties} className="hero-slide text-chrome block">
                 Websites that
-              </motion.span>
+              </span>
             </span>
             <span aria-hidden className="block overflow-hidden">
-              <motion.span
-                className="block"
-                initial={{ y: "105%" }}
-                animate={{ y: 0 }}
-                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.62 }}
-              >
+              <span style={{ "--delay": "0.42s" } as React.CSSProperties} className="hero-slide block">
                 <em className="font-serif font-normal italic text-ice">think</em>
                 <span className="text-chrome">, sell &amp; book.</span>
-              </motion.span>
+              </span>
             </span>
           </h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.6 }}
-            className="mt-7 max-w-xl text-base leading-7 text-[#b7c1cd] md:text-lg"
+          <p
+            style={{ "--delay": "0.4s" } as React.CSSProperties}
+            className="hero-fade mt-7 max-w-xl text-base leading-7 text-[#b7c1cd] md:text-lg"
           >
             Premium websites, AI assistants, automation and booking systems —
             engineered as one smart digital system for your business.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.8 }}
-            className="mt-9 flex flex-wrap items-center justify-center gap-3"
+          </p>
+          <div
+            style={{ "--delay": "0.6s", "--rise": "10px" } as React.CSSProperties}
+            className="hero-rise mt-9 flex flex-wrap items-center justify-center gap-3"
           >
             <MagneticLink href="#contact">
               Start a Project <Arrow />
@@ -298,7 +282,7 @@ export default function Hero() {
             <MagneticLink href="#work" variant="ghost">
               See our work
             </MagneticLink>
-          </motion.div>
+          </div>
         </motion.div>
 
         {/* Scroll cue */}

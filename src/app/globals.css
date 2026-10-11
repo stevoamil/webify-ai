@@ -209,6 +209,29 @@ dialog::backdrop {
   height: 1px;
 }
 
+/* Hero entrance animations run in pure CSS so the intro text paints with the
+   first frame instead of waiting for JavaScript to load and hydrate. Timing is
+   set per element through --delay / --dur / --rise. */
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(var(--rise, 12px)); }
+}
+@keyframes hero-slide {
+  from { transform: translateY(105%); }
+}
+@keyframes hero-fade {
+  from { opacity: 0; }
+}
+
+@utility hero-rise {
+  animation: hero-rise var(--dur, 1s) ease-out var(--delay, 0s) both;
+}
+@utility hero-slide {
+  animation: hero-slide var(--dur, 1.2s) cubic-bezier(0.16, 1, 0.3, 1) var(--delay, 0s) both;
+}
+@utility hero-fade {
+  animation: hero-fade var(--dur, 1s) ease-out var(--delay, 0s) both;
+}
+
 /* Wordmark with a band of light that sweeps through it from left to right. */
 @keyframes logo-shine {
   0% { background-position: 100% 0; }
