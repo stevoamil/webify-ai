@@ -1,5 +1,4 @@
 import type { MetadataRoute } from "next";
-import { arServices } from "@/lib/arabic";
 import { guides } from "@/lib/guides";
 import { industries } from "@/lib/industries";
 import { site } from "@/lib/site";
@@ -31,7 +30,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...industries.map((i) => entry(`/industries/${i.slug}`, 0.7)),
     entry("/guides", 0.7),
     ...guides.map((g) => entry(`/guides/${g.slug}`, 0.7, new Date(g.published))),
-    entry("/ar", 0.8),
-    ...Object.keys(arServices).map((id) => entry(`/ar/services/${id}`, 0.7)),
   ];
 }

@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import FloatingWidgets from "@/components/layout/FloatingWidgets";
@@ -20,10 +19,6 @@ import { listServices } from "@/lib/store/services";
 // available at build time (no token yet) and can change via the admin
 // dashboard — render this per-request instead of prerendering it statically.
 export const dynamic = "force-dynamic";
-
-export const metadata: Metadata = {
-  alternates: { canonical: "/", languages: { en: "/", ar: "/ar", "x-default": "/" } },
-};
 
 export default async function Home() {
   const [settings, services] = await Promise.all([getSettings(), listServices()]);

@@ -132,7 +132,6 @@ export default function Footer({
           <LinkRow label="Services" links={services.map((s) => ({ href: `/services/${s.id}`, text: s.title }))} />
           <LinkRow label="Industries" links={industries.map((i) => ({ href: `/industries/${i.slug}`, text: i.name }))} />
           <LinkRow label="Guides" links={guides.map((g) => ({ href: `/guides/${g.slug}`, text: g.title.split(":")[0].split("?")[0] }))} />
-          <LinkRow label="Language" links={[{ href: "/ar", text: "العربية" }]} />
         </div>
 
         <div className="hairline my-10" />

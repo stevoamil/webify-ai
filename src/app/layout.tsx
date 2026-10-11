@@ -24,7 +24,7 @@ const instrumentSerif = Instrument_Serif({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "Webify.ai — AI-Powered Websites, Booking Systems & Automation",
+    default: "Webify.ai USA — AI-Powered Websites, Booking & Automation",
     template: `%s — ${site.name}`,
   },
   description: site.description,
