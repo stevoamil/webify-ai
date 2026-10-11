@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useMotionValueEvent, useScroll } from "framer-motion";
+import { m, useMotionValueEvent, useScroll } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { Arrow, MagneticLink } from "@/components/ui/primitives";
 
@@ -237,7 +237,7 @@ export default function Hero() {
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-void to-transparent" />
 
         {/* Intro copy */}
-        <motion.div
+        <m.div
           style={{ opacity: introOpacity, y: introY, pointerEvents: introEvents }}
           className="absolute inset-0 flex flex-col items-center justify-center px-5 text-center"
         >
@@ -283,10 +283,10 @@ export default function Hero() {
               See our work
             </MagneticLink>
           </div>
-        </motion.div>
+        </m.div>
 
         {/* Scroll cue */}
-        <motion.a
+        <m.a
           href="#how-we-work"
           style={{ opacity: cueOpacity, pointerEvents: introEvents }}
           className="absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-3 text-muted"
@@ -295,10 +295,10 @@ export default function Hero() {
           <span className="relative h-10 w-px overflow-hidden bg-white/10">
             <span className="absolute inset-x-0 top-0 h-1/2 animate-scan bg-gradient-to-b from-transparent via-ice to-transparent" />
           </span>
-        </motion.a>
+        </m.a>
 
         {/* Chapter rail synced to the film */}
-        <motion.nav
+        <m.nav
           aria-hidden
           style={{ opacity: railOpacity }}
           className="absolute right-5 top-1/2 hidden -translate-y-1/2 flex-col gap-4 md:flex lg:right-10"
@@ -319,7 +319,7 @@ export default function Hero() {
               />
             </div>
           ))}
-        </motion.nav>
+        </m.nav>
 
         {/* Film progress */}
         <div className="absolute inset-x-5 bottom-5 h-px bg-white/[0.07] md:inset-x-10">
@@ -330,7 +330,7 @@ export default function Hero() {
         </div>
 
         {/* Outro CTA — the film ends on “Build what’s next” */}
-        <motion.div
+        <m.div
           style={{ opacity: outroOpacity, y: outroY, pointerEvents: outroEvents }}
           className="absolute inset-x-0 bottom-[14%] flex flex-col items-center gap-5 px-5 text-center"
         >
@@ -345,7 +345,7 @@ export default function Hero() {
               How we work
             </MagneticLink>
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

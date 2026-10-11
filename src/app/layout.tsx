@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import LazyAnalytics from "@/components/layout/LazyAnalytics";
+import MotionProvider from "@/components/layout/MotionProvider";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -130,7 +131,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        {children}
+        <MotionProvider>{children}</MotionProvider>
       </body>
       {process.env.NEXT_PUBLIC_GA_ID && <LazyAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />}
     </html>

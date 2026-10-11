@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useMotionValue, useSpring, type HTMLMotionProps } from "framer-motion";
+import { m, useMotionValue, useSpring, type HTMLMotionProps } from "framer-motion";
 import { useRef, type ReactNode } from "react";
 
 const ease = [0.16, 1, 0.3, 1] as const;
@@ -19,7 +19,7 @@ export function Reveal({
   className?: string;
   as?: "div" | "li" | "article" | "header";
 }) {
-  const M = motion[as];
+  const M = m[as];
   return (
     <M
       className={className}
@@ -47,7 +47,7 @@ export function SplitReveal({
     <span className={className}>
       {lines.map((line, i) => (
         <span key={i} className="block overflow-hidden pb-[0.08em]">
-          <motion.span
+          <m.span
             className={`block ${lineClassName ?? ""}`}
             initial={{ y: "110%" }}
             whileInView={{ y: "0%" }}
@@ -55,7 +55,7 @@ export function SplitReveal({
             transition={{ duration: 1.1, ease, delay: i * 0.09 }}
           >
             {line}
-          </motion.span>
+          </m.span>
         </span>
       ))}
     </span>
@@ -125,7 +125,7 @@ export function MagneticLink({
       : "border border-line-strong bg-soft/[0.03] text-text hover:border-soft/35 hover:bg-soft/[0.06]";
 
   return (
-    <motion.a
+    <m.a
       ref={ref}
       style={{ x, y }}
       onPointerMove={(e) => {
@@ -142,7 +142,7 @@ export function MagneticLink({
       {...rest}
     >
       {children}
-    </motion.a>
+    </m.a>
   );
 }
 
