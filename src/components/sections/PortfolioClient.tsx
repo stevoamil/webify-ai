@@ -19,8 +19,8 @@ export default function PortfolioClient({ projects }: { projects: Project[] }) {
         </div>
 
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {projects.map((p, i) => (
-            <ProjectCard key={p.slug} project={p} priority={i === 0} />
+          {projects.map((p) => (
+            <ProjectCard key={p.slug} project={p} />
           ))}
         </div>
       </div>
@@ -28,7 +28,7 @@ export default function PortfolioClient({ projects }: { projects: Project[] }) {
   );
 }
 
-function ProjectCard({ project, priority }: { project: Project; priority: boolean }) {
+function ProjectCard({ project }: { project: Project }) {
   const [hover, setHover] = useState(false);
   const [live, setLive] = useState(false);
 
@@ -63,7 +63,6 @@ function ProjectCard({ project, priority }: { project: Project; priority: boolea
               alt={project.imageAlt}
               fill
               sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw"
-              priority={priority}
               className={`object-cover object-top transition-all duration-700 ${hover ? "scale-105 opacity-0" : "opacity-100"}`}
             />
             <Image

@@ -19,7 +19,7 @@
   --color-line-strong: rgb(255 255 255 / 0.16);
   --color-text: #e9eef4;
   --color-muted: #8b95a3;
-  --color-dim: #5b6472;
+  --color-dim: #768091;
   --color-soft: #ffffff;
   --color-ice: #f0579e;
   --color-ice-2: #9b4de0;
@@ -87,7 +87,7 @@
   --color-line-strong: rgb(10 12 16 / 0.16);
   --color-text: #17181a;
   --color-muted: #5b5f66;
-  --color-dim: #8a8d93;
+  --color-dim: #676a71;
   --color-soft: #0a0c10;
   --grad-chrome-1: #17181a;
   --grad-chrome-2: #33363b;
@@ -147,7 +147,7 @@ dialog::backdrop {
 @utility glass {
   --color-text: #e9eef4;
   --color-muted: #8b95a3;
-  --color-dim: #5b6472;
+  --color-dim: #768091;
   --color-soft: #ffffff;
   --color-line: rgb(255 255 255 / 0.08);
   --color-line-strong: rgb(255 255 255 / 0.16);
@@ -166,7 +166,7 @@ dialog::backdrop {
 @utility glass-strong {
   --color-text: #e9eef4;
   --color-muted: #8b95a3;
-  --color-dim: #5b6472;
+  --color-dim: #768091;
   --color-soft: #ffffff;
   --color-line: rgb(255 255 255 / 0.08);
   --color-line-strong: rgb(255 255 255 / 0.16);

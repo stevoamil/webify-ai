@@ -223,7 +223,7 @@ export default function ServicesClient({ services: CARDS }: { services: ServiceC
                 }}
               >
                 <div className="absolute inset-0 bg-[linear-gradient(160deg,rgba(255,255,255,.06),transparent_40%)]" />
-                <CardArt image={c.image} hue={c.hue} priority={i < 3} />
+                <CardArt image={c.image} hue={c.hue} />
                 {/* Dark gradient so the text stays readable */}
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#07090c] via-[#07090c]/70 via-40% to-transparent to-65%" />
 

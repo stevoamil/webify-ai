@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import LazyAnalytics from "@/components/layout/LazyAnalytics";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -24,10 +24,11 @@ const instrumentSerif = Instrument_Serif({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "Webify.AI-USA",
+    default: "Webify.ai USA — AI-Powered Websites, Booking & Automation",
     template: `%s — ${site.name}`,
   },
   description: site.description,
+  alternates: { canonical: "/" },
   keywords: [
     "AI website design",
     "AI web development agency",
@@ -37,6 +38,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     type: "website",
+    locale: "en_US",
     url: site.url,
     siteName: site.name,
     title: site.title,
@@ -56,19 +58,63 @@ export const viewport: Viewport = {
   colorScheme: "dark",
 };
 
+const SERVICES = [
+  "Business Websites",
+  "E-Commerce",
+  "AI Integration",
+  "AI Booking Systems",
+  "AI Lead Generation",
+  "Website Redesign",
+  "SEO & Performance",
+  "Maintenance & Support",
+];
+
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: site.name,
-  url: site.url,
-  description: site.description,
-  areaServed: "Worldwide",
-  serviceType: [
-    "Website design",
-    "AI integration",
-    "Business automation",
-    "Booking systems",
-    "E-commerce development",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${site.url}/#organization`,
+      name: site.name,
+      url: site.url,
+      logo: `${site.url}/icon.png`,
+      email: site.contact.email,
+      description: site.description,
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${site.url}/#website`,
+      url: site.url,
+      name: site.name,
+      description: site.description,
+      inLanguage: "en",
+      publisher: { "@id": `${site.url}/#organization` },
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": `${site.url}/#service`,
+      name: site.name,
+      url: site.url,
+      image: `${site.url}/opengraph-image`,
+      description: site.description,
+      areaServed: "Worldwide",
+      provider: { "@id": `${site.url}/#organization` },
+      serviceType: [
+        "Website design",
+        "AI integration",
+        "Business automation",
+        "Booking systems",
+        "E-commerce development",
+      ],
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Webify.ai services",
+        itemListElement: SERVICES.map((name) => ({
+          "@type": "Offer",
+          itemOffered: { "@type": "Service", name },
+        })),
+      },
+    },
   ],
 };
 
@@ -86,7 +132,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         />
         {children}
       </body>
-      {process.env.NEXT_PUBLIC_GA_ID && <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />}
+      {process.env.NEXT_PUBLIC_GA_ID && <LazyAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />}
     </html>
   );
 }

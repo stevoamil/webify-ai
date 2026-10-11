@@ -147,39 +147,68 @@ export default function Hero() {
       raf = requestAnimationFrame(tick);
     };
 
-    // Stream frames with a small concurrency pool.
+    // Stream frames with a small concurrency pool. Only the coarse first pass
+    // loads straight away; the finer passes wait until the page has loaded and
+    // the browser is idle so they never compete with the first paint. Visitors
+    // on Save-Data connections stop at every 4th frame.
+    const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData;
     const order = loadOrder(set.count);
+    if (saveData) order.length = Math.min(order.length, Math.ceil(set.count / 4) + 1);
     let cursor = 0;
     let loaded = 0;
+    let active = 0;
+    let fineOpen = false;
     const firstPass = Math.ceil(set.count / 16) + 1;
-    const next = () => {
-      if (cancelled || cursor >= order.length) return;
-      const i = order[cursor++];
-      const img = new Image();
-      img.decoding = "async";
-      img.src = frameSrc(set.dir, i);
-      img
-        .decode()
-        .then(() => {
-          if (cancelled) return;
-          frames.current[i] = img;
-          loaded++;
-          if (loaded === 1) drawn = -1;
-          if (loaded === firstPass) window.dispatchEvent(new Event("hero:ready"));
-        })
-        .catch(() => {})
-        .finally(next);
+    const pump = () => {
+      while (!cancelled && active < (fineOpen ? 4 : 3) && cursor < order.length && (fineOpen || cursor < firstPass)) {
+        const i = order[cursor++];
+        const img = new Image();
+        img.decoding = "async";
+        img.src = frameSrc(set.dir, i);
+        active++;
+        img
+          .decode()
+          .then(() => {
+            if (cancelled) return;
+            frames.current[i] = img;
+            loaded++;
+            if (loaded === 1) drawn = -1;
+            if (loaded === firstPass) window.dispatchEvent(new Event("hero:ready"));
+          })
+          .catch(() => {})
+          .finally(() => {
+            active--;
+            pump();
+          });
+      }
+    };
+
+    let idleHandle = 0;
+    let idleTimer = 0;
+    const openFine = () => {
+      fineOpen = true;
+      pump();
+    };
+    const hasIdle = typeof window.requestIdleCallback === "function";
+    const armFine = () => {
+      if (hasIdle) idleHandle = window.requestIdleCallback(openFine, { timeout: 2500 });
+      else idleTimer = window.setTimeout(openFine, 1500);
     };
 
     resize();
     window.addEventListener("resize", resize);
-    for (let k = 0; k < 6; k++) next();
+    pump();
+    if (document.readyState === "complete") armFine();
+    else window.addEventListener("load", armFine, { once: true });
     raf = requestAnimationFrame(tick);
 
     return () => {
       cancelled = true;
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", resize);
+      window.removeEventListener("load", armFine);
+      if (idleHandle) window.cancelIdleCallback(idleHandle);
+      window.clearTimeout(idleTimer);
     };
   }, [isMobile]);
 
@@ -251,7 +280,7 @@ export default function Hero() {
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1.2, delay: 1 }}
+            transition={{ duration: 1, delay: 0.6 }}
             className="mt-7 max-w-xl text-base leading-7 text-[#b7c1cd] md:text-lg"
           >
             Premium websites, AI assistants, automation and booking systems —
@@ -260,7 +289,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 1.15 }}
+            transition={{ duration: 1, delay: 0.8 }}
             className="mt-9 flex flex-wrap items-center justify-center gap-3"
           >
             <MagneticLink href="#contact">
