@@ -9,7 +9,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Industries",
   description:
-    "Websites with AI, booking and automation for garages, real estate, events, music schools and online stores — with real projects for each.",
+    "Websites with AI, booking and automation for garages, real estate, restaurants, clinics, salons, law firms, gyms, hotels, contractors and more.",
   alternates: { canonical: "/industries" },
 };
 
@@ -21,7 +21,7 @@ export default function IndustriesPage() {
         crumbs={[{ label: "Home", href: "/" }, { label: "Industries" }]}
         eyebrow="Industries"
         title="Built for the way your industry works"
-        lead="Every business sells differently. These are the sectors where we have real projects to show, and what each one needs from its website."
+        lead="Every business sells differently. Here is what each industry needs from its website, with real projects where we have them."
       />
       <section className="px-5 pb-20 md:px-10 md:pb-28">
         <ul className="mx-auto grid max-w-5xl gap-5 md:grid-cols-2">

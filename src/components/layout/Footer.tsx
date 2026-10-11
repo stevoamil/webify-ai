@@ -130,7 +130,13 @@ export default function Footer({
 
         <div className="mt-12 space-y-3">
           <LinkRow label="Services" links={services.map((s) => ({ href: `/services/${s.id}`, text: s.title }))} />
-          <LinkRow label="Industries" links={industries.map((i) => ({ href: `/industries/${i.slug}`, text: i.name }))} />
+          <LinkRow
+            label="Industries"
+            links={[
+              ...industries.slice(0, 5).map((i) => ({ href: `/industries/${i.slug}`, text: i.name })),
+              { href: "/industries", text: "All industries" },
+            ]}
+          />
           <LinkRow label="Guides" links={guides.map((g) => ({ href: `/guides/${g.slug}`, text: g.title.split(":")[0].split("?")[0] }))} />
         </div>
 

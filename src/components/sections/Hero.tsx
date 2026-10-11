@@ -252,7 +252,7 @@ export default function Hero() {
             AI-powered web studio
           </p>
           <h1 className="max-w-5xl text-[clamp(2.6rem,7.6vw,6.8rem)] font-medium leading-[0.98] tracking-[-0.045em]">
-            <span className="sr-only">Webify.ai — AI-powered websites for modern businesses. </span>
+            <span className="sr-only">Webify.ai — AI websites and website agency for modern businesses. </span>
             <span aria-hidden className="block overflow-hidden">
               <span style={{ "--delay": "0.3s" } as React.CSSProperties} className="hero-slide text-chrome block">
                 Websites that

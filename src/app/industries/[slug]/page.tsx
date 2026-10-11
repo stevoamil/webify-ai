@@ -89,7 +89,7 @@ export default async function IndustryPage({ params }: PageProps<"/industries/[s
             </ul>
           </div>
           <div className="glass rounded-3xl p-8">
-            <h2 className="eyebrow mb-6">What we have built</h2>
+            <h2 className="eyebrow mb-6">{projects.length > 0 ? "What we have built" : "What we can build"}</h2>
             <ul className="space-y-4">
               {industry.build.map((b) => (
                 <li key={b} className="flex items-start gap-3 text-[15px] leading-6 text-text/90">

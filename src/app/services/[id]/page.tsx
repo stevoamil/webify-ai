@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import ServicePageView from "@/components/sections/ServicePageView";
+import { serviceSeoTitles } from "@/lib/seo";
 import { site } from "@/lib/site";
 import { getSettings } from "@/lib/store/settings";
 import { listServices } from "@/lib/store/services";
@@ -21,19 +22,20 @@ export async function generateMetadata({ params }: PageProps<"/services/[id]">):
   if (!service) return { title: "Service not found", robots: { index: false, follow: false } };
 
   const description = shorten(service.lead);
+  const seoTitle = serviceSeoTitles[service.id] ?? service.title;
   return {
-    title: service.title,
+    title: seoTitle,
     description,
     alternates: { canonical: `/services/${service.id}` },
     openGraph: {
       type: "website",
       url: `${site.url}/services/${service.id}`,
       siteName: site.name,
-      title: `${service.title} — ${site.name}`,
+      title: `${seoTitle} — ${site.name}`,
       description,
       images: [{ url: "/opengraph-image", width: 1200, height: 630 }],
     },
-    twitter: { card: "summary_large_image", title: `${service.title} — ${site.name}`, description },
+    twitter: { card: "summary_large_image", title: `${seoTitle} — ${site.name}`, description },
   };
 }
 
