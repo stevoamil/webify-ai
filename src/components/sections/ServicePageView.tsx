@@ -3,6 +3,8 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import FloatingWidgets from "@/components/layout/FloatingWidgets";
 import { Arrow, MagneticLink } from "@/components/ui/primitives";
+import Faq from "@/components/sections/Faq";
+import { serviceFaqs } from "@/lib/faq";
 import { processSteps } from "@/lib/process";
 import { site, type PublicContact } from "@/lib/site";
 import type { ServiceCard } from "@/lib/services-data";
@@ -127,6 +129,18 @@ export default function ServicePageView({
             </ol>
           </div>
         </section>
+
+        <Faq
+
+          items={serviceFaqs[service.id] ?? []}
+
+          id="faq"
+
+          heading={["Common", "questions."]}
+
+          className="relative px-5 pb-20 md:px-10 md:pb-28"
+
+        />
 
         {others.length > 0 && (
           <section className="px-5 pb-20 md:px-10 md:pb-28" aria-labelledby="more-title">

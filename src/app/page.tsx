@@ -12,6 +12,8 @@ import PerformanceSecurity from "@/components/sections/PerformanceSecurity";
 import WhyAndHuman from "@/components/sections/WhyAndHuman";
 import Trust from "@/components/sections/Trust";
 import Contact from "@/components/sections/Contact";
+import Faq from "@/components/sections/Faq";
+import { homeFaqs } from "@/lib/faq";
 import { getSettings } from "@/lib/store/settings";
 import { listServices } from "@/lib/store/services";
 
@@ -51,6 +53,8 @@ export default async function Home() {
         <WhyAndHuman />
         <div className="brand-seam" aria-hidden />
         <Trust />
+        <div className="brand-seam" aria-hidden />
+        <Faq items={homeFaqs} />
         <div className="brand-seam" aria-hidden />
         <Contact contact={contact} />
       </main>
