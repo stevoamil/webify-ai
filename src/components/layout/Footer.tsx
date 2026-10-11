@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { footerLinks, site, type PublicContact } from "@/lib/site";
 import NewsletterForm from "@/components/layout/NewsletterForm";
+import { guides } from "@/lib/guides";
+import { industries } from "@/lib/industries";
 
 const SOCIAL_ICONS = {
   instagram:
@@ -14,6 +16,20 @@ const SOCIAL_ICONS = {
 function SocialIcon({ icon }: { icon: keyof typeof SOCIAL_ICONS }) {
   return (
     <svg viewBox="0 0 24 24" className="h-4 w-4 fill-none stroke-current [stroke-width:1.6]" dangerouslySetInnerHTML={{ __html: SOCIAL_ICONS[icon] }} />
+  );
+}
+
+function LinkRow({ label, links }: { label: string; links: { href: string; text: string }[] }) {
+  if (links.length === 0) return null;
+  return (
+    <nav aria-label={label} className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-dim">
+      <span className="eyebrow text-[10px]">{label}</span>
+      {links.map((l) => (
+        <a key={l.href} href={l.href} className="transition-colors hover:text-text">
+          {l.text}
+        </a>
+      ))}
+    </nav>
   );
 }
 
@@ -112,16 +128,11 @@ export default function Footer({
           </div>
         </div>
 
-        {services.length > 0 && (
-          <nav aria-label="Services" className="mt-12 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-dim">
-            <span className="eyebrow text-[10px]">Services</span>
-            {services.map((s) => (
-              <a key={s.id} href={`/services/${s.id}`} className="transition-colors hover:text-text">
-                {s.title}
-              </a>
-            ))}
-          </nav>
-        )}
+        <div className="mt-12 space-y-3">
+          <LinkRow label="Services" links={services.map((s) => ({ href: `/services/${s.id}`, text: s.title }))} />
+          <LinkRow label="Industries" links={industries.map((i) => ({ href: `/industries/${i.slug}`, text: i.name }))} />
+          <LinkRow label="Guides" links={guides.map((g) => ({ href: `/guides/${g.slug}`, text: g.title.split(":")[0].split("?")[0] }))} />
+        </div>
 
         <div className="hairline my-10" />
 

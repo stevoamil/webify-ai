@@ -108,9 +108,14 @@ function ProjectCard({ project }: { project: Project }) {
           </div>
         )}
 
-        <MagneticLink href={project.url} target="_blank" rel="noopener noreferrer" variant="ghost" className="w-full sm:w-auto">
-          Visit live site <Arrow />
-        </MagneticLink>
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
+          <MagneticLink href={project.url} target="_blank" rel="noopener noreferrer" variant="ghost" className="w-full sm:w-auto">
+            Visit live site <Arrow />
+          </MagneticLink>
+          <a href={`/work/${project.slug}`} className="text-[13px] text-muted transition-colors hover:text-text">
+            Read the case study →
+          </a>
+        </div>
       </div>
     </SpotlightCard>
   );
