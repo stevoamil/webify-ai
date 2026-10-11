@@ -313,6 +313,244 @@ export const guides: Guide[] = [
     ],
     services: ["website-redesign", "seo-performance", "business-websites"],
   },
+  {
+    slug: "get-more-inquiries-from-your-website",
+    title: "How to Get More Inquiries From Your Business Website",
+    description:
+      "Is your website bringing visitors but few enquiries? Seven practical fixes to turn a business website into a steady source of leads.",
+    published: "2026-10-12",
+    readMinutes: 5,
+    intro: [
+      "Many business websites look good and still bring in almost no enquiries. The problem is rarely the number of visitors. It is that visitors are not sure what to do next, or the next step feels like too much effort.",
+      "These are the changes that most often turn a quiet website into a lead generation tool. None of them needs a full redesign.",
+    ],
+    sections: [
+      {
+        heading: "1. Say what you do in the first screen",
+        paragraphs: [
+          "A visitor decides in a few seconds whether they are in the right place. The top of your home page should answer three questions: what you offer, who it is for, and what to do next.",
+        ],
+      },
+      {
+        heading: "2. Give every page one clear next step",
+        paragraphs: [
+          "Pick the one action you want, such as booking a call, requesting a quote or sending a message, and make it obvious on every page. A page with five competing buttons usually gets fewer clicks than a page with one.",
+        ],
+      },
+      {
+        heading: "3. Keep your contact form short",
+        paragraphs: [
+          "Every extra field loses some people. Ask only for what you need to reply well, usually a name, a way to reach them and a short description of what they want. You can collect the details later in the conversation.",
+        ],
+      },
+      {
+        heading: "4. Make contacting you easy on a phone",
+        bullets: [
+          "A tap-to-call button and a WhatsApp or messaging link for people who prefer them.",
+          "Forms that are comfortable to fill in with a thumb.",
+          "Pages that load quickly on a mobile connection.",
+        ],
+      },
+      {
+        heading: "5. Show proof",
+        paragraphs: [
+          "People hesitate to contact a business they cannot judge. Real project examples, genuine customer quotes and clear descriptions of how you work all reduce that hesitation. Only show proof that is real and that you have permission to use.",
+        ],
+      },
+      {
+        heading: "6. Reply fast",
+        paragraphs: [
+          "A fast reply often decides who gets the job. If you cannot answer every message instantly, an automatic confirmation or an AI assistant that answers common questions and collects details can keep the conversation going until you are free.",
+        ],
+      },
+      {
+        heading: "7. Measure what happens",
+        paragraphs: [
+          "Set up a free analytics tool and look at which pages visitors leave without acting. Fix the weakest page first and compare the results after a few weeks.",
+        ],
+      },
+      {
+        heading: "Want help with this?",
+        paragraphs: [
+          "We build websites designed to turn visitors into enquiries, including AI assistants and automatic follow-up. Tell us about your business through the project form and we will suggest what to improve first.",
+        ],
+      },
+    ],
+    services: ["ai-lead-generation", "business-websites", "ai-integration"],
+  },
+  {
+    slug: "how-ai-websites-help-small-businesses",
+    title: "How AI-Powered Websites Help Small Businesses",
+    description:
+      "What an AI-powered website actually does for a small business, where it helps, where it does not, and how to decide if you need one.",
+    published: "2026-10-12",
+    readMinutes: 5,
+    intro: [
+      "\"AI website\" can mean very different things. For a small business it usually means a normal, well-built website with a few smart features added: an assistant that answers questions, booking that works at any hour, and automation that handles repeated tasks.",
+      "This guide explains what those features do in plain terms, and when they are worth having.",
+    ],
+    sections: [
+      {
+        heading: "What an AI-powered website can do",
+        bullets: [
+          "Answer common questions at any time, such as prices, opening hours and how you work.",
+          "Collect a visitor's details and pass the enquiry to you.",
+          "Let customers book appointments without calling.",
+          "Send automatic confirmations and reminders.",
+          "Show visitors the most relevant information based on what they ask.",
+        ],
+      },
+      {
+        heading: "Who benefits most",
+        paragraphs: [
+          "Businesses that get the same questions repeatedly, rely on appointments, or receive enquiries outside working hours benefit the most. Clinics, salons, garages, restaurants, consultants and home services are common examples.",
+        ],
+      },
+      {
+        heading: "What it does not do",
+        bullets: [
+          "It does not replace a good website. Design, speed and clear content still come first.",
+          "It does not replace you. It handles routine questions and passes real decisions to a person.",
+          "It is only as good as the information it is given, so it must be set up with accurate details about your business and kept up to date.",
+        ],
+      },
+      {
+        heading: "How to decide if you need one",
+        bullets: [
+          "Do you answer the same five questions every week?",
+          "Do you lose enquiries because you reply too slowly or outside working hours?",
+          "Do customers need to book or request something from you?",
+          "Would saving a few hours a week on repeated messages matter to you?",
+        ],
+        paragraphs: [
+          "If you answered yes to two or more, a simple assistant or booking flow is likely worth it. If not, a clear, fast website may be all you need right now.",
+        ],
+      },
+      {
+        heading: "Start small",
+        paragraphs: [
+          "The best approach is to begin with one useful feature, see how customers use it, and add more only when it earns its place. We build AI features into websites this way, so you pay for what helps your business.",
+        ],
+      },
+    ],
+    services: ["ai-integration", "ai-booking-systems", "business-websites"],
+  },
+  {
+    slug: "business-tasks-you-can-automate",
+    title: "10 Business Tasks You Can Automate to Save Time",
+    description:
+      "Ten repetitive business tasks, from enquiry replies to appointment reminders, that can be automated so you spend your time on the work only you can do.",
+    published: "2026-10-12",
+    readMinutes: 5,
+    intro: [
+      "Most small businesses lose hours every week to tasks that follow the same steps each time. Those are the best candidates for automation. This list covers ten common ones and what automating them looks like.",
+    ],
+    sections: [
+      {
+        heading: "The ten tasks",
+        bullets: [
+          "Replying to common questions: an assistant on your website answers prices, hours and how you work.",
+          "Confirming new enquiries: an automatic message tells the customer you received their request.",
+          "Booking appointments: customers choose a time themselves.",
+          "Appointment reminders: automatic messages reduce no-shows.",
+          "Collecting customer details: forms send the information straight to where you keep it.",
+          "Following up on quotes: a reminder prompts you, or sends a message, a few days after you quote.",
+          "Sorting enquiries: messages are tagged by type so urgent ones are not buried.",
+          "Sending invoices and payment reminders from your accounting tool.",
+          "Posting regular updates to your social channels on a schedule.",
+          "Weekly summaries: a report of new enquiries and bookings delivered to your inbox.",
+        ],
+      },
+      {
+        heading: "How to choose where to start",
+        paragraphs: [
+          "Look at the last week and list what you did more than three times. Pick the one that costs the most time or is most often forgotten. Automate that first, check that it works, then move to the next.",
+        ],
+      },
+      {
+        heading: "Keep a human in the loop",
+        paragraphs: [
+          "Automation should handle routine steps and hand real decisions to a person. Always give customers an easy way to reach you directly.",
+        ],
+      },
+      {
+        heading: "Need help setting it up?",
+        paragraphs: [
+          "We connect websites, booking, messaging and AI assistants into simple workflows. Tell us which task takes the most of your time and we will suggest where to begin.",
+        ],
+      },
+    ],
+    services: ["ai-integration", "ai-booking-systems", "ai-lead-generation"],
+  },
+  {
+    slug: "make-your-business-website-visible-on-google",
+    title: "How to Make Your Business Website More Visible on Google",
+    description:
+      "A beginner-friendly guide to getting a business website found on Google: the basics that matter, how long it takes and what to avoid.",
+    published: "2026-10-12",
+    readMinutes: 6,
+    intro: [
+      "Ranking on Google is slow, and no one can guarantee a position. What you can do is make your site easy for Google to understand and genuinely useful to the people searching. These are the foundations.",
+    ],
+    sections: [
+      {
+        heading: "1. Let Google find your site",
+        bullets: [
+          "Add your website to Google Search Console and verify it.",
+          "Submit your sitemap, the list of your pages.",
+          "Ask Google to index your most important pages.",
+        ],
+      },
+      {
+        heading: "2. Give each page one clear topic",
+        paragraphs: [
+          "Each page should be about one thing, with a title and a main heading that say what it is. A page about everything ranks for nothing.",
+        ],
+      },
+      {
+        heading: "3. Write for the questions people ask",
+        paragraphs: [
+          "Think about what your customers would type into Google before they hire you, and answer those questions in plain language on your pages or in guides. Real, helpful answers are what search engines look for.",
+        ],
+      },
+      {
+        heading: "4. Make the site fast and mobile-friendly",
+        paragraphs: [
+          "Most searches happen on phones. Pages that load slowly or are hard to use on a small screen lose visitors, and that affects how Google rates them.",
+        ],
+      },
+      {
+        heading: "5. Build trust",
+        bullets: [
+          "Real reviews and examples of your work.",
+          "Links from other genuine websites, such as clients or partners.",
+          "Consistent business details everywhere you appear online.",
+        ],
+      },
+      {
+        heading: "6. Be patient",
+        paragraphs: [
+          "A new page can take days to be indexed, and weeks or months to settle in a position. Check Search Console regularly, see which searches already show your site, and improve those pages first.",
+        ],
+      },
+      {
+        heading: "What to avoid",
+        bullets: [
+          "Buying links or using directories that exist only to sell links.",
+          "Repeating keywords unnaturally in your text.",
+          "Copying content from other sites.",
+          "Promises of guaranteed number one rankings.",
+        ],
+      },
+      {
+        heading: "Need help?",
+        paragraphs: [
+          "We build sites with the technical SEO basics in place and help with speed and content afterwards. Tell us about your site through the project form and we will point out the biggest gaps.",
+        ],
+      },
+    ],
+    services: ["seo-performance", "business-websites", "website-redesign"],
+  },
 ];
 
 export function getGuide(slug: string) {
