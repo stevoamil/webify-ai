@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { footerLinks, site, type PublicContact } from "@/lib/site";
 import NewsletterForm from "@/components/layout/NewsletterForm";
-import { guides } from "@/lib/guides";
 import { industries } from "@/lib/industries";
 
 const SOCIAL_ICONS = {
@@ -138,7 +137,6 @@ export default function Footer({
               { href: "/industries", text: "All industries" },
             ]}
           />
-          <LinkRow label="Guides" links={guides.map((g) => ({ href: `/guides/${g.slug}`, text: g.title.split(":")[0].split("?")[0] }))} />
         </div>
 
         <div className="hairline my-10" />
