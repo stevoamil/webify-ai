@@ -7,7 +7,6 @@ import { CtaBand, JsonLd, PageHero, RelatedServices, breadcrumbJsonLd } from "@/
 import { getIndustry } from "@/lib/industries";
 import { site } from "@/lib/site";
 import { listProjects } from "@/lib/store/portfolio";
-import { getSeo } from "@/lib/store/seo";
 import { listServices } from "@/lib/store/services";
 
 export const dynamic = "force-dynamic";
@@ -16,23 +15,19 @@ export async function generateMetadata({ params }: PageProps<"/industries/[slug]
   const { slug } = await params;
   const industry = getIndustry(slug);
   if (!industry) return { title: "Industry not found", robots: { index: false, follow: false } };
-  const o = await getSeo(`industry:${industry.slug}`);
-  const title = o.title ?? `${industry.title} — ${site.name}`;
-  const description = o.description ?? industry.description;
   return {
-    title: { absolute: title },
-    description,
-    ...(o.keywords?.length ? { keywords: o.keywords } : {}),
+    title: industry.title,
+    description: industry.description,
     alternates: { canonical: `/industries/${industry.slug}` },
     openGraph: {
       type: "website",
       url: `${site.url}/industries/${industry.slug}`,
       siteName: site.name,
-      title,
-      description,
+      title: `${industry.title} — ${site.name}`,
+      description: industry.description,
       images: [{ url: "/opengraph-image", width: 1200, height: 630 }],
     },
-    twitter: { card: "summary_large_image", title, description },
+    twitter: { card: "summary_large_image", title: `${industry.title} — ${site.name}`, description: industry.description },
   };
 }
 

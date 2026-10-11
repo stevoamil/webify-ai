@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import FloatingWidgets from "@/components/layout/FloatingWidgets";
@@ -13,8 +12,6 @@ import PerformanceSecurity from "@/components/sections/PerformanceSecurity";
 import WhyAndHuman from "@/components/sections/WhyAndHuman";
 import Trust from "@/components/sections/Trust";
 import Contact from "@/components/sections/Contact";
-import { seoOverrideMetadata } from "@/lib/seo";
-import { getSeo } from "@/lib/store/seo";
 import { getSettings } from "@/lib/store/settings";
 import { listServices } from "@/lib/store/services";
 
@@ -22,10 +19,6 @@ import { listServices } from "@/lib/store/services";
 // available at build time (no token yet) and can change via the admin
 // dashboard — render this per-request instead of prerendering it statically.
 export const dynamic = "force-dynamic";
-
-export async function generateMetadata(): Promise<Metadata> {
-  return { alternates: { canonical: "/" }, ...seoOverrideMetadata(await getSeo("home")) };
-}
 
 export default async function Home() {
   const [settings, services] = await Promise.all([getSettings(), listServices()]);
