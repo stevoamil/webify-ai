@@ -1,3 +1,4 @@
+import { revalidateTag, unstable_cache } from "next/cache";
 import { readDoc, writeDoc } from "@/lib/blob";
 import type { SiteSettings } from "@/lib/types";
 import { site } from "@/lib/site";
@@ -14,9 +15,19 @@ function defaultSettings(): SiteSettings {
   };
 }
 
+// Cached for a few minutes (see portfolio.ts); saving settings clears it straight away.
+const cachedSettings = unstable_cache(() => readDoc<SiteSettings>("settings", defaultSettings()), ["settings"], {
+  revalidate: 300,
+  tags: ["settings"],
+});
+
 /** Safe for public pages: falls back to the default contact details if storage is unavailable. */
 export async function getSettings(): Promise<SiteSettings> {
-  return readDoc<SiteSettings>("settings", defaultSettings(), { safe: true });
+  try {
+    return await cachedSettings();
+  } catch {
+    return defaultSettings();
+  }
 }
 
 /** Strict read used before writes, so an outage can never overwrite stored settings. */
@@ -28,6 +39,7 @@ export async function updateSettings(patch: Partial<SiteSettings>): Promise<Site
   const current = await loadSettings();
   const next = { ...current, ...patch };
   await writeDoc("settings", next);
+  revalidateTag("settings", { expire: 0 });
   return next;
 }
 

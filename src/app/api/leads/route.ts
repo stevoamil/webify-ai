@@ -3,6 +3,7 @@ import { z } from "zod";
 import { createLead } from "@/lib/store/leads";
 import { getSettings } from "@/lib/store/settings";
 import { autoReplyToLead, notifyNewLead } from "@/lib/email";
+import type { Lead } from "@/lib/types";
 
 const schema = z.object({
   name: z.string().min(1).max(200),
@@ -21,17 +22,19 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Invalid request." }, { status: 400 });
   }
 
+  // Storage trouble must never cost us the enquiry: if saving fails we still email it.
+  let lead: Lead;
   try {
-    const lead = await createLead({ ...parsed.data, source: "Website form" });
-
-    after(async () => {
-      const settings = await getSettings();
-      await Promise.all([notifyNewLead(lead, settings.email), autoReplyToLead(lead)]);
-    });
-
-    return NextResponse.json({ ok: true, id: lead.id });
+    lead = await createLead({ ...parsed.data, source: "Website form" });
   } catch (err) {
     console.error("Failed to save lead", err);
-    return NextResponse.json({ error: "Failed to save lead." }, { status: 500 });
+    lead = { ...parsed.data, source: "Website form", id: crypto.randomUUID(), status: "new", createdAt: new Date().toISOString() };
   }
+
+  after(async () => {
+    const settings = await getSettings();
+    await Promise.all([notifyNewLead(lead, settings.email), autoReplyToLead(lead)]);
+  });
+
+  return NextResponse.json({ ok: true, id: lead.id });
 }
