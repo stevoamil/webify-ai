@@ -80,7 +80,7 @@ const jsonLd = {
       logo: `${site.url}/icon.png`,
       email: site.contact.email,
       telephone: `+${site.contact.whatsapp}`,
-      sameAs: ["https://www.instagram.com/webify.ai.usa/", "https://www.tiktok.com/@webify.ai.usa", "https://www.producthunt.com/@webiffy"],
+      sameAs: ["https://www.instagram.com/webify.ai.usa/", "https://www.tiktok.com/@webify.ai.usa", "https://www.producthunt.com/@webiffy", "https://www.trustpilot.com/review/webify-ai.com"],
       description: site.description,
     },
     {
