@@ -104,6 +104,38 @@ export default async function GuidePage({ params }: PageProps<"/guides/[slug]">)
                   {p}
                 </p>
               ))}
+              {s.table && (
+                <div className="mt-6 overflow-x-auto rounded-2xl border border-line">
+                  <table className="w-full min-w-[480px] border-collapse text-left text-[14px]">
+                    <thead>
+                      <tr className="bg-white/[0.04]">
+                        {s.table.headers.map((h, i) => (
+                          <th key={i} scope="col" className="px-4 py-3 font-medium text-text">
+                            {h}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {s.table.rows.map((r) => (
+                        <tr key={r[0]} className="border-t border-line">
+                          {r.map((c, i) =>
+                            i === 0 ? (
+                              <th key={i} scope="row" className="px-4 py-3 font-medium text-text">
+                                {c}
+                              </th>
+                            ) : (
+                              <td key={i} className="px-4 py-3 text-muted">
+                                {c}
+                              </td>
+                            ),
+                          )}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
               {s.bullets && (
                 <ul className="space-y-3">
                   {s.bullets.map((b) => (

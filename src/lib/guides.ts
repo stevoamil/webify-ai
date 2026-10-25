@@ -2,6 +2,8 @@ export type GuideSection = {
   heading: string;
   paragraphs?: string[];
   bullets?: string[];
+  /** A small comparison table shown after the paragraphs and bullets. */
+  table?: { headers: string[]; rows: string[][] };
 };
 
 export type Guide = {
@@ -60,6 +62,15 @@ export const guides: Guide[] = [
           "Templates are quicker and cheaper to start with. They suit a business that needs a simple, credible presence and is happy to look similar to others who use the same template.",
           "A custom design costs more but fits the way your business actually works. It matters most when your website is a main way customers find you, book you or buy from you, or when you want to stand out from competitors that all look alike.",
         ],
+        table: {
+          headers: ["", "Template", "Custom design"],
+          rows: [
+            ["Cost to start", "Lower", "Higher"],
+            ["Time to launch", "Usually quicker", "Takes longer"],
+            ["Fit to your business", "Generic, shared look", "Built around how you work"],
+            ["Best for", "A simple, credible presence", "A site customers use to find, book or buy"],
+          ],
+        },
       },
       {
         heading: "Costs that continue after launch",

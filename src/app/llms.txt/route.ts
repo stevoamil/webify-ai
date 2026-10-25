@@ -17,6 +17,7 @@ export function GET() {
     "- How we quote: every project is scoped to the business; there is no public price list. Request a quote through the project form on the home page.",
     "",
     "## Key pages",
+    `- [About](${site.url}/about)`,
     `- [Services](${site.url}/#services)`,
     `- [Portfolio](${site.url}/#work)`,
     `- [Industries](${site.url}/industries)`,

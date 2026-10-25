@@ -135,7 +135,7 @@ export default function Footer({
 
         <div className="flex flex-col items-center justify-between gap-4 text-xs text-dim sm:flex-row">
           <p>© {new Date().getFullYear()} {site.name}. All rights reserved.</p>
-          <p className="flex items-center gap-4"><Link href="/guides" className="transition-colors hover:text-text">Guides</Link><Link href="/industries" className="transition-colors hover:text-text">Industries</Link><Link href="/privacy" className="transition-colors hover:text-text">Privacy Policy</Link><span className="font-mono uppercase tracking-[0.18em]">Designed &amp; built by Webify.ai</span></p>
+          <p className="flex items-center gap-4"><Link href="/about" className="transition-colors hover:text-text">About</Link><Link href="/guides" className="transition-colors hover:text-text">Guides</Link><Link href="/industries" className="transition-colors hover:text-text">Industries</Link><Link href="/privacy" className="transition-colors hover:text-text">Privacy Policy</Link><span className="font-mono uppercase tracking-[0.18em]">Designed &amp; built by Webify.ai</span></p>
         </div>
       </div>
     </footer>

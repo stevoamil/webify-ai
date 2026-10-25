@@ -4,6 +4,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import PageShell from "@/components/layout/PageShell";
 import { CtaBand, JsonLd, PageHero, RelatedServices, breadcrumbJsonLd } from "@/components/sections/PageParts";
+import Faq from "@/components/sections/Faq";
+import { industryFaqs } from "@/lib/industry-faqs";
 import { getIndustry, industrySeoTitles } from "@/lib/industries";
 import { site } from "@/lib/site";
 import { listProjects } from "@/lib/store/portfolio";
@@ -143,6 +145,13 @@ export default async function IndustryPage({ params }: PageProps<"/industries/[s
           </div>
         </section>
       )}
+
+      <Faq
+        items={industryFaqs[industry.slug] ?? []}
+        id="industry-faq"
+        heading={["Common", "questions."]}
+        className="relative px-5 pb-20 md:px-10 md:pb-28"
+      />
 
       <RelatedServices services={related} />
 
