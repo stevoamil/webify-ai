@@ -6,6 +6,7 @@ import PageShell from "@/components/layout/PageShell";
 import { CtaBand, JsonLd, PageHero, RelatedServices, breadcrumbJsonLd } from "@/components/sections/PageParts";
 import Faq from "@/components/sections/Faq";
 import { industryFaqs } from "@/lib/industry-faqs";
+import { industryJourneys } from "@/lib/industry-journeys";
 import { getIndustry, industrySeoTitles } from "@/lib/industries";
 import { site } from "@/lib/site";
 import { listProjects } from "@/lib/store/portfolio";
@@ -43,6 +44,7 @@ export default async function IndustryPage({ params }: PageProps<"/industries/[s
   const projects = industry.projects
     .map((s) => allProjects.find((p) => p.slug === s))
     .filter((p): p is NonNullable<typeof p> => Boolean(p));
+  const journey = industryJourneys[industry.slug];
   const related = industry.services
     .map((id) => allServices.find((s) => s.id === id))
     .filter((s): s is NonNullable<typeof s> => Boolean(s));
@@ -106,6 +108,29 @@ export default async function IndustryPage({ params }: PageProps<"/industries/[s
           </div>
         </div>
       </section>
+
+      {journey && (
+        <section className="px-5 pb-20 md:px-10 md:pb-28" aria-labelledby="journey-title">
+          <div className="mx-auto max-w-5xl">
+            <h2
+              id="journey-title"
+              className="text-chrome mb-4 text-[clamp(1.8rem,3.6vw,2.8rem)] font-medium tracking-[-0.03em]"
+            >
+              How a good {industry.name} website works day to day
+            </h2>
+            <p className="mb-10 max-w-3xl text-[16px] leading-8 text-muted">{journey.challenge}</p>
+            <ol className="grid gap-4 md:grid-cols-2">
+              {journey.steps.map((step, i) => (
+                <li key={step.title} className="glass rounded-2xl p-6">
+                  <span className="mb-3 block font-mono text-xs text-dim">{String(i + 1).padStart(2, "0")}</span>
+                  <h3 className="mb-2 text-[16px] font-medium text-text">{step.title}</h3>
+                  <p className="text-[14px] leading-7 text-muted">{step.text}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+      )}
 
       {projects.length > 0 && (
         <section className="px-5 pb-20 md:px-10 md:pb-28" aria-labelledby="proof-title">
