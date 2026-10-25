@@ -81,9 +81,14 @@ export default function Hero() {
     return () => mq.removeEventListener("change", onChange);
   }, []);
 
+  const lastProgress = useRef(0);
   useMotionValueEvent(scrollYProgress, "change", (p) => {
-    setProgress(p);
+    // The film scrubs from target.current on every scroll event, but the rest of the
+    // hero (copy fades, progress bar) only needs a re-render every ~4px of scrolling.
     target.current = p;
+    if (Math.abs(p - lastProgress.current) < 0.0012 && p > 0.001 && p < 0.999) return;
+    lastProgress.current = p;
+    setProgress(p);
     let c = -1;
     CHAPTERS.forEach((ch, i) => p >= ch.from && (c = i));
     setChapter(c);
@@ -140,12 +145,29 @@ export default function Hero() {
       drawn = idx;
     };
 
+    let inView = true;
     const tick = () => {
+      if (!inView) {
+        raf = 0;
+        return;
+      }
       // Ease toward the scroll target for a silky, weighted scrub.
       current += (target.current * (set.count - 1) - current) * 0.2;
       draw(Math.round(current));
       raf = requestAnimationFrame(tick);
     };
+    // The loop only needs to run while the hero is on (or near) the screen.
+    const watcher =
+      typeof IntersectionObserver === "function" && sectionRef.current
+        ? new IntersectionObserver(
+            ([entry]) => {
+              inView = entry.isIntersecting;
+              if (inView && !raf && !cancelled) raf = requestAnimationFrame(tick);
+            },
+            { rootMargin: "300px 0px" },
+          )
+        : null;
+    if (watcher && sectionRef.current) watcher.observe(sectionRef.current);
 
     // Stream frames with a small concurrency pool. Only the coarse first pass
     // loads straight away; the finer passes wait until the page has loaded and
@@ -204,6 +226,7 @@ export default function Hero() {
 
     return () => {
       cancelled = true;
+      watcher?.disconnect();
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", resize);
       window.removeEventListener("load", armFine);
