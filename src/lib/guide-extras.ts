@@ -15,6 +15,12 @@ export type GuideSource = { label: string; url: string };
 
 /** Authoritative pages that back up what a guide says. Only added where the source genuinely supports the guide. */
 export const guideSources: Record<string, GuideSource[]> = {
+  "ai-chatbot-for-your-website": [
+    { label: "NIST: AI Risk Management Framework (general guidance on using AI responsibly)", url: "https://www.nist.gov/itl/ai-risk-management-framework" },
+  ],
+  "how-ai-websites-help-small-businesses": [
+    { label: "NIST: AI Risk Management Framework (general guidance on using AI responsibly)", url: "https://www.nist.gov/itl/ai-risk-management-framework" },
+  ],
   "website-redesign-seo-checklist": [
     { label: "Google Search Central: Site moves with URL changes", url: "https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes" },
     { label: "Google Search Central: Build and submit a sitemap", url: "https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview" },
@@ -118,5 +124,17 @@ export const guideExtras: Record<string, { quickAnswer: string; faqs: Faq[] }> =
       { q: "What should an enquiry form ask a couple?", a: "A name and a way to reach them, the event type and date, the location and approximate guest count, and a short message about what they have in mind." },
       { q: "Do I have to publish my prices?", a: "No. Describing how each package works helps the right clients self-select and saves time on both sides." },
     ],
+  },
+};
+
+/** Guides that are step-by-step: section index -> step name. Used for HowTo structured data. */
+export const guideHowTo: Record<string, { name: string; steps: Record<number, string> }> = {
+  "website-redesign-seo-checklist": {
+    name: "How to redesign a website without losing Google rankings",
+    steps: { 1: "Record what you have", 2: "Protect what matters during the redesign", 3: "Check everything before you go live", 4: "Monitor after launch" },
+  },
+  "make-your-business-website-visible-on-google": {
+    name: "How to make your business website more visible on Google",
+    steps: { 0: "Let Google find your site", 1: "Give each page one clear topic", 2: "Write for the questions people ask", 3: "Make the site fast and mobile-friendly", 4: "Build trust", 5: "Be patient and check Search Console" },
   },
 };

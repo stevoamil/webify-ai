@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import PageShell from "@/components/layout/PageShell";
 import { CtaBand, JsonLd, PageHero, RelatedServices, breadcrumbJsonLd } from "@/components/sections/PageParts";
 import Faq from "@/components/sections/Faq";
-import { guideExtras, guideSeoTitles, guideSources } from "@/lib/guide-extras";
+import { guideExtras, guideHowTo, guideSeoTitles, guideSources } from "@/lib/guide-extras";
 import { getGuide, guides } from "@/lib/guides";
 import { site } from "@/lib/site";
 import { listServices } from "@/lib/store/services";
@@ -45,6 +45,16 @@ export default async function GuidePage({ params }: PageProps<"/guides/[slug]">)
   const otherGuides = guides.filter((g) => g.slug !== guide.slug);
   const extras = guideExtras[guide.slug];
   const sources = guideSources[guide.slug] ?? [];
+  const howTo = guideHowTo[guide.slug];
+  const howToSteps = howTo
+    ? Object.entries(howTo.steps)
+        .map(([idx, name]) => {
+          const sec = guide.sections[Number(idx)];
+          const text = sec ? [...(sec.paragraphs ?? []), ...(sec.bullets ?? [])].join(" ") : "";
+          return text ? { "@type": "HowToStep", name, text } : null;
+        })
+        .filter((x): x is NonNullable<typeof x> => Boolean(x))
+    : [];
 
   return (
     <PageShell>
@@ -67,6 +77,9 @@ export default async function GuidePage({ params }: PageProps<"/guides/[slug]">)
                 logo: { "@type": "ImageObject", url: `${site.url}/icon.png` },
               },
             },
+            ...(howTo && howToSteps.length > 0
+              ? [{ "@type": "HowTo", name: howTo.name, description: guide.description, step: howToSteps }]
+              : []),
             breadcrumbJsonLd([
               { name: "Home", path: "" },
               { name: "Guides", path: "/guides" },

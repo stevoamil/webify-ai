@@ -32,7 +32,7 @@ export const guides: Guide[] = [
     ],
     sections: [
       {
-        heading: "What you are really paying for",
+        heading: "What are you really paying for?",
         paragraphs: [
           "A website is more than the pages you see. The price covers the thinking and the work behind them:",
         ],
@@ -45,7 +45,7 @@ export const guides: Guide[] = [
         ],
       },
       {
-        heading: "The biggest things that change the price",
+        heading: "What changes the price the most?",
         bullets: [
           "Size: the number of pages and how many of them need their own unique layout.",
           "Custom design or template: a design made around your brand takes more work than adapting a ready-made one.",
@@ -73,7 +73,7 @@ export const guides: Guide[] = [
         },
       },
       {
-        heading: "Costs that continue after launch",
+        heading: "What costs continue after launch?",
         paragraphs: [
           "The build is only part of the picture. Plan for the ongoing costs too:",
         ],
@@ -101,7 +101,7 @@ export const guides: Guide[] = [
         ],
       },
       {
-        heading: "How we quote at Webify.ai",
+        heading: "How does Webify.ai quote?",
         paragraphs: [
           "Every project is scoped to the business behind it. We do not publish a price list, because a landing page and a full website with AI booking are different jobs and a single number would be misleading.",
           "Tell us about your business, what you need and your budget range through the project form, and we will come back with a clear plan and a custom quote.",
@@ -123,7 +123,7 @@ export const guides: Guide[] = [
     ],
     sections: [
       {
-        heading: "What an AI booking system does",
+        heading: "What does an AI booking system do?",
         paragraphs: [
           "At its core it does what a good receptionist does, around the clock:",
         ],
@@ -136,14 +136,22 @@ export const guides: Guide[] = [
         ],
       },
       {
-        heading: "How it differs from a normal booking form",
+        heading: "How is it different from a normal booking form?",
         paragraphs: [
           "A standard form asks the customer to pick a service, a date and a time from fixed lists. That works, but only if the customer already knows exactly what they need.",
           "An AI layer lets people describe what they want in their own words, such as a symptom, an occasion or a rough time of day, and helps them reach the right service and slot. It can also answer a question and then continue to the booking, instead of sending them away to call.",
         ],
+        table: {
+          headers: ["", "Standard booking form", "AI booking layer"],
+          rows: [
+            ["How the customer chooses", "Picks a service, date and time from fixed lists", "Describes what they want in their own words"],
+            ["Questions along the way", "Customer may have to leave and call", "Can answer a question, then continue to the booking"],
+            ["Works best when", "The customer already knows exactly what they need", "The customer is not sure which service or slot fits"],
+          ],
+        },
       },
       {
-        heading: "Which businesses benefit most",
+        heading: "Which businesses benefit most?",
         paragraphs: [
           "Any business that sells time or capacity can benefit. The clearest cases are:",
         ],
@@ -156,7 +164,7 @@ export const guides: Guide[] = [
         ],
       },
       {
-        heading: "What to check before you choose one",
+        heading: "What should you check before choosing one?",
         bullets: [
           "Calendar sync: does it prevent double bookings with your real calendar?",
           "Reminders: can it send them by email or WhatsApp, and can you change the wording?",
@@ -167,13 +175,13 @@ export const guides: Guide[] = [
         ],
       },
       {
-        heading: "When you probably do not need one",
+        heading: "When might you not need one?",
         paragraphs: [
           "If you take only a handful of bookings a week and they all come from people you already know, a simple contact form or a calendar link may be enough. An AI booking system pays off when volume, after-hours enquiries or repeated questions start costing you time or customers.",
         ],
       },
       {
-        heading: "Getting started",
+        heading: "How do you get started?",
         paragraphs: [
           "The best starting point is your current booking process. Write down where customers get stuck, where you lose enquiries and which questions you answer every day. That tells you what the system should handle first. If you would like help mapping it, send us a short description through the project form.",
         ],
@@ -194,7 +202,7 @@ export const guides: Guide[] = [
     ],
     sections: [
       {
-        heading: "What an AI chatbot does well",
+        heading: "What does an AI chatbot do well?",
         bullets: [
           "Answers the questions you hear every day: opening hours, services, locations, how booking works.",
           "Captures leads by asking for contact details and what the visitor needs, then passes them to you.",
@@ -205,7 +213,7 @@ export const guides: Guide[] = [
         ],
       },
       {
-        heading: "What it cannot do",
+        heading: "What can it not do?",
         paragraphs: [
           "Knowing the limits is what keeps a chatbot useful and safe:",
         ],
@@ -215,6 +223,16 @@ export const guides: Guide[] = [
           "It is only as good as the information you give it. Outdated or missing content leads to weak answers.",
           "It will not fix a confusing website. If visitors cannot find things, the chatbot is covering a deeper problem.",
         ],
+        table: {
+          headers: ["Task", "Who should handle it"],
+          rows: [
+            ["Everyday questions: hours, services, locations, how booking works", "The chatbot"],
+            ["Collecting contact details and what the visitor needs", "The chatbot, then passed to you"],
+            ["Booking requests", "The chatbot, handed to your calendar"],
+            ["Prices, promises or policies it has not been given", "A person"],
+            ["Sensitive, legal, medical or safety-critical questions", "A person"],
+          ],
+        },
       },
       {
         heading: "How to set one up well",
@@ -230,7 +248,7 @@ export const guides: Guide[] = [
         ],
       },
       {
-        heading: "Measuring whether it works",
+        heading: "How do you measure whether it works?",
         paragraphs: [
           "Look at practical signals rather than vanity numbers: how many conversations end in an enquiry or booking, how many questions it could not answer, and how many visitors asked to speak to a person. Review these every few weeks and update the knowledge base. A chatbot is not something you set up once and forget.",
         ],
@@ -258,7 +276,7 @@ export const guides: Guide[] = [
     ],
     sections: [
       {
-        heading: "Signs it is time to redesign",
+        heading: "What are the signs it is time to redesign?",
         bullets: [
           "The site looks dated or does not reflect your business any more.",
           "It is slow, or hard to use on a phone.",
@@ -268,7 +286,7 @@ export const guides: Guide[] = [
         ],
       },
       {
-        heading: "Before you start: record what you have",
+        heading: "What should you record before you start?",
         bullets: [
           "Make a list of every page and its web address.",
           "Note which pages bring the most visitors, using Google Search Console or your analytics.",
@@ -278,7 +296,7 @@ export const guides: Guide[] = [
         ],
       },
       {
-        heading: "During the redesign: what to protect",
+        heading: "What should you protect during the redesign?",
         bullets: [
           "Keep your web addresses where you can. If an address must change, redirect the old one to the new one with a permanent redirect.",
           "Keep the content that ranks. Improve it, but do not delete the topics that bring visitors.",
@@ -289,7 +307,7 @@ export const guides: Guide[] = [
         ],
       },
       {
-        heading: "Before you go live",
+        heading: "What should you check before you go live?",
         bullets: [
           "Test the redirects from every old address to its new one.",
           "Check that no leftover setting tells search engines to ignore the site. Test versions are often set to hidden, and forgetting to switch that off is a common and costly mistake.",
@@ -298,7 +316,7 @@ export const guides: Guide[] = [
         ],
       },
       {
-        heading: "After launch",
+        heading: "What should you do after launch?",
         bullets: [
           "Submit the new sitemap in Google Search Console.",
           "Watch for pages Google cannot find and fix them quickly.",
@@ -307,7 +325,7 @@ export const guides: Guide[] = [
         ],
       },
       {
-        heading: "Mistakes to avoid",
+        heading: "What mistakes should you avoid?",
         bullets: [
           "Changing your domain name without redirects.",
           "Deleting old pages that still bring visitors.",
@@ -337,25 +355,25 @@ export const guides: Guide[] = [
     ],
     sections: [
       {
-        heading: "1. Say what you do in the first screen",
+        heading: "1. How do you show what you do in the first screen?",
         paragraphs: [
           "A visitor decides in a few seconds whether they are in the right place. The top of your home page should answer three questions: what you offer, who it is for, and what to do next.",
         ],
       },
       {
-        heading: "2. Give every page one clear next step",
+        heading: "2. Why give every page one clear next step?",
         paragraphs: [
           "Pick the one action you want, such as booking a call, requesting a quote or sending a message, and make it obvious on every page. A page with five competing buttons usually gets fewer clicks than a page with one.",
         ],
       },
       {
-        heading: "3. Keep your contact form short",
+        heading: "3. How long should your contact form be?",
         paragraphs: [
           "Every extra field loses some people. Ask only for what you need to reply well, usually a name, a way to reach them and a short description of what they want. You can collect the details later in the conversation.",
         ],
       },
       {
-        heading: "4. Make contacting you easy on a phone",
+        heading: "4. How do you make contacting you easy on a phone?",
         bullets: [
           "A tap-to-call button and a WhatsApp or messaging link for people who prefer them.",
           "Forms that are comfortable to fill in with a thumb.",
@@ -363,19 +381,19 @@ export const guides: Guide[] = [
         ],
       },
       {
-        heading: "5. Show proof",
+        heading: "5. What proof should you show?",
         paragraphs: [
           "People hesitate to contact a business they cannot judge. Real project examples, genuine customer quotes and clear descriptions of how you work all reduce that hesitation. Only show proof that is real and that you have permission to use.",
         ],
       },
       {
-        heading: "6. Reply fast",
+        heading: "6. How fast should you reply?",
         paragraphs: [
           "A fast reply often decides who gets the job. If you cannot answer every message instantly, an automatic confirmation or an AI assistant that answers common questions and collects details can keep the conversation going until you are free.",
         ],
       },
       {
-        heading: "7. Measure what happens",
+        heading: "7. How do you measure what happens?",
         paragraphs: [
           "Set up a free analytics tool and look at which pages visitors leave without acting. Fix the weakest page first and compare the results after a few weeks.",
         ],
@@ -402,7 +420,7 @@ export const guides: Guide[] = [
     ],
     sections: [
       {
-        heading: "What an AI-powered website can do",
+        heading: "What can an AI-powered website do?",
         bullets: [
           "Answer common questions at any time, such as prices, opening hours and how you work.",
           "Collect a visitor's details and pass the enquiry to you.",
@@ -418,7 +436,7 @@ export const guides: Guide[] = [
         ],
       },
       {
-        heading: "What it does not do",
+        heading: "What does it not do?",
         bullets: [
           "It does not replace a good website. Design, speed and clear content still come first.",
           "It does not replace you. It handles routine questions and passes real decisions to a person.",
@@ -438,7 +456,7 @@ export const guides: Guide[] = [
         ],
       },
       {
-        heading: "Start small",
+        heading: "Why start small?",
         paragraphs: [
           "The best approach is to begin with one useful feature, see how customers use it, and add more only when it earns its place. We build AI features into websites this way, so you pay for what helps your business.",
         ],
@@ -458,7 +476,7 @@ export const guides: Guide[] = [
     ],
     sections: [
       {
-        heading: "The ten tasks",
+        heading: "Which ten tasks can you automate?",
         bullets: [
           "Replying to common questions: an assistant on your website answers prices, hours and how you work.",
           "Confirming new enquiries: an automatic message tells the customer you received their request.",
@@ -479,7 +497,7 @@ export const guides: Guide[] = [
         ],
       },
       {
-        heading: "Keep a human in the loop",
+        heading: "Why keep a human in the loop?",
         paragraphs: [
           "Automation should handle routine steps and hand real decisions to a person. Always give customers an easy way to reach you directly.",
         ],
@@ -505,7 +523,7 @@ export const guides: Guide[] = [
     ],
     sections: [
       {
-        heading: "1. Let Google find your site",
+        heading: "1. How do you let Google find your site?",
         bullets: [
           "Add your website to Google Search Console and verify it.",
           "Submit your sitemap, the list of your pages.",
@@ -513,25 +531,25 @@ export const guides: Guide[] = [
         ],
       },
       {
-        heading: "2. Give each page one clear topic",
+        heading: "2. Why give each page one clear topic?",
         paragraphs: [
           "Each page should be about one thing, with a title and a main heading that say what it is. A page about everything ranks for nothing.",
         ],
       },
       {
-        heading: "3. Write for the questions people ask",
+        heading: "3. How do you write for the questions people ask?",
         paragraphs: [
           "Think about what your customers would type into Google before they hire you, and answer those questions in plain language on your pages or in guides. Real, helpful answers are what search engines look for.",
         ],
       },
       {
-        heading: "4. Make the site fast and mobile-friendly",
+        heading: "4. How fast and mobile-friendly should the site be?",
         paragraphs: [
           "Most searches happen on phones. Pages that load slowly or are hard to use on a small screen lose visitors, and that affects how Google rates them.",
         ],
       },
       {
-        heading: "5. Build trust",
+        heading: "5. How do you build trust?",
         bullets: [
           "Real reviews and examples of your work.",
           "Links from other genuine websites, such as clients or partners.",
@@ -539,13 +557,13 @@ export const guides: Guide[] = [
         ],
       },
       {
-        heading: "6. Be patient",
+        heading: "6. How long does it take?",
         paragraphs: [
           "A new page can take days to be indexed, and weeks or months to settle in a position. Check Search Console regularly, see which searches already show your site, and improve those pages first.",
         ],
       },
       {
-        heading: "What to avoid",
+        heading: "What should you avoid?",
         bullets: [
           "Buying links or using directories that exist only to sell links.",
           "Repeating keywords unnaturally in your text.",
@@ -575,19 +593,19 @@ export const guides: Guide[] = [
     ],
     sections: [
       {
-        heading: "1. A portfolio that shows your style",
+        heading: "1. What should your portfolio show?",
         paragraphs: [
           "Lead with your best, most recent events. Use large, fast-loading photos and short captions about the event. A few excellent galleries do more than dozens of average ones.",
         ],
       },
       {
-        heading: "2. Clear services and packages",
+        heading: "2. How should you present services and packages?",
         paragraphs: [
           "Explain what you do, from full planning to day-of coordination. You do not have to publish prices, but describing how each package works helps the right clients self-select and saves both sides time.",
         ],
       },
       {
-        heading: "3. An enquiry form that asks the right questions",
+        heading: "3. What should the enquiry form ask?",
         bullets: [
           "Name and a way to reach them.",
           "Event type and date, or a date range.",
@@ -597,25 +615,25 @@ export const guides: Guide[] = [
         ],
       },
       {
-        heading: "4. Fast replies, even out of hours",
+        heading: "4. How can you reply fast, even out of hours?",
         paragraphs: [
           "Couples often contact several planners at once and reply to the first one who answers well. An automatic confirmation, or an AI assistant that answers common questions and collects the details, keeps the conversation going until you can respond personally.",
         ],
       },
       {
-        heading: "5. Testimonials and real events",
+        heading: "5. Why show testimonials and real events?",
         paragraphs: [
           "Genuine words from past clients build trust quickly. Only show testimonials you have permission to publish.",
         ],
       },
       {
-        heading: "6. Works well on phones",
+        heading: "6. Does it work well on phones?",
         paragraphs: [
           "Most couples browse on their phones, often while sharing ideas with a partner. Galleries, forms and contact buttons all need to work comfortably on a small screen.",
         ],
       },
       {
-        heading: "7. Easy to find",
+        heading: "7. How do people find you?",
         paragraphs: [
           "Give each service and location its own page with a clear title, so people searching for what you offer can find it. Add your real business details and keep them consistent everywhere online.",
         ],
