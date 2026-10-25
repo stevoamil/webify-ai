@@ -15,6 +15,10 @@ export type Project = {
   features: string[];
   ai: string[];
   accent: string;
+  /** Optional: where the project stands, for example "Live, still in development". */
+  status?: string;
+  /** Optional: one takeaway from the project, in our own words. */
+  lesson?: string;
 };
 
 export const projects: Project[] = [
@@ -76,7 +80,7 @@ export const projects: Project[] = [
   {
     slug: "motormania",
     name: "Motor Mania Club",
-    client: "Motor Mania Club",
+    client: "Personal project (Webify.ai)",
     industry: "Automotive Marketplace",
     url: "https://www.motormaniaclub.com/",
     domain: "motormaniaclub.com",
@@ -84,18 +88,21 @@ export const projects: Project[] = [
     imageAlt: "Motor Mania Club homepage with a car photo contest and live vote counts",
     altImage: "/work/motormania-alt.webp",
     altImageAlt: "Motor Mania Club shop and dealer deals sections",
-    summary: "An automotive marketplace and community hub built around cars.",
+    summary: "An automotive marketplace and community platform, built as a Webify.ai personal project.",
     description:
-      "A community-driven automotive platform: vehicles for sale and rent, a parts and gear marketplace, a directory of garages and services, featured dealers, and a running car photo contest with real cash prizes and a live countdown.",
+      "Motor Mania Club is our own automotive platform. It is designed to connect car enthusiasts with automotive businesses, mainly in the U.S. market: car owners, dealerships, car rental companies, auto parts suppliers, repair shops, garage equipment providers and motorsports businesses. It brings vehicle listings, business profiles and promotional opportunities into one place, so people can discover automotive products and services and businesses can increase their online visibility. The site is live and still in development.",
     features: [
-      "Vehicles for sale and rent marketplace",
-      "Parts, gear and garage equipment store",
-      "Garages & services directory",
-      "Featured dealer showcase",
-      "Car photo contest with live vote counts and prizes",
-      "Multi-language and multi-country support",
+      "Car marketplace for browsing vehicles for sale",
+      "Automotive business directory: dealerships, car rental companies, garages, parts suppliers and more",
+      "Membership plans: free listings, with paid plans for different business categories proposed",
+      "Advertising packages to help automotive businesses reach more customers",
+      "Admin pages for managing car categories and website data",
+      "Car photo contest with live vote counts",
     ],
     ai: [],
+    status: "Live, still in development",
+    lesson:
+      "An automotive platform should do more than display listings: it should make it easier for customers to find what they need while giving businesses practical ways to improve their online visibility.",
     accent: "#e0453b",
   },
   {

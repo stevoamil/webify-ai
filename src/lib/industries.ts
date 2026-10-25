@@ -131,7 +131,7 @@ export const industries: Industry[] = [
       "Six curated collections, product grids for new arrivals, best sellers and limited editions, and a flash-sale section.",
       "Artisan profiles with country, rating and sales, plus cart, wishlist, search and account. These were built for Arthreesanat.",
       "An AI shopping assistant that suggests gifts and crafts.",
-      "A marketplace for vehicles, parts and garages with a dealer showcase and a community photo contest, built for Motor Mania Club.",
+      "A marketplace for vehicles, parts and garages with a dealer showcase and a community photo contest, built for our own Motor Mania Club project.",
     ],
     projects: ["arthreesanat", "motormania"],
     services: ["e-commerce", "ai-integration", "seo-performance"],

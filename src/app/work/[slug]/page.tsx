@@ -114,6 +114,12 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
                 <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-dim">Industry</dt>
                 <dd className="mt-1 text-text/90">{project.industry}</dd>
               </div>
+              {project.status && (
+                <div>
+                  <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-dim">Status</dt>
+                  <dd className="mt-1 text-text/90">{project.status}</dd>
+                </div>
+              )}
             </dl>
             {showLiveLink && (
               <a
@@ -156,6 +162,17 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
                 </li>
               ))}
             </ul>
+          </div>
+        </section>
+      )}
+
+      {project.lesson && (
+        <section className="px-5 pb-20 md:px-10 md:pb-28" aria-labelledby="lesson-title">
+          <div className="glass mx-auto max-w-5xl rounded-3xl p-8">
+            <h2 id="lesson-title" className="eyebrow mb-4">
+              What we learned
+            </h2>
+            <p className="text-[16px] leading-8 text-text/90">{project.lesson}</p>
           </div>
         </section>
       )}
