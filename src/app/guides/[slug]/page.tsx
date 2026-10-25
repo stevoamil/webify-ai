@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import PageShell from "@/components/layout/PageShell";
 import { CtaBand, JsonLd, PageHero, RelatedServices, breadcrumbJsonLd } from "@/components/sections/PageParts";
 import Faq from "@/components/sections/Faq";
-import { guideExtras, guideSeoTitles } from "@/lib/guide-extras";
+import { guideExtras, guideSeoTitles, guideSources } from "@/lib/guide-extras";
 import { getGuide, guides } from "@/lib/guides";
 import { site } from "@/lib/site";
 import { listServices } from "@/lib/store/services";
@@ -44,6 +44,7 @@ export default async function GuidePage({ params }: PageProps<"/guides/[slug]">)
     .filter((s): s is NonNullable<typeof s> => Boolean(s));
   const otherGuides = guides.filter((g) => g.slug !== guide.slug);
   const extras = guideExtras[guide.slug];
+  const sources = guideSources[guide.slug] ?? [];
 
   return (
     <PageShell>
@@ -58,6 +59,7 @@ export default async function GuidePage({ params }: PageProps<"/guides/[slug]">)
               dateModified: guide.published,
               inLanguage: "en",
               mainEntityOfPage: `${site.url}/guides/${guide.slug}`,
+              ...(sources.length > 0 ? { citation: sources.map((src) => src.url) } : {}),
               author: { "@type": "Organization", name: site.name, url: site.url },
               publisher: {
                 "@type": "Organization",
@@ -154,6 +156,23 @@ export default async function GuidePage({ params }: PageProps<"/guides/[slug]">)
               )}
             </section>
           ))}
+
+          {sources.length > 0 && (
+            <section className="mt-14" aria-labelledby="sources-title">
+              <h2 id="sources-title" className="text-chrome mb-5 text-[clamp(1.6rem,3vw,2.2rem)] font-medium leading-tight tracking-[-0.03em]">
+                Sources and further reading
+              </h2>
+              <ul className="space-y-3">
+                {sources.map((src) => (
+                  <li key={src.url} className="text-[15px] leading-7 text-text/85">
+                    <a href={src.url} target="_blank" rel="noopener noreferrer" className="text-ice underline-offset-2 hover:underline">
+                      {src.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
         </div>
       </article>
 

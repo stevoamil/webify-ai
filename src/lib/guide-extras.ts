@@ -11,6 +11,31 @@ export const guideSeoTitles: Record<string, string> = {
   "website-features-for-wedding-planners": "Website Features for Wedding & Event Planners",
 };
 
+export type GuideSource = { label: string; url: string };
+
+/** Authoritative pages that back up what a guide says. Only added where the source genuinely supports the guide. */
+export const guideSources: Record<string, GuideSource[]> = {
+  "website-redesign-seo-checklist": [
+    { label: "Google Search Central: Site moves with URL changes", url: "https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes" },
+    { label: "Google Search Central: Build and submit a sitemap", url: "https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview" },
+    { label: "Google Search Central: SEO Starter Guide", url: "https://developers.google.com/search/docs/fundamentals/seo-starter-guide" },
+  ],
+  "make-your-business-website-visible-on-google": [
+    { label: "Google Search Central: SEO Starter Guide", url: "https://developers.google.com/search/docs/fundamentals/seo-starter-guide" },
+    { label: "Google Search Central: Creating helpful, reliable, people-first content", url: "https://developers.google.com/search/docs/fundamentals/creating-helpful-content" },
+    { label: "Google Search Central: Build and submit a sitemap", url: "https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview" },
+    { label: "Google Search Central: Spam policies for Google web search", url: "https://developers.google.com/search/docs/essentials/spam-policies" },
+  ],
+  "get-more-inquiries-from-your-website": [
+    { label: "web.dev: Web Vitals (how page speed is measured)", url: "https://web.dev/articles/vitals" },
+    { label: "Google Search Central: Creating helpful, reliable, people-first content", url: "https://developers.google.com/search/docs/fundamentals/creating-helpful-content" },
+  ],
+  "website-features-for-wedding-planners": [
+    { label: "Google Search Central: SEO Starter Guide", url: "https://developers.google.com/search/docs/fundamentals/seo-starter-guide" },
+    { label: "Google Search Central: Influencing your title links", url: "https://developers.google.com/search/docs/appearance/title-link" },
+  ],
+};
+
 /** A short direct answer shown at the top of each guide, plus common questions with FAQ markup. */
 export const guideExtras: Record<string, { quickAnswer: string; faqs: Faq[] }> = {
   "how-much-does-a-business-website-cost": {
