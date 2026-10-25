@@ -25,7 +25,6 @@ export default function TrustpilotWidget() {
         data-businessunit-id="6ade3f7c612465cdc9f197b2"
         data-style-height="52px"
         data-style-width="100%"
-        data-theme="dark"
       >
         <a href="https://www.trustpilot.com/review/webify-ai.com" target="_blank" rel="noopener noreferrer" className="text-sm text-muted hover:text-text">
           Review Webify.ai on Trustpilot

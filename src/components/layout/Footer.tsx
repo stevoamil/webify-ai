@@ -132,7 +132,7 @@ export default function Footer({
           <LinkRow label="Services" links={services.map((s) => ({ href: `/services/${s.id}`, text: s.title }))} />
         </div>
 
-        <div className="mt-8 max-w-md">
+        <div className="mt-8 w-full max-w-xs overflow-hidden rounded-xl bg-white p-1">
           <TrustpilotWidget />
         </div>
 
