@@ -114,6 +114,12 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
                 <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-dim">Industry</dt>
                 <dd className="mt-1 text-text/90">{project.industry}</dd>
               </div>
+              {project.tech && project.tech.length > 0 && (
+                <div>
+                  <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-dim">Built with</dt>
+                  <dd className="mt-1 text-text/90">{project.tech.join(", ")}</dd>
+                </div>
+              )}
               {project.status && (
                 <div>
                   <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-dim">Status</dt>

@@ -19,6 +19,8 @@ export type Project = {
   status?: string;
   /** Optional: one takeaway from the project, in our own words. */
   lesson?: string;
+  /** Optional: technology confirmed from the live site's own page code. */
+  tech?: string[];
 };
 
 export const projects: Project[] = [
@@ -46,6 +48,7 @@ export const projects: Project[] = [
       "French / English language switch",
     ],
     ai: ["“Ask Mona’s Assistant” AI concierge for visitor questions"],
+    tech: ["Next.js", "React"],
     accent: "#d8c3a0",
   },
   {
@@ -75,6 +78,7 @@ export const projects: Project[] = [
       "AI-assisted, lifestyle-aware property search",
       "AI assistant for common buyer questions",
     ],
+    tech: ["Next.js", "React"],
     accent: "#8fd6e8",
   },
   {
@@ -128,6 +132,7 @@ export const projects: Project[] = [
       "Shipping, payments and authenticity trust strip",
     ],
     ai: ["AI Shopping Assistant for gift ideas and craft recommendations"],
+    tech: ["Next.js", "React"],
     accent: "#c8956d",
   },
   {
@@ -156,6 +161,7 @@ export const projects: Project[] = [
       "Elite AI Advisor chat with voice input and language switch",
       "Sound, dashboard-photo and visual inspection screening",
     ],
+    tech: ["Next.js", "React"],
     accent: "#1f7bff",
   },
   {
@@ -181,6 +187,7 @@ export const projects: Project[] = [
       "WhatsApp contact button",
     ],
     ai: [],
+    tech: ["Next.js", "React"],
     accent: "#c9a96e",
   },
   {
@@ -209,6 +216,7 @@ export const projects: Project[] = [
       "AI Service Advisor chat in English and Arabic with WhatsApp handoff",
       "AI photo diagnostics for dashboard lights, leaks and damage",
     ],
+    tech: ["Next.js", "React"],
     accent: "#8a8f98",
   },
 ];
