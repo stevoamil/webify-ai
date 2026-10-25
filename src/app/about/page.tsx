@@ -13,14 +13,14 @@ const description =
   "Webify.ai is a website agency that builds AI websites: custom design, AI chatbots, 24/7 booking and automation. How we work, what we have built and how to reach us.";
 
 export const metadata: Metadata = {
-  title: "About Webify.ai: AI Website Agency",
+  title: "About Our AI Website Agency",
   description,
   alternates: { canonical: "/about" },
   openGraph: {
     type: "website",
     url: `${site.url}/about`,
     siteName: site.name,
-    title: "About Webify.ai: AI Website Agency",
+    title: "About Our AI Website Agency",
     description,
     images: [{ url: "/opengraph-image", width: 1200, height: 630 }],
   },
