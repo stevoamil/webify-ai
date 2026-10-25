@@ -303,3 +303,15 @@ dialog::backdrop {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Below-the-fold sections skip layout and paint work until they are near the screen. */
+#impact,
+#security,
+#pricing,
+#why,
+#trust,
+#faq,
+#contact {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
