@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import PageShell from "@/components/layout/PageShell";
-import { PageHero } from "@/components/sections/PageParts";
+import { JsonLd, PageHero, breadcrumbJsonLd } from "@/components/sections/PageParts";
 import { getSettings } from "@/lib/store/settings";
 
 export const dynamic = "force-dynamic";
@@ -93,6 +93,7 @@ export default async function PrivacyPage() {
   const settings = await getSettings();
   return (
     <PageShell>
+      <JsonLd data={{ "@graph": [breadcrumbJsonLd([{ name: "Home", path: "" }, { name: "Privacy Policy", path: "/privacy" }])] }} />
       <PageHero
         crumbs={[{ label: "Home", href: "/" }, { label: "Privacy Policy" }]}
         eyebrow="Legal"

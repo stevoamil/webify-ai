@@ -5,7 +5,10 @@ import FloatingWidgets from "@/components/layout/FloatingWidgets";
 import { Arrow, MagneticLink } from "@/components/ui/primitives";
 import Faq from "@/components/sections/Faq";
 import { serviceFaqs } from "@/lib/faq";
+import { guides } from "@/lib/guides";
+import { industries } from "@/lib/industries";
 import { processSteps } from "@/lib/process";
+import { serviceDetails } from "@/lib/service-details";
 import { site, type PublicContact } from "@/lib/site";
 import type { ServiceCard } from "@/lib/services-data";
 
@@ -19,6 +22,9 @@ export default function ServicePageView({
   contact: PublicContact;
 }) {
   const others = services.filter((s) => s.id !== service.id);
+  const detail = serviceDetails[service.id];
+  const relatedGuides = guides.filter((g) => g.services.includes(service.id));
+  const relatedIndustries = industries.filter((i) => i.services.includes(service.id));
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -113,6 +119,59 @@ export default function ServicePageView({
           </div>
         </section>
 
+        {detail && (
+          <>
+            <section className="px-5 pb-20 md:px-10 md:pb-28" aria-labelledby="how-title">
+              <div className="mx-auto max-w-5xl">
+                <h2 id="how-title" className="text-chrome mb-10 text-[clamp(1.8rem,3.6vw,2.8rem)] font-medium tracking-[-0.03em]">
+                  How {service.title} works
+                </h2>
+                <ol className="grid gap-4 md:grid-cols-2">
+                  {detail.howItWorks.map((step, i) => (
+                    <li key={step.title} className="glass rounded-2xl p-6">
+                      <span className="mb-3 block font-mono text-xs text-dim">{String(i + 1).padStart(2, "0")}</span>
+                      <h3 className="mb-2 text-[16px] font-medium text-text">{step.title}</h3>
+                      <p className="text-[14px] leading-7 text-muted">{step.text}</p>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            </section>
+
+            <section className="px-5 pb-20 md:px-10 md:pb-28" aria-label="Use cases and good to know">
+              <div className="mx-auto grid max-w-5xl gap-6 md:grid-cols-2">
+                <div className="glass rounded-3xl p-8">
+                  <h2 className="eyebrow mb-6">Where it helps</h2>
+                  <ul className="space-y-4">
+                    {detail.useCases.map((u) => (
+                      <li key={u} className="flex items-start gap-3 text-[15px] leading-6 text-text/90">
+                        <svg viewBox="0 0 20 20" className="mt-1 h-4 w-4 flex-none fill-none stroke-ice [stroke-width:2]" aria-hidden>
+                          <path d="M4 10.5l3.5 3.5L16 6" />
+                        </svg>
+                        {u}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="glass rounded-3xl p-8">
+                  <h2 className="eyebrow mb-6">Good to know</h2>
+                  <ul className="space-y-4">
+                    {detail.goodToKnow.map((g) => (
+                      <li key={g} className="flex items-start gap-3 text-[15px] leading-6 text-text/90">
+                        <svg viewBox="0 0 20 20" className="mt-1 h-4 w-4 flex-none fill-none stroke-ice [stroke-width:2]" aria-hidden>
+                          <path d="M10 6v5M10 14h.01" />
+                          <circle cx="10" cy="10" r="7.5" />
+                        </svg>
+                        {g}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </section>
+          </>
+        )}
+
         <section className="px-5 pb-20 md:px-10 md:pb-28" aria-labelledby="deliver-title">
           <div className="mx-auto max-w-5xl">
             <h2 id="deliver-title" className="text-chrome mb-10 text-[clamp(1.8rem,3.6vw,2.8rem)] font-medium tracking-[-0.03em]">
@@ -141,6 +200,41 @@ export default function ServicePageView({
           className="relative px-5 pb-20 md:px-10 md:pb-28"
 
         />
+
+        {(relatedGuides.length > 0 || relatedIndustries.length > 0) && (
+          <section className="px-5 pb-20 md:px-10 md:pb-28" aria-label="Related guides and industries">
+            <div className="mx-auto grid max-w-5xl gap-6 md:grid-cols-2">
+              {relatedGuides.length > 0 && (
+                <div className="glass rounded-3xl p-8">
+                  <h2 className="eyebrow mb-6">Guides about this</h2>
+                  <ul className="space-y-3">
+                    {relatedGuides.map((g) => (
+                      <li key={g.slug}>
+                        <Link href={`/guides/${g.slug}`} className="text-[15px] leading-6 text-ice underline-offset-2 hover:underline">
+                          {g.title}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {relatedIndustries.length > 0 && (
+                <div className="glass rounded-3xl p-8">
+                  <h2 className="eyebrow mb-6">Industries that use it</h2>
+                  <ul className="space-y-3">
+                    {relatedIndustries.map((i) => (
+                      <li key={i.slug}>
+                        <Link href={`/industries/${i.slug}`} className="text-[15px] leading-6 text-ice underline-offset-2 hover:underline">
+                          {i.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          </section>
+        )}
 
         {others.length > 0 && (
           <section className="px-5 pb-20 md:px-10 md:pb-28" aria-labelledby="more-title">
