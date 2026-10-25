@@ -69,6 +69,18 @@ export default async function AboutPage() {
             <p className="text-[15px] leading-7 text-text/90">
               We work remotely with businesses worldwide, and have built websites in English and Arabic.
             </p>
+            <p className="mt-4 text-[15px] leading-7 text-text/90">
+              Everything on this site, from the projects to the guides, is written and maintained by the Webify.ai team.
+              You can also find us on{" "}
+              <a href="https://www.instagram.com/webify.ai.usa/" target="_blank" rel="noopener noreferrer" className="text-ice underline-offset-2 hover:underline">
+                Instagram
+              </a>{" "}
+              and{" "}
+              <a href="https://www.tiktok.com/@webify.ai.usa" target="_blank" rel="noopener noreferrer" className="text-ice underline-offset-2 hover:underline">
+                TikTok
+              </a>
+              .
+            </p>
           </div>
           <div className="glass rounded-3xl p-8">
             <h2 className="eyebrow mb-6">How we work</h2>
