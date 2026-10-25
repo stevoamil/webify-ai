@@ -161,6 +161,8 @@ export const projects: Project[] = [
       "Elite AI Advisor chat with voice input and language switch",
       "Sound, dashboard-photo and visual inspection screening",
     ],
+    lesson:
+      "A professional automotive website should build trust, showcase services clearly, and make it easy for customers to contact the workshop.",
     tech: ["Next.js", "React"],
     accent: "#1f7bff",
   },
