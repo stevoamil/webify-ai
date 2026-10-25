@@ -7,7 +7,7 @@ import { guides } from "@/lib/guides";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Guides",
+  title: "Website & AI Guides for Business Owners",
   description:
     "Plain-language guides on website costs, AI booking systems, AI chatbots and redesigning a website without losing your Google rankings.",
   alternates: { canonical: "/guides" },

@@ -363,6 +363,24 @@ export const industries: Industry[] = [
   },
 ];
 
+/** Short page titles for search results (the on-page heading stays the full title). */
+export const industrySeoTitles: Record<string, string> = {
+  "automotive-garages-and-car-services": "Website for Garages & Car Businesses",
+  "real-estate": "Website for Real Estate Agencies",
+  "events-and-weddings": "Website for Event & Wedding Planners",
+  "music-schools-and-education": "Website for Music Schools & Tutors",
+  "online-stores-and-marketplaces": "Website for Online Stores & Marketplaces",
+  "restaurants-and-cafes": "Website for Restaurants & Cafés",
+  "clinics-and-dentists": "Website for Clinics & Dentists",
+  "salons-and-barbers": "Website for Salons & Barbers",
+  "law-firms-and-consultants": "Website for Law Firms & Consultants",
+  "gyms-and-fitness": "Website for Gyms & Fitness Studios",
+  "hotels-and-guesthouses": "Website for Hotels & Guesthouses",
+  "contractors-and-home-services": "Website for Contractors & Home Services",
+  "photographers-and-creatives": "Website for Photographers & Creatives",
+  "recruitment-and-staffing": "Website for Recruitment Agencies",
+};
+
 export function getIndustry(slug: string) {
   return industries.find((i) => i.slug === slug);
 }

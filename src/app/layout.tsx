@@ -79,6 +79,8 @@ const jsonLd = {
       url: site.url,
       logo: `${site.url}/icon.png`,
       email: site.contact.email,
+      telephone: `+${site.contact.whatsapp}`,
+      sameAs: ["https://www.instagram.com/webify.ai.usa/"],
       description: site.description,
     },
     {

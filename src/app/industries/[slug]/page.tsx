@@ -4,7 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import PageShell from "@/components/layout/PageShell";
 import { CtaBand, JsonLd, PageHero, RelatedServices, breadcrumbJsonLd } from "@/components/sections/PageParts";
-import { getIndustry } from "@/lib/industries";
+import { getIndustry, industrySeoTitles } from "@/lib/industries";
 import { site } from "@/lib/site";
 import { listProjects } from "@/lib/store/portfolio";
 import { listServices } from "@/lib/store/services";
@@ -15,19 +15,20 @@ export async function generateMetadata({ params }: PageProps<"/industries/[slug]
   const { slug } = await params;
   const industry = getIndustry(slug);
   if (!industry) return { title: "Industry not found", robots: { index: false, follow: false } };
+  const seoTitle = industrySeoTitles[industry.slug] ?? industry.title;
   return {
-    title: industry.title,
+    title: seoTitle,
     description: industry.description,
     alternates: { canonical: `/industries/${industry.slug}` },
     openGraph: {
       type: "website",
       url: `${site.url}/industries/${industry.slug}`,
       siteName: site.name,
-      title: `${industry.title} — ${site.name}`,
+      title: `${seoTitle} — ${site.name}`,
       description: industry.description,
       images: [{ url: "/opengraph-image", width: 1200, height: 630 }],
     },
-    twitter: { card: "summary_large_image", title: `${industry.title} — ${site.name}`, description: industry.description },
+    twitter: { card: "summary_large_image", title: `${seoTitle} — ${site.name}`, description: industry.description },
   };
 }
 

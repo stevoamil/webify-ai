@@ -7,7 +7,7 @@ import { industries } from "@/lib/industries";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Industries",
+  title: "Website Design for Every Industry",
   description:
     "Websites with AI, booking and automation for garages, real estate, restaurants, clinics, salons, law firms, gyms, hotels, contractors and more.",
   alternates: { canonical: "/industries" },

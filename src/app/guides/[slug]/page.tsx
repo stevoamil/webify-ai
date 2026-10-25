@@ -3,6 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import PageShell from "@/components/layout/PageShell";
 import { CtaBand, JsonLd, PageHero, RelatedServices, breadcrumbJsonLd } from "@/components/sections/PageParts";
+import Faq from "@/components/sections/Faq";
+import { guideExtras, guideSeoTitles } from "@/lib/guide-extras";
 import { getGuide, guides } from "@/lib/guides";
 import { site } from "@/lib/site";
 import { listServices } from "@/lib/store/services";
@@ -13,20 +15,21 @@ export async function generateMetadata({ params }: PageProps<"/guides/[slug]">):
   const { slug } = await params;
   const guide = getGuide(slug);
   if (!guide) return { title: "Guide not found", robots: { index: false, follow: false } };
+  const seoTitle = guideSeoTitles[guide.slug] ?? guide.title;
   return {
-    title: guide.title,
+    title: seoTitle,
     description: guide.description,
     alternates: { canonical: `/guides/${guide.slug}` },
     openGraph: {
       type: "article",
       url: `${site.url}/guides/${guide.slug}`,
       siteName: site.name,
-      title: guide.title,
+      title: seoTitle,
       description: guide.description,
       publishedTime: guide.published,
       images: [{ url: "/opengraph-image", width: 1200, height: 630 }],
     },
-    twitter: { card: "summary_large_image", title: guide.title, description: guide.description },
+    twitter: { card: "summary_large_image", title: seoTitle, description: guide.description },
   };
 }
 
@@ -40,6 +43,7 @@ export default async function GuidePage({ params }: PageProps<"/guides/[slug]">)
     .map((id) => allServices.find((s) => s.id === id))
     .filter((s): s is NonNullable<typeof s> => Boolean(s));
   const otherGuides = guides.filter((g) => g.slug !== guide.slug);
+  const extras = guideExtras[guide.slug];
 
   return (
     <PageShell>
@@ -78,6 +82,12 @@ export default async function GuidePage({ params }: PageProps<"/guides/[slug]">)
 
       <article className="px-5 pb-20 md:px-10 md:pb-28">
         <div className="mx-auto max-w-3xl">
+          {extras && (
+            <aside className="glass-strong mb-10 rounded-2xl p-6 md:p-8" aria-label="Quick answer">
+              <p className="eyebrow mb-3 text-[10px]">Quick answer</p>
+              <p className="text-[16px] leading-8 text-text">{extras.quickAnswer}</p>
+            </aside>
+          )}
           {guide.intro.slice(1).map((p) => (
             <p key={p} className="mb-6 text-[16px] leading-8 text-text/85">
               {p}
@@ -114,6 +124,15 @@ export default async function GuidePage({ params }: PageProps<"/guides/[slug]">)
           ))}
         </div>
       </article>
+
+      {extras && (
+        <Faq
+          items={extras.faqs}
+          id="guide-faq"
+          heading={["Common", "questions."]}
+          className="relative px-5 pb-20 md:px-10 md:pb-28"
+        />
+      )}
 
       <RelatedServices services={related} />
 

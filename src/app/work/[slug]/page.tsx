@@ -22,7 +22,9 @@ export async function generateMetadata({ params }: PageProps<"/work/[slug]">): P
   const project = (await listProjects()).find((p) => p.slug === slug);
   if (!project) return { title: "Project not found", robots: { index: false, follow: false } };
 
-  const title = `${project.name} — ${project.industry} website case study`;
+  const longTitle = `${project.name} — ${project.industry} website case study`;
+  // Keep the full result title (with the site name added) under about 60 characters.
+  const title = longTitle.length <= 47 ? longTitle : `${project.name} website case study`;
   const description = shorten(`${project.summary} ${project.description}`);
   return {
     title,
