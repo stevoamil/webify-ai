@@ -7,6 +7,8 @@ import TrustpilotWidget from "@/components/layout/TrustpilotWidget";
 const SOCIAL_ICONS = {
   instagram:
     '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/>',
+  tiktok:
+    '<path d="M14 4v10.5a3.5 3.5 0 11-3.5-3.5"/><path d="M14 4c.4 2.3 2 3.7 4.5 3.9"/>',
   linkedin:
     '<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="7.5" cy="8" r="1.2" fill="currentColor" stroke="none"/><path d="M7.5 11v6M11.5 17v-3.5c0-1.5 1-2.5 2.25-2.5S16 12 16 13.5V17M11.5 11v6" />',
   whatsapp:
@@ -41,7 +43,9 @@ export default function Footer({
   services?: { id: string; title: string }[];
 }) {
   const SOCIALS = [
-    { label: "Instagram", href: contact.instagram, icon: "instagram" as const },
+    // Official profiles. These are used if the admin settings are unavailable or empty.
+    { label: "Instagram", href: contact.instagram || "https://www.instagram.com/webify.ai.usa/", icon: "instagram" as const },
+    { label: "TikTok", href: "https://www.tiktok.com/@webify.ai.usa", icon: "tiktok" as const },
     { label: "LinkedIn", href: contact.linkedin, icon: "linkedin" as const },
     { label: "WhatsApp", href: contact.whatsapp ? `https://wa.me/${contact.whatsapp}` : "", icon: "whatsapp" as const },
   ].filter((s) => s.href);
