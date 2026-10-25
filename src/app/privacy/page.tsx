@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/privacy" },
 };
 
-const UPDATED = "October 12, 2026";
+const UPDATED = "October 25, 2026";
 
 const sections: { heading: string; paragraphs?: string[]; bullets?: string[] }[] = [
   {
@@ -49,6 +49,7 @@ const sections: { heading: string; paragraphs?: string[]; bullets?: string[] }[]
       "Vercel: hosting and file storage for the website and the dashboard data.",
       "Resend and FormSubmit: delivering enquiry and newsletter emails.",
       "Google Analytics: website usage statistics.",
+      "Trustpilot: collecting and displaying customer reviews. The review widget in the footer loads from Trustpilot's servers.",
     ],
   },
   {

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { footerLinks, site, type PublicContact } from "@/lib/site";
 import NewsletterForm from "@/components/layout/NewsletterForm";
+import TrustpilotWidget from "@/components/layout/TrustpilotWidget";
 
 const SOCIAL_ICONS = {
   instagram:
@@ -129,6 +130,10 @@ export default function Footer({
 
         <div className="mt-12 space-y-3">
           <LinkRow label="Services" links={services.map((s) => ({ href: `/services/${s.id}`, text: s.title }))} />
+        </div>
+
+        <div className="mt-8 max-w-md">
+          <TrustpilotWidget />
         </div>
 
         <div className="hairline my-10" />
