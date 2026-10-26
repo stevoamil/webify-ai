@@ -37,11 +37,11 @@ const mapRange = (p: number, inMin: number, inMax: number, outMin: number, outMa
   return outMin + t * (outMax - outMin);
 };
 
-/** Coarse-to-fine load order: every 16th frame, then 8th, 4th, 2nd, all. */
-function loadOrder(count: number) {
+/** Coarse-to-fine load order: every 16th frame, then 8th, 4th, 2nd, all (phones stop at every 2nd frame). */
+function loadOrder(count: number, finestStep = 1) {
   const seen = new Set<number>();
   const order: number[] = [];
-  for (const step of [16, 8, 4, 2, 1]) {
+  for (const step of [16, 8, 4, 2, 1].filter((st) => st >= finestStep)) {
     for (let i = 0; i < count; i += step) {
       if (!seen.has(i)) {
         seen.add(i);
@@ -112,7 +112,8 @@ export default function Hero() {
     let raf = 0;
 
     const resize = () => {
-      const dpr = Math.min(window.devicePixelRatio || 1, 1.75);
+      // Phones draw at 1x: the film is soft by design, and a smaller canvas is far cheaper to repaint.
+      const dpr = Math.min(window.devicePixelRatio || 1, isMobile ? 1 : 1.75);
       canvas.width = Math.round(canvas.clientWidth * dpr);
       canvas.height = Math.round(canvas.clientHeight * dpr);
       drawn = -1;
@@ -152,7 +153,7 @@ export default function Hero() {
     // the browser is idle so they never compete with the first paint. Visitors
     // on Save-Data connections stop at every 4th frame.
     const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData;
-    const order = loadOrder(set.count);
+    const order = loadOrder(set.count, isMobile ? 2 : 1);
     if (saveData) order.length = Math.min(order.length, Math.ceil(set.count / 4) + 1);
     let cursor = 0;
     let loaded = 0;

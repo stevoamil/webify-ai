@@ -31,7 +31,7 @@ export default function LoadingScreen() {
     <AnimatePresence>
       {!done && (
         <motion.div
-          exit={{ opacity: 0, filter: "blur(8px)" }}
+          exit={{ opacity: 0 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="fixed inset-0 z-[100] grid place-items-center bg-void"
           aria-hidden
