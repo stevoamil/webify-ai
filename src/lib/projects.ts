@@ -78,6 +78,8 @@ export const projects: Project[] = [
       "AI-assisted, lifestyle-aware property search",
       "AI assistant for common buyer questions",
     ],
+    lesson:
+      "A successful website should address the target audience's needs, communicate the business's value clearly, and make it easy for visitors to take the next step.",
     tech: ["Next.js", "React"],
     accent: "#8fd6e8",
   },
