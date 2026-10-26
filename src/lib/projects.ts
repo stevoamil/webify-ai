@@ -48,6 +48,8 @@ export const projects: Project[] = [
       "French / English language switch",
     ],
     ai: ["“Ask Mona’s Assistant” AI concierge for visitor questions"],
+    lesson:
+      "A strong website should reflect the brand's identity, showcase its work beautifully, and make it easy for potential customers to get in touch.",
     tech: ["Next.js", "React"],
     accent: "#d8c3a0",
   },
@@ -134,6 +136,8 @@ export const projects: Project[] = [
       "Shipping, payments and authenticity trust strip",
     ],
     ai: ["AI Shopping Assistant for gift ideas and craft recommendations"],
+    lesson:
+      "A well-designed website should showcase products or services in an engaging way, communicate the brand's value, and make it simple for visitors to take action.",
     tech: ["Next.js", "React"],
     accent: "#c8956d",
   },
@@ -191,6 +195,8 @@ export const projects: Project[] = [
       "WhatsApp contact button",
     ],
     ai: [],
+    lesson:
+      "An effective educational website should present programs clearly, help students and parents find the information they need, and simplify the enrollment journey.",
     tech: ["Next.js", "React"],
     accent: "#c9a96e",
   },
@@ -220,6 +226,8 @@ export const projects: Project[] = [
       "AI Service Advisor chat in English and Arabic with WhatsApp handoff",
       "AI photo diagnostics for dashboard lights, leaks and damage",
     ],
+    lesson:
+      "A professional automotive website should build trust by highlighting expertise, presenting services clearly, and making it easy for customers to request assistance.",
     tech: ["Next.js", "React"],
     accent: "#8a8f98",
   },
