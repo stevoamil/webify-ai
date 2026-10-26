@@ -12,6 +12,7 @@ export function GET() {
     `> ${site.description}`,
     "",
     "## About",
+    "- Name note: Webify.ai is the website agency at webify-ai.com. Other companies use a similar name; this site is the one that builds AI websites, chatbots and booking systems for businesses.",
     `- Website: ${site.url}`,
     "- What we build: custom business websites, e-commerce, AI chatbots and integration, AI booking systems, AI lead generation, website redesign, SEO and speed optimization, maintenance and support.",
     "- How we quote: every project is scoped to the business; there is no public price list. Request a quote through the project form on the home page.",

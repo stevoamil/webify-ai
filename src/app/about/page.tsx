@@ -70,6 +70,10 @@ export default async function AboutPage() {
               We work remotely with businesses worldwide, and have built websites in English and Arabic.
             </p>
             <p className="mt-4 text-[15px] leading-7 text-text/90">
+              Our website address is webify-ai.com. Other companies use a similar name, so if you are looking for us,
+              check that you have this address.
+            </p>
+            <p className="mt-4 text-[15px] leading-7 text-text/90">
               Everything on this site, from the projects to the guides, is written and maintained by the Webify.ai team.
               You can also find us on{" "}
               <a href="https://www.instagram.com/webify.ai.usa/" target="_blank" rel="noopener noreferrer" className="text-ice underline-offset-2 hover:underline">

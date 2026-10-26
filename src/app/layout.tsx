@@ -76,6 +76,9 @@ const jsonLd = {
       "@type": "Organization",
       "@id": `${site.url}/#organization`,
       name: site.name,
+      alternateName: ["Webify AI", "webify-ai.com"],
+      disambiguatingDescription:
+        "The website agency at webify-ai.com. Other companies use a similar name; this is the one that builds AI websites, chatbots and booking systems for businesses.",
       url: site.url,
       logo: `${site.url}/icon.png`,
       email: site.contact.email,
