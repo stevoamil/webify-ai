@@ -16,7 +16,7 @@ export const industryFaqs: Record<string, Faq[]> = {
     { q: "Can a real estate website capture leads automatically?", a: "Yes. Enquiry and valuation forms can send the details straight to you, and an assistant can answer common questions and collect contact information at any hour." },
     { q: "Have you built a real estate platform?", a: "Yes. Prevu is a luxury real estate platform in our portfolio, with AI search and an instant valuation tool." },
     {
-      q: "Do you offer website design and development for a real estate agency?",
+      q: "Do you offer website design and development for a real estate agency or a real estate business?",
       a: "Yes. We design and develop custom websites for a real estate agency, with property listings, search, viewing or valuation requests and fast contact options. Prevu is a real estate platform in our portfolio.",
     },
   ],
@@ -48,7 +48,7 @@ export const industryFaqs: Record<string, Faq[]> = {
     { q: "Can a restaurant website take reservations?", a: "Yes. We can build a reservation or booking-request flow with automatic confirmations." },
     { q: "Can an assistant answer questions about the menu?", a: "Yes. An assistant can answer common questions about the menu, hours and booking, using information you provide and keep up to date." },
     {
-      q: "Do you offer website design for a restaurant or a cafe?",
+      q: "Do you offer website design for a restaurant business or a cafe?",
       a: "Yes. We can design and build a custom website for a restaurant or a cafe, with a clear menu, opening hours, photos and a reservation or ordering flow. We have not published a restaurant project yet, so we describe this as work we can build.",
     },
   ],
@@ -60,13 +60,17 @@ export const industryFaqs: Record<string, Faq[]> = {
       q: "Do you build websites for a dental clinic or a medical clinic?",
       a: "Yes. We can design and build a professional website for a dental clinic or a medical clinic, with clear services, practitioner profiles and appointment requests. The site does not give medical advice, and staff stay in charge of care decisions.",
     },
+    {
+      q: "Do you build a website for a healthcare business?",
+      a: "Yes. We can design and build a professional website for a healthcare business, with clear services, practitioner profiles and appointment requests. The site does not give medical advice, and staff stay in charge of care decisions.",
+    },
   ],
   "salons-and-barbers": [
     { q: "What should a salon or barber website include?", a: "Services with prices or price ranges, photos of your work, team profiles, online booking and easy contact by phone or WhatsApp." },
     { q: "Can clients book at any hour?", a: "Yes. Online booking works around the clock, and automatic confirmations and reminders help reduce no-shows." },
     { q: "Can the website help with repeat bookings?", a: "Yes. Reminder messages and a simple rebooking flow make it easy for regular clients to book their next visit." },
     {
-      q: "Do you offer website design for a salon or a beauty clinic?",
+      q: "Do you offer website design for a beauty salon or a beauty clinic?",
       a: "Yes. We can design and build a custom website for a salon or a beauty clinic, with services and prices, photos of your work and online booking that works at any hour. We have not published a salon project yet, so we describe this as work we can build.",
     },
   ],
@@ -77,6 +81,10 @@ export const industryFaqs: Record<string, Faq[]> = {
     {
       q: "Do you offer website design for a law firm or an accounting firm?",
       a: "Yes. We can design and build a professional website for a law firm or an accounting firm, with clear practice areas, partner profiles and a way to request a consultation. We have not published a project in this sector yet.",
+    },
+    {
+      q: "Do you build a website for a consulting business or a professional service?",
+      a: "Yes. We can design and build a website for a consulting business or a professional service, with clear services, credentials and a simple way to request a consultation. We have not published a consulting project yet.",
     },
   ],
   "gyms-and-fitness": [
