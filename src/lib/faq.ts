@@ -34,6 +34,10 @@ export const homeFaqs: Faq[] = [
     q: "How do I get started?",
     a: "Use the project form on this page and tell us about your business, what you need and your budget range. We'll come back with a clear plan and a custom quote.",
   },
+  {
+    q: "Do you offer custom website design and development for small businesses?",
+    a: "Yes. Webify.ai is a web design agency that designs and develops custom websites for a small business or a local business. Each site is built around your brand and goals, and we quote every project individually.",
+  },
 ];
 
 export const serviceFaqs: Record<string, Faq[]> = {
@@ -46,6 +50,10 @@ export const serviceFaqs: Record<string, Faq[]> = {
       q: "Will my website work on phones?",
       a: "Yes. Every site is designed to work on phones, tablets and desktops, and to load quickly.",
     },
+    {
+      q: "Are you a web design agency for a small business?",
+      a: "Yes. Webify.ai is a web design agency that builds professional business websites for a small business, with custom website design, development and ongoing support. We quote each project individually, so there is no fixed price list.",
+    },
   ],
   "e-commerce": [
     {
@@ -55,6 +63,10 @@ export const serviceFaqs: Record<string, Faq[]> = {
     {
       q: "Can I manage products myself after launch?",
       a: "Yes. We set the store up so you can add and edit products without needing a developer, and we explain how during handover.",
+    },
+    {
+      q: "Do you offer ecommerce website design and online store development?",
+      a: "Yes. We offer ecommerce website design and online store development, from the product catalogue and checkout to order management, and we quote each store individually.",
     },
   ],
   "ai-integration": [
@@ -95,6 +107,10 @@ export const serviceFaqs: Record<string, Faq[]> = {
     {
       q: "How do I know if I need a redesign?",
       a: "Common signs are an old look on phones, slow loading, visitors who don't contact you and a site you can't update yourself.",
+    },
+    {
+      q: "Do you offer website redesign for a small business?",
+      a: "Yes. We redesign the website of a small business, giving it a modern look, faster loading and a clearer structure while carrying over the content and search settings that already work.",
     },
   ],
   "seo-performance": [
