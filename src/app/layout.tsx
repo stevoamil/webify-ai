@@ -76,7 +76,7 @@ const jsonLd = {
       "@type": "Organization",
       "@id": `${site.url}/#organization`,
       name: site.name,
-      alternateName: ["Webify AI", "webify-ai.com"],
+      alternateName: ["Webify AI", "Webify.ai USA", "webify-ai.com"],
       disambiguatingDescription:
         "The website agency at webify-ai.com. Other companies use a similar name; this is the one that builds AI websites, chatbots and booking systems for businesses.",
       url: site.url,
@@ -91,6 +91,7 @@ const jsonLd = {
       "@id": `${site.url}/#website`,
       url: site.url,
       name: site.name,
+      alternateName: ["Webify AI", "webify-ai.com"],
       description: site.description,
       inLanguage: "en",
       publisher: { "@id": `${site.url}/#organization` },
