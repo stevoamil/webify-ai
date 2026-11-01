@@ -114,6 +114,10 @@ export const serviceFaqs: Record<string, Faq[]> = {
       q: "What AI tools can a small business use?",
       a: "For a small business, the most useful AI tools are usually a chat assistant for customer questions, automated replies and summaries, smart search across your content, and an AI scheduler for bookings. We start with the one that saves you the most time.",
     },
+    {
+      q: "What are AI website integration services, and do you offer AI chatbot integration services?",
+      a: "AI website integration services add artificial intelligence to a business website: for example a chat assistant that answers customer questions, smart search across your content, automatic replies and booking. Yes, we offer AI chatbot integration services and website chatbot integration, either as part of a new website or added to an existing one, depending on how it is built. We set the assistant up with accurate information about your business and hand over to a person whenever one is needed.",
+    },
   ],
   "ai-booking-systems": [
     {

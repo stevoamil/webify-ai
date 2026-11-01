@@ -104,6 +104,10 @@ export const industryFaqs: Record<string, Faq[]> = {
       q: "Do you offer website design for a hotel or a travel agency?",
       a: "Yes. We can design and build a custom website for a hotel or a travel agency, with strong photography, booking requests and pages in your guests' languages. We have not published a project in this sector yet.",
     },
+    {
+      q: "Do you offer an AI website solution for hotels?",
+      a: "Yes. We can build an AI website solution for a hotel or guesthouse: a custom website with an AI assistant that answers guests' common questions at any hour and collects booking requests, in the languages your guests speak. We have not published a hotel project yet, so we describe this as work we can build, and a person stays in charge of confirming bookings.",
+    },
   ],
   "contractors-and-home-services": [
     { q: "What should a contractor's website include?", a: "A clear list of services and areas covered, a gallery of finished work, a quick quote request form, proof of experience and one-tap calling on phones." },
