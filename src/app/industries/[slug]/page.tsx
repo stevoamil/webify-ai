@@ -7,7 +7,8 @@ import { CtaBand, JsonLd, PageHero, RelatedServices, breadcrumbJsonLd } from "@/
 import Faq from "@/components/sections/Faq";
 import { industryFaqs } from "@/lib/industry-faqs";
 import { industryJourneys } from "@/lib/industry-journeys";
-import { getIndustry, industrySeoTitles } from "@/lib/industries";
+import { guides } from "@/lib/guides";
+import { getIndustry, industries, industrySeoTitles } from "@/lib/industries";
 import { site } from "@/lib/site";
 import { listProjects } from "@/lib/store/portfolio";
 import { listServices } from "@/lib/store/services";
@@ -179,6 +180,37 @@ export default async function IndustryPage({ params }: PageProps<"/industries/[s
       />
 
       <RelatedServices services={related} />
+
+      <section className="px-5 pb-20 md:px-10 md:pb-28" aria-label="More industries and guides">
+        <div className="mx-auto grid max-w-5xl gap-6 md:grid-cols-2">
+          <div className="glass rounded-3xl p-8">
+            <h2 className="eyebrow mb-6">Other industries we build for</h2>
+            <ul className="space-y-3">
+              {industries
+                .filter((i) => i.slug !== industry.slug)
+                .map((i) => (
+                  <li key={i.slug}>
+                    <Link href={`/industries/${i.slug}`} className="text-[15px] leading-6 text-ice underline-offset-2 hover:underline">
+                      {i.name}
+                    </Link>
+                  </li>
+                ))}
+            </ul>
+          </div>
+          <div className="glass rounded-3xl p-8">
+            <h2 className="eyebrow mb-6">Guides for business owners</h2>
+            <ul className="space-y-3">
+              {guides.map((g) => (
+                <li key={g.slug}>
+                  <Link href={`/guides/${g.slug}`} className="text-[15px] leading-6 text-ice underline-offset-2 hover:underline">
+                    {g.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
 
       <CtaBand
         title={`Let's talk about your ${industry.name} project`}
